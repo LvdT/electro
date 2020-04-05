@@ -1,0 +1,1096 @@
+\documentclass[12pt]{scrartcl}
+\title{Electromagnetism \\and its units of measurement}
+\author{I. Saltini}
+\date{}
+\setlength{\parindent}{0pt}
+
+\input{headers/default}
+\input{headers/si}
+\input{headers/commands}
+% \input{headers/bibliography}
+% \input{headers/drawings}
+% \input{headers/fancy}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In the present document, we shall strive to provide a description of electromagnetism
+that is independent of the system of units being used.
+In order to do that, we shall introduce a number of constants, determine how these
+constants relate to each other, and finally provide the values of the constants
+for the most commonly used systems.
+\end{abstract}
+\section{Charge and current}
+We take the concept of \textbf{electric charge} \(Q\) as a primitive.
+All particles have a certain electric charge, which can be positive, negative or zero,
+this value determines how the particle couples with electromagnetic interactions.
+A fundamental law of physics is that total electric charge is conserved.
+The amount of charge contained within some region of space can still change due
+to particles moving in or out of the region itself, so that in general \(Q\) can
+be taken to be a function of time.\\[1em]
+The force acting between two point charges \(Q_1\) and \(Q_2\) at a distance \(d\)
+from each other is observed experimentally to follow \textbf{Coulomb's law}.
+\[F = k_\mathrm{C} \frac{\abs{Q_1}\abs{Q_2}}{d^2}\]
+The choice of units for charge is implicit in the value given to \(k_\mathrm{C}\);
+two fundamentally distinct approaches are possible: in the first electrical units
+arise naturally from mechanical units and \(k_\mathrm{C}\) is just a number, in the second
+electrical phenomena are linked to a new \emph{base} quantity and \(k_\mathrm{C}\)
+is a constant with its own units.\\[1em]
+We follow by defining the \textbf{electric current} \(i\) as the rate of change of
+the electric charge contained in a region of space, scaled by a constant \(\kappac\).
+The negative sign is used so that a positive current means that charge is leaving
+the region.
+\begin{equation}\label{eq::current-definition}
+  i = - \frac{1}{\kappac} \pderiv{Q}{t}
+\end{equation}
+While \(\kappac\) is often taken to be unity, its presence is useful
+for several reasons.
+It allows us to choose the units of current independently of the units of charge,
+moreover, with the choice \(\kappac = c\), it gives additional symmetry
+to Maxwell's equations and makes the relativistic treatment of electromagnetism
+appear more natural.\\[1em]
+The force (per unit length) acting between two straight wires at a distance \(d\)
+from each other, each carrying a \emph{constant} current (respectively \(i_1\)
+and \(i_2\)) is observed experimentally to follow \textbf{Ampère's force law}.
+\[\frac{F}{L} = 2 \, k_\mathrm{A} \frac{\abs{i_1}\abs{i_2}}{d}\]
+Once again, the choice of units for current is implicit in the value given to
+\(k_\mathrm{A}\) and we can either take it to be a number, or give it units.
+We could, in principle, define two distinct base quantities, one for charge and
+one for current, and choose the appropriate units for \(\kappac\),
+although this is not very convenient in practice.
+%
+%
+\subsection{Charge and current densitites}
+It is often useful to work with \textbf{charge density} \(\rho\), rather than
+total electric charge.
+We define \(\rho\) as a function of position and time, such that its volume integral
+over some region \(\Omega\) gives us exactly the charge contained in the region
+at the given time.
+\begin{equation}\label{eq::charge-density}
+  Q\of{t} = \iiint_\Omega \rho\of{\vec{\xi},t} \de^3\xi
+\end{equation}
+Since total electric charge must be conserved, this implies that in the presence
+of current, some motion of charges across the boundary of the region is taking place.
+There exists some some quantity, which we shall name the \textbf{current density}
+vector \(\vec{j}\), of which the total electric current is the flux.
+\begin{equation}\label{eq::current-flux}
+  i(t) = \iint_{\Sigma} \vec{j}\of{\vec{\xi},t} \cdot \vec{n} \, \de^2\xi
+\end{equation}
+Two special cases are the charge density of a point charge \(Q\) located at \(\vec{r}_0\)
+\[\rho\of{\vec{r}} = Q \, \delta\of{\vec{r} - \vec{r}_0}\]
+and the current density of a thin wire described by a curve \(\gamma\) and carrying a current \(i\).
+\[\vec{j}\of{\vec{r}} = i \, \int_{\mathbb{R}} \delta\of{\vec{r} - \vec{\gamma}\of{s}} \vec{t}\of{s}\de s\]
+%
+%
+\subsection{Continuity equation}
+We now take equation and \eqref{eq::current-flux} specify it to the case where
+\(\Sigma\) is the boundary of the region \(\Omega\) where the charge is contained,
+we also take equation \eqref{eq::charge-density} and
+substitute both in \eqref{eq::current-definition} and apply the divergence theorem.
+\begin{align*}
+  \oiint_{\partial \Omega} \vec{j}\of{\vec{\xi},t} \cdot \vec{n} \, \de^2\xi &= - \frac{1}{\kappac} \pderiv{}{t} \iiint_\Omega \rho\of{\vec{\xi},t} \de^3\xi \\
+  \iiint_{\Omega} \dvg{\vec{j}} \, \de^3\xi &= - \frac{1}{\kappac} \iiint_\Omega \pderiv{\rho}{t} \de^3\xi
+\end{align*}
+\[\iiint_{\Omega} \of{\dvg{\vec{j}} + \frac{1}{\kappac} \pderiv{\rho}{t}} \de^3\xi = 0\]
+Since this identity must hold regardless of the choice of \(\Omega\) it must be
+that the integrand itself is zero. We get the \textbf{continuity equation}.
+\begin{equation}\label{eq::continuity}
+  \frac{1}{\kappac} \pderiv{\rho}{t} + \dvg{\vec{j}} = 0
+\end{equation}
+We can now relate the current density to the velocity field. Let us consider a
+surface enclosing a region \(\Omega_0\) at time \(t_0\) and containing a charge \(Q\).
+We define \(\Omega\of{t}\) as the region containing exactly the same particles as
+\(\Omega_0\). If the motion of the particles is continuous, the motion of the surface
+will also be continuous; we can therefore apply the Reynolds transport theorem
+from continuum mechanics. We take the time derivative of the charge within the
+region, which must be zero since it is constant.
+\[\D{Q}{t} = \D{}{t} \iiint_{\Omega\of{t}} \rho\of{\vec{\xi},t} \de^3\xi = \iiint_{\Omega\of{t}} \of{\pderiv{\rho}{t} + \dvg{\of{\rho \, \vec{v}}}} \de^3\xi = 0\]
+If we divide everything by \(\kappac\) we obtain an integrand that shows
+a strong resemblance to the continuity equation.
+\[\frac{1}{\kappac} \D{Q}{t} = \iiint_{\Omega\of{t}} \of{\frac{1}{\kappac} \pderiv{\rho}{t} + \dvg{\frac{\rho \, \vec{v}}{\kappac}}} \de^3\xi = 0\]
+As this integral must be zero for any choice of the starting sufrace \(\Omega_0\),
+it is the integrand itself that must vanish. For this to happen it must be true
+that the term of which we are taking the divergence must be the current density.
+\begin{equation}\label{eq::current-density-moving}
+  \vec{j}\of{\vec{r},t} = \frac{\vec{v}\of{\vec{r},t} \, \rho\of{\vec{r},t}}{\kappac}
+\end{equation}
+%
+%
+\section{Electric and magnetic fields}
+The force acting on a small \emph{test charge} \(q\) as a result of electromagnetic
+phenomena can be split into two contributions, an electric force which is independent
+of the charge's motion and a magnetic term which also depends on its velocity.
+\[\vec{F}\of{\vec{r},t} = \vec{F}_\mathrm{e}\of{\vec{r},t} + \vec{F}_\mathrm{m}\of{\vec{v},\vec{r},t}\]
+Experimentally, both terms are observed to be linear in \(q\).\\[1em]
+The \textbf{electric field} \(\vefi\) is defined in terms of the electric force
+and is obtained by factoring out charge, since we have just observed that
+the force depends linearly upon it.
+\[\vec{F}_\mathrm{e}\of{\vec{r},t} = q \, \vefi\of{\vec{r},t}\]
+The \textbf{magnetic field} \(\vbfi\) behaves in a slightly more complicated manner.
+The magnetic force is observed to always be perpendicular to the particle's velocity, which
+suggests that a cross product is involved in the definition.
+Moreover, we need to introduce a scaling constant \(\kappaf\), which will
+be necessary to give us the correct value for the speed of light as an electromagnetic
+wave.
+\[\vec{F}_\mathrm{m}\of{\vec{v},\vec{r},t} = \frac{q\vec{v} \times \vbfi\of{\vec{r},t}}{\kappaf}\]
+The sum of these two contributions is called the \textbf{Lorentz force}.
+\begin{equation}
+  \vec{F}\of{\vec{r},t} = q \of{\vefi\of{\vec{r},t} + \frac{\vec{v} \times \vbfi\of{\vec{r},t}}{\kappaf}}
+\end{equation}
+The Lorentz force can also be expressed in terms of charge and current densities,
+in order to do so it is convenient to define the \textbf{force density} \(\vec{f}\),
+a local property defined by the amount of force per unit volume.
+\[\vec{F}(t) = \iiint_\Omega \vec{f}\of{\vec{\xi},t} \de^3 \xi\]
+We start with the electric force, we can turn the expression above into a volume
+integral by using the definition of the Dirac delta.
+\[\vec{F}_\mathrm{e}\of{\vec{r},t} = \iiint_\Omega q \, \delta\of{\vec{r}-\vec{\xi}} \vefi\of{\vec{\xi},t}\de^3 \xi\]
+The expression \(q \, \delta\of{\vec{r}-\vec{\xi}}\) is the charge density of a
+point charge \(q\) located at \(\vec{r}\), this leads us to an expression for the
+electric force density.
+\[\vec{F}_\mathrm{e}\of{t} = \iiint_\Omega \rho\of{\vec{\xi},t} \vefi\of{\vec{\xi},t} \de^3 \xi
+\qquad \vec{f}_\mathrm{e}\of{\vec{r},t} = \rho\of{\vec{r},t} \vefi\of{\vec{r},t}\]
+We can proceed in a similar manner with the magnetic force, we immediately identify
+the expression for the charge density.
+\[\vec{F}_\mathrm{m}\of{t} = \iiint_\Omega \frac{\rho\of{\vec{\xi},t}\vec{v} \times \vbfi\of{\vec{\xi},t}}{\kappaf} \de^3 \xi\]
+We now refer to equation \eqref{eq::current-density-moving} and replace \(\rho\of{\vec{\xi},t}\vec{v}\)
+with \(\kappac \, \vec{j}\of{\vec{\xi},t}\), obtaining an expression for the
+magnetic force density.
+\[\vec{F}_\mathrm{m}\of{t} = \iiint_\Omega \frac{\kappac}{\kappaf} \vec{j}\of{\vec{\xi},t} \times \vbfi\of{\vec{\xi,t}} \de^3 \xi
+\qquad \vec{f}_\mathrm{m}\of{\vec{r},t} = \frac{\kappac}{\kappaf} \, \vec{j}\of{\vec{r},t} \times \vbfi\of{\vec{r},t}\]
+%
+Taking both contributions together gives us the Lorentz force density.
+\[\vec{f}\of{\vec{r},t} = \rho\of{\vec{r},t} \vefi\of{\vec{r},t} + \frac{\kappac}{\kappaf} \, \vec{j}\of{\vec{r},t} \times \vbfi\of{\vec{r},t}\]
+%
+%
+\section{Electromotive force}
+%
+We consider a closed loop built out of an electrical conductor, delimiting a surface
+\(\Sigma\). We define the \textbf{electromotive force} as the work per unit
+of charge performed by the electromagnetic force on a charge going around the whole loop,
+which is to say, the \emph{circulation} of the Lorentz force per unit charge.
+\[\emf\of{t} = \frac{1}{q} \oint_{\partial\Sigma\of{t}} \vec{F}\of{\xi,t} \cdot \vec{t}\of{\xi,t} \de\xi\]
+By substituting the expression for the Lorentz force we obtain the following.
+\[\emf\of{t} = \oint_{\partial\Sigma\of{t}} \of{\vefi\of{\xi,t} + \frac{\vec{v}\of{\xi,t} \times \vbfi\of{\xi,t}}{\kappaf}} \cdot \vec{t}\of{\xi,t} \de\xi\]
+%
+The electromotive force is therefore the sum of two contributions, the first is
+due to the electric field and is called \textbf{induced electromotive force},
+the second is due to motion in a magnetic field and is called \textbf{motional
+electromotive force}.
+%
+\[\emf = \emf_\mathrm{ind} + \emf_\mathrm{mot}\]
+\[\emf_\mathrm{ind}\of{t} = \oint_{\partial\Sigma\of{t}} \vefi\of{\xi,t} \cdot \vec{t}\of{\xi,t} \de\xi \qquad
+\emf_\mathrm{mot}\of{t} = \oint_{\partial\Sigma\of{t}} \frac{\vec{v}\of{\xi,t} \times \vbfi\of{\xi,t}}{\kappaf} \cdot \vec{t}\of{\xi,t} \de\xi\]
+%
+Experimentally, it is known that the electromotive force on a circuit depends upon
+the time derivative of the magnetic flux through the surface delimited by the circuit;
+this relationship is known as the \textbf{Faraday--Neumann--Lenz law}.
+\[\emf = - k_\mathrm{F} \D{\Phi_\vbfi}{t}\]
+%
+%
+\section{Joule--Lenz law}
+Consider a charge distribution \(\rho\of{\vec{r},t}\) together with a velocity
+field \(\vec{v}\of{\vec{r},t}\) in a region where both an electric and magnetic fields
+exist.
+The power density of such a system can be computed as the dot product between the
+force density and the velocity field.
+\[\dot{u} = \vec{f} \cdot \vec{v} = \rho \vefi \cdot \vec{v} + \frac{\kappac}{\kappaf} \of{\vec{v} \times \vbfi} \cdot \vec{v} = \vefi \cdot \of{\rho \, \vec{v}}\]
+The second term vanishes because we're taking the dot product of two perpendicular
+vectors. We recognise the expression for the current density.
+\[\dot{u} = \kappac \, \vefi \cdot \vec{j} \qquad \frac{1}{\kappac} \D{u}{t} = \vefi \cdot \vec{j}\]
+This is known as the \textbf{Joule--Lenz law}.
+%
+%
+\section{Maxwell's equations}
+While the Lorentz force gives us a way to compute the way a distribution of charges
+and currents interacts with the electromagnetic field, we still need a way to
+determine how the fields themselves are generated by a distribution of charges.
+This is achieved by \textbf{Maxwell's equations}, which can be stated either in
+integral or differential form.
+For the sake of simplicity, we choose to use the differential form.
+\begin{center}
+  \begin{tabular}{ccccl}
+    \(\mathrm{M}_\mathrm{I}\) & \textbf{Gauss's law (for \(\vefi\))} & \(\dvg{\vefi}\) & \(=\) & \(\alphaG \, \rho\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \textbf{Gauss's law (for \(\vbfi\))} & \(\dvg{\vbfi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \textbf{Faraday--Maxwell's law} & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \textbf{Ampère--Maxwell's law} & \(\crl{\vbfi}\) & \(=\) & \(\displaystyle \alphaA \, \vec{j} + \frac{1}{\gammaM} \pderiv{\vefi}{t}\) \\
+  \end{tabular}
+\end{center}
+We have used two different types of constants, \(\alphaG\)
+and \(\alphaA\) that couple the fields to the charges and currents respectively,
+and \(\gammaF\) and \(\gammaM\) that couple
+the fields to each other.
+%
+\subsection{Continuity equation}
+%
+We can verify that the continuity equation is consistent with Maxwell's equation,
+under a proper choice of constants.
+We begin by taking the divergence of \(\mathrm{M}_\mathrm{IV}\), recalling that
+the divergence of a curl must be zero.
+\begin{align*}
+  \dvg{\of{\crl{\vbfi}}} &= \alphaA \dvg{\vec{j}} + \frac{1}{\gammaM} \dvg{\pderiv{\vefi}{t}} \\
+  0 &= \alphaA \dvg{\vec{j}} + \frac{1}{\gammaM} \pderiv{}{t} \dvg{\vefi} \\
+  0 &= \alphaA \dvg{\vec{j}} + \frac{\alphaG}{\gammaM} \pderiv{\rho}{t}
+\end{align*}
+We obtain something that resembles a continuity equation.
+\[\frac{\alphaG}{\alphaA\gammaM} \pderiv{\rho}{t} + \dvg{\vec{j}} = 0\]
+Comparing it to equation \eqref{eq::continuity} we obtain a relation between the constants.
+\[\frac{\alphaA\gammaM}{\alphaG} = \kappac\]
+%
+\subsection{Propagation of light}
+%
+We consider Maxwell's equation in the absence of charges or currents.
+\begin{center}
+  \begin{tabular}{cccl}
+    \(\mathrm{M}_\mathrm{I}\) & \(\dvg{\vefi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vbfi}\) & \(=\) & \(\displaystyle \frac{1}{\gammaM} \pderiv{\vefi}{t}\) \\
+  \end{tabular}
+\end{center}
+We take the curl of \(\mathrm{M}_\mathrm{III}\), use the identity \(\crl{\vec{a}} = \grd{\of{\dvg{\vec{a}}}} - \lp{\vec{a}}\)
+and substitute \(\mathrm{M}_\mathrm{I}\) and \(\mathrm{M}_\mathrm{IV}\) where the
+corresponding terms appear.
+\begin{align*}
+  \crl{\of{\crl{\vefi}}} &= - \frac{1}{\gammaF} \pderiv{}{t} \crl{\vbfi} \\
+  \grd{\of{\dvg{\vefi}}} - \lp{\vefi} &= - \frac{1}{\gammaF} \pderiv{}{t} \crl{\vbfi} \\
+  - \lp{\vefi} &= - \frac{1}{\gammaF\gammaM} \pderiv[2]{\vefi}{t}
+\end{align*}
+We obtain d'Alembert's equation for the electric field.
+\[\frac{1}{\gammaF\gammaM} \pderiv[2]{\vefi}{t} - \lp{\vefi} = 0\]
+We know for a fact that the propagation speed of an electromagnetic wave is \(c\);
+in terms of our constants, this means that the following condition must hold.
+\[\gammaF\gammaM = c^2\]
+The process can be repeated by taking the curl of \(\mathrm{M}_\mathrm{IV}\), and
+proceeding in a similar manner, but this won't give us any new condition.
+The fact that electric and magnetic waves travel at the same speed is intrinsic
+in the structure of Maxwell's equations.
+\begin{align*}
+  \crl{\of{\crl{\vbfi}}} &= \frac{1}{\gammaM} \pderiv{}{t} \crl{\vefi} \\
+  \grd{\of{\dvg{\vbfi}}} - \lp{\vbfi} &= \frac{1}{\gammaM} \pderiv{}{t} \crl{\vefi} \\
+  - \lp{\vbfi} &= - \frac{1}{\gammaF\gammaM} \pderiv[2]{\vbfi}{t}
+\end{align*}
+As mentioned, we obtain exactly the same equation we had for the electric field.
+\[\frac{1}{\gammaF\gammaM} \pderiv[2]{\vbfi}{t} - \lp{\vbfi} = 0\]
+%
+%
+\subsection{Faraday--Neumann--Lenz law}
+%
+Let us consider a closed loop built out of an electrical conductor, delimiting a
+surface \(\Sigma\) and let us take the time derivative of the flux of the magnetic
+field through this surface. The shape and position of the loop can change with time.
+\[\D{\Phi_\vbfi}{t} = \D{}{t} \iint_{\Sigma\of{t}} \vbfi\of{\vec{\xi},t} \cdot \vec{n}\of{\vec{\xi},t} \de^2\xi\]
+%
+The rate of change depends both on the change in magnetic field and in the geometry
+of the loop. We can resort to a form of the Reynolds transport theorem in
+order to compute this derivative.
+\[\D{\Phi_\vbfi}{t} = \iint_{\Sigma\of{t}} \of{\pderiv{\vbfi}{t} + \of{\dvg{\vbfi}}\vec{v}\of{\vec{\xi},t}} \cdot \vec{n}\of{\vec{\xi},t} \de^2\xi
+- \oint_{\partial\Sigma(t)} \of{\vec{v}\of{\vec{\xi},t} \times \vbfi\of{\vec{\xi},t}} \cdot \vec{t}\of{\vec{\xi},t} \de\xi\]
+We now use Gauss's law for magnetism to remove the term involving the divergence
+of the magnetic field, which is zero.
+\[\D{\Phi_\vbfi}{t} = \iint_{\Sigma\of{t}} \pderiv{\vbfi}{t} \cdot \vec{n}\of{\vec{\xi},t} \de^2\xi
+- \oint_{\partial\Sigma(t)} \of{\vec{v}\of{\vec{\xi},t} \times \vbfi\of{\vec{\xi},t}} \cdot \vec{t}\of{\vec{\xi},t} \de\xi\]
+We then use Faraday--Maxwell's law to replace the first term.
+\[\D{\Phi_\vbfi}{t} = - \gammaF \oint_{\partial\Sigma\of{t}} \vefi\of{\vec{\xi},t} \cdot \vec{t}\of{\vec{\xi},t} \de\xi
+- \oint_{\partial\Sigma(t)} \of{\vec{v}\of{\vec{\xi},t} \times \vbfi\of{\vec{\xi},t}} \cdot \vec{t}\of{\vec{\xi},t} \de\xi\]
+Finally, we recognise the expressions for the induced and motional electromotive
+forces.
+\[\D{\Phi_\vbfi}{t} = - \gammaF \emf_\mathrm{ind} - \kappaf \, \emf_\mathrm{mot}\]
+In order for the Faraday--Neumann--Lenz law to be valid, we need to be able to factor
+this expression, so we obtain a third and last condition for our constants, along
+with an expression giving us the value of Faraday's constant in terms of such constants.
+\[\gammaF = \kappaf = k_\mathrm{F}\]
+%
+%
+\subsection{Adding it all up}
+We started out with six constants: \(\kappac, \kappaf, \alphaG, \alphaA, \gammaF\) and \(\gammaM\),
+but we observed that requiring the consistency of Maxwell's equations with the
+continuity equation for electric charges, with the fact that electromagnetic
+waves propagate with a speed of \(c\) and with the Faraday--Neumann--Lenz law has
+given us three equations that relate these constants to each other.
+\begin{equation}
+  \alphaG = \frac{c^2}{\kappaf \kappac} \alphaA \qquad \gammaM = \frac{c^2}{\kappaf} \qquad \gammaF = \kappaf
+\end{equation}
+We are left with only three constants which we can freely choose.
+We rearrange the above equations in order to give us a system where we are free
+to choose the couplings between the fields and the charges, in addition to the
+constant \(\kappac\) that defines current.
+\begin{equation}
+  \kappaf = \gammaF = \frac{c^2}{\kappac} \frac{\alphaA}{\alphaG}
+  \qquad \gammaM = \frac{\alphaG}{\alphaA} \kappac
+\end{equation}
+%
+%
+\section{Coulomb's law}
+We have already introduced Coulomb's law when we were discussing the possible
+choices of units of charge, we now endeavour to find a connection between
+Coulomb's constant \(k_\mathrm{C}\) and the constants we have used in Maxwell's
+equations.\\[1em]
+We consider an immobile point charge \(Q\) at the origin, for which \(\rho\of{\vec{r},t} = Q \, \delta\of{\vec{r}}\),
+and integrate Gauss's law over a spherical volume \(\Omega\) with radius \(d\).
+\[\iiint_\Omega \dvg{\vefi} \de^3\xi = \alphaG \iiint_\Omega Q \, \delta\of{\vec{\xi}} \de^3\xi
+\qquad\Rightarrow\qquad
+\oiint_{\partial\Omega} \vefi\of{\vec{\xi}} \cdot \vec{n}\of{\vec{\xi}} \de^2\xi = \alphaG \, Q\]
+Since the system is spherically symmetrical we can assume that the electric field
+shares such a property, this means that it must be directed radially and that its
+magnitude only depensd upon the magnitude of \(\vec{\xi}\), giving us the following
+expression for it.
+\[\vefi\of{\vec{\xi}} = \efi_n\!\of{\xi} \, \vec{n}\of{\vec{\xi}}\]
+We plug this into the previous expression and recall that the sphere has
+radius \(d\), so that \(\xi\) is the same at all points
+and we can extract \(\efi_n\) from the integral.
+\[\oiint_{\partial\Omega} \efi_n\!\of{d} \de^2\xi = \efi_n\!\of{d} \oiint_{\partial\Omega} \de^2\xi = 4 \pi d^2 \, \efi_n\!\of{d}\]
+Solving for the electric field gives us an inverse square law.
+\[\efi_n\!\of{d} = \frac{\alphaG}{4\pi} \frac{Q}{d^2}\]
+Assuming we have a second charge \(Q_2\) at a distance \(d\) from the first, which
+we shall now denote by \(Q_1\), the resulting force in the radial direction can
+be computed as the electric force produced by this field.
+\[F_n\!\of{d} = Q_2 \, \efi_n\!\of{d} = \frac{\alphaG}{4\pi} \frac{Q_1\,Q_2}{d^2}\]
+Taking the magnitude of this force gives us Coulomb's law and therefore Coulomb's
+constant, which only depends upon \(\alphaG\).
+\[F\of{d} = \frac{\alphaG}{4\pi} \frac{\abs{Q_1}\abs{Q_2}}{d^2} \qquad k_\mathrm{C} = \frac{\alphaG}{4\pi}\]
+%
+%
+\section{Ampere's force law}
+In a similar manner to what we did for Coulomb's law, we now attempt to find a connection
+between Ampere's force constant \(k_\mathrm{A}\) and the constants we've been using
+in Maxwell's equations.\\[1em]
+We consider an infinitely long straight wire carrying a current \(I\), passing
+through the origin and going in the direction \(z\). The wire can be parametrised
+\(\vec{\gamma}\of{s} = \of{0,0,s}\), the tangent to which is simply \(\uvec{z}\).
+The current density for such a system is as follows.
+\[\vec{j}\of{\vec{r},t} = I \delta\of{x} \delta\of{y} \uvec{z} \int_{\mathbb{R}} \delta\of{z - s} \de s = I \delta\of{x} \delta\of{y} \uvec{z}\]
+We take the flux of Ampère-Maxwell's law over a circle \(\Sigma\) with radius \(d\)
+lying in the \(\of{x,y}\) plane and thus having the vector \(\uvec{z}\) as a normal.
+\[\iint_\Sigma \of{\crl{\vbfi}} \cdot \uvec{z} \, \de^2\xi = \alphaA \iint_\Sigma \of{I \delta\of{x}\delta\of{y}} \uvec{z} \cdot \uvec{z} \, \de^2\xi
+\qquad\Rightarrow\qquad
+\oint_{\partial\Sigma} \vbfi \cdot \uvec{\phi} \, \de\xi = \alphaA I\]
+This system has cylindrical symmetry, so we can expect the magnetic field to also
+have such a property. Therefore it should be directed along the tangent to the circle
+at each point and have a magnitude dependent only upon the distance from the origin.
+\[\vbfi\of{\vec{\xi}} = \bfi_\phi\!\of{\xi} \, \uvec{\phi}\of{\vec{\xi}}\]
+We plug this into the previous expression and recall that the circle has
+radius \(d\), so that \(\xi\) is the same at all points
+and we can extract \(\bfi_\phi\) from the integral.
+\[\oint_{\partial\Sigma} \bfi_\phi\of{d} \de\xi = \bfi_\phi\of{d} \oint_{\partial\Sigma} \de\xi = 2 \pi d \, \bfi_\phi\of{d}\]
+Solving for the magnetic field gives us the \textbf{Biot--Savart law}.
+\[\bfi_\phi\of{d} = \frac{\alpha_A}{2 \pi} \frac{I}{d}\]
+We now take a second wire carrying a current \(I_2\), parallel to the original wire
+and located at a point \(\of{x_0,y_0}\) such that its distance from the first wire
+is \(d\), that is to say that \({x_0}^2 + {y_0}^2 = d^2\).
+The current density for this wire is \(\vec{j_2}\of{\vec{r},t} = I_2 \delta\of{x-x_0}\delta\of{y-y_0} \uvec{z}\).
+We also denote the current on the first wire by \(I_1\).\\[1em]
+We should expect the force acting between the two wires to be infinite, since they
+are indefinitely long, to get around this we must consider the force per unit lenght,
+which we can compute by considering the expression for the magnetic force density,
+integrating it over a region of space spanning the whole \(\of{x,y}\) plane and
+between \(0\) and \(L\) in the \(z\) direction, then dividing this result by \(L\).
+\[\frac{\vec{F}}{L} = \frac{1}{L} \int_0^L \of{\iint_{\mathbb{R}^2} \vec{f}_\mathrm{m} \de x \, \de y} \de z
+ = \frac{1}{L} \int_0^L \of{\iint_{\mathbb{R}^2} \frac{\kappac}{\kappaf} \vec{j}_2 \times \vbfi \, \de x \, \de y} \de z\]
+Replacing the expressions relating to our case we find the following.
+\[\frac{\vec{F}}{L} = \frac{\kappac}{\kappaf} \frac{\alpha_A}{2 \pi} \frac{1}{L} \int_0^L \de z
+\iint_{\mathbb{R}^2} \frac{I_1 \, I_2 \of{\uvec{\phi} \times \uvec{z}}}{\sqrt{x^2 - y^2}} \delta\of{x-x_0}\delta\of{y-y_0}\de x \de y\]
+Solving the integral on \(z\) simply gives us \(L\), then by using the property of the Dirac's delta,
+replacing \(\sqrt{{x_0}^2 + {y_0}^2}\) with \(d\) and recalling that \(\uvec{\phi} \times \uvec{z} = - \uvec{r}\)
+we obtain the following expression for the force per unit lenght.
+\[\frac{\vec{F}}{L} = - \frac{\kappac}{\kappaf} \frac{\alpha_A}{2 \pi} \frac{I_1 \, I_2}{d} \, \uvec{r}\]
+Taking its magnitude we find Ampère's force law and therefore find the relation between
+Ampère's force constant and \(\alphaA\), \(\kappac\) and \(\kappaf\).
+\[\frac{F}{L} = 2 \frac{\kappac}{\kappaf} \frac{\alpha_A}{4 \pi} \frac{\abs{I_1} \abs{I_2}}{d} \qquad k_\mathrm{A} = \frac{\kappac}{\kappaf} \frac{\alpha_A}{4 \pi}\]
+We notice that, unlike Coulomb's constant, Ampère's force constant does not depend
+solely upon the coupling constant in the relevant Maxwell's equation, but also
+on the scaling constants for the currents and fields.
+%
+%
+\section{Poynting's theorem}
+%
+We consider \(\mathrm{M}_\mathrm{III}\) and \(\mathrm{M}_\mathrm{IV}\) and take
+their scalar product with, respectively, \(\vbfi\) and \(\vefi\).
+\[\vbfi \cdot \of{\crl{\vefi}} = - \frac{\vbfi}{\gammaF} \cdot \pderiv{\vbfi}{t}
+\qquad
+\vefi \cdot \of{\crl{\vbfi}} = \alphaA \, \vefi \cdot \vec{j} + \frac{\vefi}{\gammaM} \cdot \pderiv{\vefi}{t}\]
+We then subtract the second equation from the first.
+\[\vefi \cdot \of{\crl{\vbfi}} - \vbfi \cdot \of{\crl{\vefi}} = \alphaA \, \vefi \cdot \vec{j} + \frac{\vefi}{\gammaM} \cdot \pderiv{\vefi}{t} + \frac{\vbfi}{\gammaF} \cdot \pderiv{\vbfi}{t}\]
+The left hand side of this equation is the divergence of \(\vefi \times \vbfi\).
+\[- \dvg{\of{\vefi \times \vbfi}} = \alphaA \, \vefi \cdot \vec{j} + \frac{\vefi}{\gammaM} \cdot \pderiv{\vefi}{t} + \frac{\vbfi}{\gammaF} \cdot \pderiv{\vbfi}{t}\]
+We now isolate the term containing \(\vefi \cdot \vec{j}\).
+\begin{align*}
+- \vefi \cdot \vec{j} &= \dvg{\of{\frac{\vefi \times \vbfi}{\alphaA}}} +
+\frac{\vefi}{\alphaA \, \gammaM} \cdot \pderiv{\vefi}{t} + \frac{\vbfi}{\alphaA \, \gammaF} \cdot \pderiv{\vbfi}{t}\\
+- \vefi \cdot \vec{j} &= \dvg{\of{\frac{\vefi \times \vbfi}{\alphaA}}} +
+\frac{\vefi}{\alphaG \, \kappac} \cdot \pderiv{\vefi}{t} + \frac{\vbfi}{\alphaA \, \kappaf} \cdot \pderiv{\vbfi}{t}
+\end{align*}
+We then use the identity for the derivative of a product to rewrite the second and
+third terms in the right hand side.
+\[- \vefi \cdot \vec{j} = \dvg{\of{\frac{\vefi \times \vbfi}{\alphaA}}} +
+\frac{1}{2} \pderiv{}{t} \of{\frac{\vefi \cdot \vefi}{\kappac\alphaG} + \frac{\vbfi \cdot \vbfi}{\kappaf\alphaA}}\]
+We follow up by multiplying everything by \kappac.
+\[- \kappac \vefi \cdot \vec{j} = \dvg{\of{\frac{\kappac}{\alphaA} \vefi \times \vbfi}} +
+\frac{1}{2} \pderiv{}{t} \of{\frac{\vefi \cdot \vefi}{\alphaG} + \frac{\kappac}{\kappaf}\frac{\vbfi \cdot \vbfi}{\alphaA}}\]
+The left hand side is the power density dissipated due to the Joule--Lenz effect,
+this suggests that the term in the derivative is an \textbf{energy density}, and the vector
+of which we are taking the divergence is its flux, which is called the \textbf{Poynting vector} \(\vpoy\).
+\[\vpoy = \frac{\kappac}{\alphaA} \vefi \times \vbfi \qquad u = \frac{1}{2} \of{\frac{\vefi \cdot \vefi}{\alphaG} + \frac{\kappac}{\kappaf}\frac{\vbfi \cdot \vbfi}{\alphaA}}\]
+In these terms, Poynting's theorem states the following.
+\[\D{u}{t} = \pderiv{u}{t} + \dvg{\vpoy}\]
+%
+%
+\section{Maxwell's stress tensor}
+%
+We start with the expression of the Lorentz force density and replace the charge
+and current densities with expressions resulting from Maxwell's equations.
+\[\vec{f} = \rho \vefi + \frac{\kappac}{\kappaf} \vec{j} \times \vbfi = \frac{\dvg{\vefi}}{\alphaG}\vefi + \frac{\kappac}{\kappaf} \of{\frac{\crl\vbfi}{\alphaA} \times \vbfi
+  - \frac{1}{\alphaA \gammaM} \pderiv{\vefi}{t} \times \vbfi}\]
+We can then replace the last term with its expression in terms of \(\vefi \times \vbfi\).
+\[\vec{f} = \frac{\dvg{\vefi}}{\alphaG}\vefi + \frac{\kappac}{\kappaf} \of{\frac{\crl\vbfi}{\alphaA} \times \vbfi
+  - \frac{1}{\alphaA \gammaM} \pderiv{}{t} \of{\vefi \times \vbfi} + \frac{1}{\alphaA\gammaM} \vefi \times \pderiv{\vbfi}{t}}\]
+Then we can use Faraday--Maxwell's equation to replace the derivative of \(\vbfi\).
+\[\vec{f} = \frac{\dvg{\vefi}}{\alphaG}\vefi + \frac{\kappac}{\kappaf} \of{\frac{\crl\vbfi}{\alphaA} \times \vbfi
+  - \frac{1}{\alphaA \gammaM} \pderiv{}{t} \of{\vefi \times \vbfi} - \frac{\gammaF}{\alphaA\gammaM} \vefi \times \of{\crl{\vefi}}}\]
+\[\vec{f} = \frac{\dvg{\vefi}}{\alphaG}\vefi + \frac{\kappac}{\kappaf} \of{- \frac{\vbfi \times \of{\crl{\vbfi}}}{\alphaA}
+  - \frac{1}{\gammaM} \pderiv{}{t} \of{\frac{\vefi \times \vbfi}{\alphaA}} - \frac{\kappaf}{\kappac} \frac{1}{\alphaG} \vefi \times \of{\crl{\vefi}}}\]
+\[\vec{f} + \frac{\kappac}{\gammaM \kappaf} \pderiv{}{t} \of{\frac{\vefi \times \vbfi}{\alphaA}} = \frac{\vefi \of{\dvg{\vefi}} - \vefi \times \of{\crl{\vefi}}}{\alphaG}
+  - \frac{\kappac}{\kappaf} \frac{\vbfi \times \of{\crl{\vbfi}}}{\alphaA}\]
+We notice that a term is missing to achieve symmetry, this term would contain the divergence
+of \(\vbfi\), which is zero, so it can be freely added to the expression.
+\[\vec{f} + \frac{1}{c^2} \pderiv{}{t} \of{\frac{\kappac}{\alphaA}\vefi \times \vbfi} = \frac{\vefi \of{\dvg{\vefi}} - \vefi \times \of{\crl{\vefi}}}{\alphaG}
+  + \frac{\kappac}{\kappaf} \frac{\vbfi \of{\dvg{\vbfi}} - \vbfi \times \of{\crl{\vbfi}}}{\alphaA}\]
+We recognise the Poynting vector and use \(\vec{a} \times \of{\crl{\vec{a}}} = \frac{1}{2} \grd{\of{\vec{a}\cdot\vec{a}}} - \of{\vec{a} \cdot \grd{}}\vec{a}\).
+\[\vec{f} + \frac{1}{c^2} \pderiv{\vpoy}{t} =
+  \frac{\vefi \of{\dvg{\vefi}} + \of{\vefi \cdot \grd{}} \vefi - \frac{1}{2} \grd{\of{\vefi\cdot\vefi}}}{\alphaG}
+  + \frac{\kappac}{\kappaf} \frac{\vbfi \of{\dvg{\vbfi}} + \of{\vbfi \cdot \grd{}} \vbfi - \frac{1}{2} \grd{\of{\vbfi\cdot\vbfi}}}{\alphaA}\]
+We use the identity \(\dvg{\of{\vec{a} \otimes \vec{a}}} = \vec{a} \of{\dvg{\vec{a}}} + \of{\vec{a} \cdot \grd{}}\vec{a}\).
+\[\vec{f} + \frac{1}{c^2} \pderiv{\vpoy}{t} =
+  \frac{\dvg{\of{\vefi\otimes\vefi}} - \frac{1}{2} \grd{\of{\vefi\cdot\vefi}}}{\alphaG}
+  + \frac{\kappac}{\kappaf} \frac{\dvg{\of{\vbfi\otimes\vbfi}} - \frac{1}{2} \grd{\of{\vbfi\cdot\vbfi}}}{\alphaA}\]
+By recalling that we can write the gradient of a scalar function as the divergence
+of the same function multiplied by the identity tensor \(\vec{1}\), we can write the right hand
+side of this expression as the divergence of a tensor called the \textbf{Maxwell stress tensor}.
+\[\vmxw = \of{\frac{\vefi\otimes\vefi}{\alphaG} + \frac{\kappac}{\kappaf} \frac{\vbfi\otimes\vbfi}{\alphaA}}
+  - \frac{\vec{1}}{2} \of{\frac{\vefi \cdot \vefi}{\alphaG} + \frac{\kappac}{\kappaf}\frac{\vbfi \cdot \vbfi}{\alphaA}}\]
+We obtain the following expression, which expresses conservation of momentum (recall
+that force is the time derivative of momentum).
+\[\vec{f} + \frac{1}{c^2} \pderiv{\vpoy}{t} = \dvg{\vmxw}\]
+Looking at the expression for \(\vmxw\), we notice that it can be written as a tensor
+minus half its trace. Moreover, the trace part is exactly the energy density for
+the electromagnetic field which we found in Poynting's theorem, for this reason
+we denote this tensor by \(\vec{u}\) and define it by including the \(\frac{1}{2}\)
+factor, so the trace is exactly the energy density.
+\[\vec{u} = \frac{1}{2} \of{\frac{\vefi\otimes\vefi}{\alphaG} + \frac{\kappac}{\kappaf} \frac{\vbfi\otimes\vbfi}{\alphaA}}
+\qquad \trace{\vec{u}} = u\]
+In terms of this new tensor, the Maxwell stress tensor can be written as follows,
+making it evident that its trace is, once again, the energy density.
+\[\vmxw = 2 \, \vec{u} - \of{\trace{\vec{u}}} \vec{1} \qquad \trace{\vmxw} = u\]
+%
+%
+\section{Potentials}
+From \(\mathrm{M}_\mathrm{II}\) we can say that the magnetic field is solenoidal,
+which means that it can be written as the curl of a \textbf{vector potential} \(\vafi\).
+\[\vbfi = \crl{\vafi}\]
+We substitute this expression for \(\vbfi\) into \(\mathrm{M}_\mathrm{III}\).
+\[\crl{\vefi} = - \frac{1}{\gammaF} \pderiv{}{t} \crl{\vafi} \qquad \crl{\of{\vefi + \frac{1}{\kappaf} \pderiv{\vafi}{t}}} = 0\]
+This shows that the combination of the electric field with the time derivative of
+the vector potential is irrotational, meaning that it admits a \textbf{scalar potential} \(\scp\).
+\[\vefi = - \grd{\scp} - \frac{1}{\kappaf} \pderiv{\vafi}{t}\]
+Notice how the fields depend only upon the derivatives of the potentials, due to
+this if we are given a pair of potentials \(\scp\) and \(\vafi\) we can define
+a new pair \(\scp'\) and \(\vafi'\) producing the same fields. The easiest example
+of this would be simply adding a constant to each potential, but the most general
+case involves adding a field \(\Lambda\of{\vec{r},t}\) as follows.
+\[\vafi'\of{\vec{r},t} = \vafi\of{\vec{r},t} + \grd\Lambda\of{\vec{r},t}
+\qquad \scp'\of{\vec{r},t} = \scp\of{\vec{r},t} + \frac{1}{\kappaf} \pderiv{\Lambda}{t}\]
+It is important to remark that the transformation must be performed on both fields
+at the same time. This phenomenon is known as \textbf{gauge invariance}.
+The ambiguity in the definition of the fields can be solved, or at least assuaged,
+by requiring an additional condition that the potentials must satisfy, this is
+called \textbf{gauge fixing}.\\[1em]
+The most used gauge choices in physics are the \textbf{Coulomb gauge}
+and the \textbf{Lorenz gauge}.
+\[\text{Coulomb:  } \dvg{\vafi} = 0 \qquad\qquad \text{Lorenz:  } \frac{\kappac}{c^2} \pderiv{\scp}{t} + \dvg{\vafi} = 0\]
+Substituting the fields expressed in terms of the potential into Maxwell's equations
+gives us equations for the potentials themselves, two of the equations, namely
+\(\mathrm{M}_\mathrm{II}\) and \(\mathrm{M}_\mathrm{III}\), are already satisfied by
+virtue of how we defined the potentials. We start by considering \(\mathrm{M}_\mathrm{I}\),
+from which we obtain the following expression.
+\[\dvg{\vefi} = \alphaG \, \rho \qquad - \lp \phi - \frac{1}{\kappaf} \pderiv{}{t} \dvg{\vafi} = \alphaG \, \rho\]
+We now consider \(\mathrm{M}_\mathrm{IV}\), which requires some further manipulation.
+\[\crl{\vbfi} = \alphaA \, \vec{j} + \frac{1}{\gammaM} \pderiv{\vefi}{t}
+\qquad \crl{\of{\crl{\vafi}}} = \alphaA \, \vec{j} - \frac{1}{\gammaM} \pderiv{}{t} \grd{\scp} - \frac{1}{\gammaM\kappaf} \pderiv[2]{\vafi}{t}\]
+We recall that \(\crl{\of{\crl{\vec{a}}}} = \grd{\of{\dvg{\vec{a}}}} - \lp{\vec{a}}\)
+and that \(\gammaM\kappaf = \gammaM\gammaF = c^2\).
+\[\grd{\of{\dvg{\vafi}}} - \lp{\vafi} = \alphaA \, \vec{j} - \frac{1}{\gammaM} \pderiv{}{t} \grd{\scp} - \frac{1}{c^2} \pderiv[2]{\vafi}{t}\]
+\[\frac{1}{c^2} \pderiv[2]{\vafi}{t} - \lp{\vafi} + \grd{\of{\dvg{\vafi} + \frac{\kappaf}{c^2} \pderiv{\scp}{t} }} = \alphaA \, \vec{j}\]
+We thus have a system of coupled differential equations, which is not trivial to
+solve. With the correct gauge choice, though, the equations become simpler. \(\mathrm{M}_\mathrm{I}\)
+seems to suggest the Coulomb gauge, producing Poisson's equation.
+\[\lp{\scp} = - \alphaG \, \rho\]
+In this gauge \(\mathrm{M}_\mathrm{IV}\) is not particularly simple. We obtain
+d'Alembert's equation with a source term depending on \(\scp\) (which, however,
+we can find indepedently of \(\vafi\) from the previous equation).
+\[\dal{\vafi} = \alphaA \, \vec{j} - \frac{\kappaf}{c^2} \pderiv{}{t} \grd{\scp}\]
+Things become a lot simpler in the static case, that is when the system is independent
+of time and therefore all time derivatives vanish. We obtain Poisson's equation.
+\[\lp{\vafi} = - \alphaA \, \vec{j}\]
+Using the Green function for the Laplacian operator we find the \textbf{static potentials}.
+\[
+  \scp\of{\vec{r}} = \frac{\alphaG}{4 \pi} \iiint_\Omega \frac{\rho\of{\vec{\xi}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
+  \qquad
+  \vafi\of{\vec{r}} = \frac{\alphaA}{4 \pi} \iiint_\Omega \frac{\vec{j}\of{\vec{\xi}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
+\]
+A different way to simplify \(\mathrm{M}_\mathrm{IV}\) is to use the Lorenz gauge,
+so that the whole term within the gradient vanishes. Doing so we obtain d'Alembert's equation.
+\[\dal{\vafi} = \alphaA \, \vec{j}\]
+In this gauge the two equations are fully decoupled, indeed we obtain d'Alembert's
+equation for the scalar potential as well.
+\[\dal{\scp} = \alphaG \, \rho\]
+Using the Green function method we find the \textbf{retarded potentials}.
+\[
+  \scp\of{\vec{r},t} = \frac{\alphaG}{4 \pi} \iiint_\Omega \frac{\rho\of{\vec{\xi},t_\mathrm{r}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
+  \qquad
+  \vafi\of{\vec{r},t} = \frac{\alphaA}{4 \pi} \iiint_\Omega \frac{\vec{j}\of{\vec{\xi},t_\mathrm{r}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
+\]
+The \textbf{retarded time} \(t_\mathrm{r}\) used in the expression accounts exactly for the
+time it takes for light to travel from the point \(\vec{r}\) to the point \(\vec{\xi}\)
+and is defined as follows.
+\[t_\mathrm{r} = t - \frac{c}{\nrm{\vec{r}-\vec{\xi}}}\]
+So the potentials in the Lorenz gauge properly satisfy causality.
+Another advantage of the Lorenz gauge is that it can be written in a manifestly
+covariant manner, making it very useful for relativistic purposes.
+%
+%
+\section{Maxwell's equations for macroscopic fields}
+Maxwell's equations depend upon all of the charges and currents present in a physical
+system; if we study the behaviour of the electric and magnetic field given by
+Maxwell's equation in some medium, we have contributions coming from the nuclei
+and electrons of each atom in the medium.
+We obtain two fields \(\vefi_\mathrm{loc}\) and \(\vbfi_\mathrm{loc}\) are called the
+\textbf{microscopic} or \textbf{local fields} because they explicitly depend upon
+these microscopic phenomena, which are generally not easy to treat.\\[1em]
+We can simplify the problem by averaging the local fields over a volume \(\Delta \Omega\),
+that must be chosen so that the average is statistically significant, but at the
+same time it must be small enough to still allow us to treat the system as
+a continuum. Doing so we obtain the \textbf{macroscopic fields} \(\vefi\) and \(\vbfi\).
+\[\vefi\of{\vec{r},t} = \frac{1}{\Delta \Omega} \iiint_{\Delta \Omega} \vefi_\mathrm{loc}\of{\vec{r}+\vec{\xi},t}\de^3\xi\]
+\[\vbfi\of{\vec{r},t} = \frac{1}{\Delta \Omega} \iiint_{\Delta \Omega} \vbfi_\mathrm{loc}\of{\vec{r}+\vec{\xi},t}\de^3\xi\]
+Despite this approximation, several contributions still find their way into the
+source terms in Maxwell's equations.
+The total charge and current densities can be split into a free and a bound term.
+\[\rho = \rho_\mathrm{f} + \rho_\mathrm{b} \qquad \vec{j} = \vec{j}_\mathrm{f} + \vec{j}_\mathrm{b}\]
+Bound charges or currents are phenomena that generally happen as a result of
+the interaction of a physical system with the electric and magnetic field, such
+as polarisation or magnetisation.
+The former produces both a charge and a current density, while the latter only
+produces a current density.
+\[\rho_\mathrm{b} = \rho_\mathrm{p} \qquad \vec{j}_\mathrm{b} = \vec{j}_\mathrm{p} + \vec{j}_\mathrm{m}\]
+The polarisation terms can be represented by a \textbf{polarisation field} \(\vpfi\).
+\[\rho_\mathrm{p} = - \dvg{\vpfi} \qquad \vec{j}_\mathrm{p} = \frac{1}{\kappac} \pderiv{\vpfi}{t}\]
+The magnetisation term can be represented by a \textbf{magnetisation field} \(\vmfi\).
+\[\vec{j}_\mathrm{m} = \frac{\kappaf}{\kappac} \crl{\vmfi}\]
+The polarisation and magnetisation fields are defined in such a way that the
+corresponding densities each respect a continuity equation.
+In the case of the magnetisation current, no charge density is necessary, since the
+divergence of a curl is zero.\\[1em]
+We rewrite Maxwell's equations, explicitly separating the free and bound terms.
+\begin{center}
+  \begin{tabular}{cccl}
+    \(\mathrm{M}_\mathrm{I}\) & \(\dvg{\vefi}\) & \(=\) & \(\alphaG \of{\rho_\mathrm{f} + \rho_\mathrm{p}}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vbfi}\) & \(=\) & \(\displaystyle \alphaA \of{\vec{j}_\mathrm{f} + \vec{j}_\mathrm{p} + \vec{j}_\mathrm{m}} + \frac{1}{\gammaM} \pderiv{\vefi}{t}\) \\
+  \end{tabular}
+\end{center}
+We focus on Gauss's law for electricity.
+\begin{gather*}
+  \dvg{\vefi} = \alphaG \of{\rho_\mathrm{f} + \rho_\mathrm{p}} \\
+  \dvg{\vefi} - \alphaG \, \rho_\mathrm{p} = \alphaG \, \rho_\mathrm{f} \\
+  \dvg{\vefi} + \alphaG \, \dvg{\vpfi} = \alphaG \, \rho_\mathrm{f} \\
+  \dvg{\of{\vefi + \alphaG \, \vpfi}} = \alphaG \, \rho_\mathrm{f}
+\end{gather*}
+We have two choices on how to define the \textbf{electric displacement field} \(\vdfi\).
+\begin{equation}
+  \vdfi_1 = \vefi + \alphaG \, \vpfi \qquad \vdfi_2 = \frac{\vefi}{\alphaG} + \vpfi
+\end{equation}
+They produce, respectively, the following equations.
+\begin{equation}
+  \dvg{\vdfi_1} = \alphaG \, \rho_\mathrm{f} \qquad \dvg{\vdfi_2} = \rho_\mathrm{f}
+\end{equation}
+We now take Ampère--Maxwell's law.
+\begin{gather*}
+  \crl{\vbfi} = \alphaA \of{\vec{j}_\mathrm{f} + \vec{j}_\mathrm{p} + \vec{j}_\mathrm{m}} + \frac{1}{\gammaM} \pderiv{\vefi}{t} \\
+  \crl{\vbfi} - \alphaA \vec{j}_\mathrm{m} = \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vefi}{t} + \alphaA \vec{j}_\mathrm{p} \\
+  \crl{\vbfi} - \frac{\kappaf}{\kappac} \alphaA \crl{\vmfi} = \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vefi}{t} + \frac{\alphaA}{\kappac} \pderiv{\vpfi}{t} \\
+  \crl{\of{\vbfi - \frac{\kappaf}{\kappac} \alphaA \vmfi}} = \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vefi}{t} + \frac{\alphaG}{\gammaM} \pderiv{\vpfi}{t} \\
+  \crl{\of{\vbfi - \frac{\kappaf}{\kappac} \alphaA \vmfi}} = \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{}{t} \of{\vefi + \alphaG \pderiv{\vpfi}{t}}
+\end{gather*}
+We have two choices on how to define the \textbf{magnetising field} \(\vhfi\).
+\begin{equation}
+  \vhfi_1 = \vbfi - \frac{\kappaf}{\kappac} \alphaA \vmfi \qquad \vhfi_2 = \frac{\kappac}{\kappaf} \frac{\vbfi}{\alphaA} - \vmfi
+\end{equation}
+They produce, respectively, the following equations.
+\begin{equation}
+  \crl{\vhfi_1} = \alphaA \, \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vdfi_1}{t} \qquad \crl{\vhfi_2} = \frac{\kappac}{\kappaf} \, \vec{j}_\mathrm{f} + \frac{1}{\kappaf} \pderiv{\vdfi_2}{t}
+\end{equation}
+%
+%
+\subsection{Auxiliary fields}
+We have defined two \textbf{auxiliary fields} to aid in our description of
+electromagnetic phenomena in matter, these are \(\vdfi\) and \(\vhfi\).
+We can take two different approaches in the way we define these fields, one is
+aimed at maintaining the appearance of Maxwell's equations substantially unchanged,
+while the other is aimed at getting rid of the coupling constants with the sources
+by including them in the definition of the auxiliary field.
+For the sake of brevity, we define the following constants.
+\[\lambda_\mathrm{e} = \alphaG \qquad \lambda_\mathrm{m} = \alphaA \frac{\kappaf}{\kappac}\]
+We call the fields in the first approach \textbf{non-rescaled auxiliary fields}
+because in a vacuum (absence of polarisation/magnetisation) we have \(\vdfi_1 = \vefi\)
+and \(\vhfi_1 = \vbfi\).
+\[\vdfi_1 = \vefi + \lambda_\mathrm{e} \, \vpfi \qquad \vhfi_1 = \vbfi - \lambda_\mathrm{m} \, \vmfi\]
+In contrast to this, we call the fields in the first approach \textbf{rescaled auxiliary fields}
+because in a vacuum we have \(\vdfi_2 = \frac{1}{\lambda_\mathrm{e}} \vefi\)
+and \(\vhfi_2 = \frac{1}{\lambda_\mathrm{m}} \vbfi\).
+\[\vdfi_2 = \frac{1}{\lambda_\mathrm{e}} \vefi + \vpfi \qquad \vhfi_2 = \frac{1}{\lambda_\mathrm{m}} \vbfi - \vmfi\]
+Both approaches are equally legitimate, and each provides a set of Maxwell's
+equations in which only the free charges and currents appear.
+\begin{center}
+  \begin{tabular}{c|ccl|ccl}
+    \toprule
+    & \multicolumn{3}{c|}{\textbf{Non-rescaled}} & \multicolumn{3}{c}{\textbf{Rescaled}} \\
+    \midrule
+    \(\mathrm{M}_\mathrm{I}\) & \(\dvg{\vdfi_1}\) & \(=\) & \(\alphaG \rho_\mathrm{f}\) & \(\dvg{\vdfi_2}\) & \(=\) & \(\rho_\mathrm{f}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\kappaf} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vhfi_1}\) & \(=\) & \(\displaystyle \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vdfi_1}{t}\) & \(\crl{\vhfi_2}\) & \(=\) & \(\displaystyle \frac{\kappac}{\kappaf} \, \vec{j}_\mathrm{f} + \frac{1}{\kappaf} \pderiv{\vdfi_2}{t}\) \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+Equations \(\mathrm{M}_\mathrm{II}\) and \(\mathrm{M}_\mathrm{III}\) do not change,
+however in the rescaling approach we have written \(\kappaf\) instead
+of \(\gammaF\) to make it apparent that the equations do not depend upon
+physical coupling constants, but only upon the constants used in the definition of the
+magnetic field and of current (\(\kappac\) and \(\kappaf\)).\\[1em]
+It can be convenient to summarise the two approaches into a single expression
+involving constants \(\kappa_\mathrm{e}\) and \(\kappa_\mathrm{m}\) as follows.
+\[\vdfi = \frac{1}{\kappa_\mathrm{e}} \of{\vefi + \lambda_\mathrm{e} \vpfi} \qquad \vhfi = \frac{1}{\kappa_\mathrm{m}} \of{\vbfi - \lambda_\mathrm{m} \vmfi}\]
+Choosing \(\kappa_\mathrm{e} = \kappa_\mathrm{m} = 1\) gives us the non-rescaled
+fields, while we get the rescaled fields with \(\kappa_\mathrm{e} = \lambda_\mathrm{e}\)
+and \(\kappa_\mathrm{m} = \lambda_\mathrm{m}\).
+We once again remark that, while the definition of \(\lambda_\mathrm{e}\) and
+\(\lambda_\mathrm{m}\) is simply a matter of convenience, and they depend solely
+upon previously defined constants, the choice of \(\kappa_\mathrm{e}\) and \(\kappa_\mathrm{m}\)
+is entirely independent of our previous conventions.\\[1em]
+With this new convention Maxwell's equations take the following form.
+\begin{center}
+  \begin{tabular}{cccl}
+    \(\mathrm{M}_\mathrm{I}\) & \(\dvg{\vdfi}\) & \(=\) & \(\dfrac{\alphaG}{\kappa_\mathrm{e}} \rho_\mathrm{f}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vhfi}\) & \(=\) & \(\displaystyle \frac{\alphaA}{\kappa_\mathrm{m}} \vec{j}_\mathrm{f} + \frac{\kappa_\mathrm{e}}{\kappa_\mathrm{m}} \frac{1}{\gammaM} \pderiv{\vdfi}{t}\) \\
+  \end{tabular}
+\end{center}
+%
+%
+\section{Impedance of free space}
+We have already shown that the solution to Maxwell's equations in the absence of
+charges and currents gives us d'Alembert's equation.
+\[\frac{1}{c^2} \pderiv[2]{\vefi}{t} - \lp{\vefi} = 0 \qquad \frac{1}{c^2} \pderiv[2]{\vbfi}{t} - \lp{\vbfi} = 0\]
+We know that the solutions to d'Alembert's equation are complex exponentials, we
+take \(\omega\) to be the pulsatance and \(\vec{k}\) to be the wave vector of the solution.
+\[\vefi\of{\vec{r},t} = \vefi_0 \, \exp^{\iun \vec{k} \cdot \vec{r}} \exp^{-\iun \omega t} \qquad \vbfi\of{\vec{r},t} = \vbfi_0 \, \exp^{\iun \vec{k} \cdot \vec{r}} \exp^{-\iun \omega t}\]
+We compute the Laplacian and the second derivative of the electric field.
+\[\lp{\vefi} = - k^2 \vefi \qquad \pderiv[2]{\vefi}{t} = - \omega^2 \vefi\]
+Substituting these results into d'Alembert's equation gives us the \emph{dispersion relation}.
+\[\frac{\omega^2}{c^2} \vefi - k^2 \vefi = 0 \qquad \omega = c \, k\]
+On the other hand, substituting the solution into Maxwell's equations (with no charges
+and currents) gives us the following conditions, showing that electromagnetic
+waves in free space are transverse (the fields are orthogonal to the wave vector).
+\[\vec{k} \cdot \vefi = 0 \qquad \vec{k} \times \vefi = - \frac{\omega}{\kappaf} \vbfi\]
+Taking the norm of the second equation, recalling the identity for the norm of
+a cross product and using the dispersion relation, we find the ratio of the magnitude
+of the electric and magnetic fields in free space.
+\[\nrm{\vec{k} \times \vefi} = \sqrt{k^2 \efi^2 - \of{\vec{k}\cdot\vefi}^2} = k \efi\]
+\[k \efi = \frac{\omega}{\kappaf} \bfi \qquad \efi = \frac{c}{\kappaf} \bfi\]
+The \textbf{impedance of free space} \(Z_0\) is not defined as this ratio, but rather
+as the ratio of the magnitude of the electric field to that of the auxiliary magnetic field \(\vhfi\)
+making it dependent on our choice of \(\kappa_\mathrm{m}\).
+\[Z_0 = \frac{\efi}{\hfi} = \frac{\kappa_\mathrm{m} \efi}{\bfi} = \frac{\kappa_\mathrm{m}}{\kappaf} c\]
+Specifying the result to the case of the non-rescaled and rescaled fields, as defined
+previously, we find the following results.
+\[Z_0^{(1)} = \frac{c}{\kappaf} \qquad Z_0^{(2)} = \frac{c}{\kappac} \, \alphaA\]
+Finally, another convetion is sometimes in use, where one naïvely extends the
+impedance of free space found in the SI to another unit system. This does not, in
+general, provide the correct magnitude ratio for any pair of fields. We shall denote
+this by \(\widetilde{Z}_0\).
+\[\widetilde{Z}_0 = \sqrt{\alphaG \, \alphaA} = \frac{c}{\sqrt{\kappac \kappaf}} \, \alphaA\]
+We see that this definition is identical to \(Z_0^{(2)}\) only when \(\kappac = \kappaf\).
+%
+%
+\section{Response functions}
+We have mentioned that the polarisation and magnetisation vectors are induced by
+the presence of, respectively, an electric or magnetic field.
+We consider, in more general terms, how to write an induced response \(\mathcal{Y}\of{\vec{r},t}\)
+in terms of a stimulus \(\mathcal{X}\of{\vec{r},t}\); both fields can be either scalar,
+vectors or tensors of higher orders.
+The most general case is given by the \textbf{Volterra series}, giving a nonlinear
+response that depends upon the value of the stimulus at all points in space and
+at all instants in time.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\vec{r},\brof{\vec{\xi}_m},t,\brof{\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
+The functions \(\varrho_n\) are the \textbf{Volterra kernels}.
+In this formula and the following, we shall use the convention that the index \(m\)
+varies between \(1\) and \(n\).
+To clarify what this means we write the arguments of the first three kernels explicitly.
+\begin{align*}
+  \varrho_0 &= \varrho_0\of{\vec{r},t} \\
+  \varrho_1 &= \varrho_1\of{\vec{r},\vec{\xi}_1,t,\tau_1} \\
+  \varrho_2 &= \varrho_2\of{\vec{r},\vec{\xi}_1,\vec{\xi}_2,t,\tau_1,\tau_2}
+\end{align*}
+An important assumption in physics is that physical laws must be time-invariant,
+i.e. there is no such thing as \emph{absolute time}.
+Therefore, the kernels can only depend on differences between their
+temporal arguments, and not just the argument itself.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\vec{r},\brof{\vec{\xi}_m},\brof{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
+In addition, physical systems must obey causality; this further restricts the
+choice of kernels to functions that vanish if, for any of their arguments, \(\tau_m > t\)
+so that future values of the stimulus cannot influence the response.
+This can be enforced through the use of the Heaviside step function \(\Theta\).
+\[\varrho_n\of{\vec{r},\brof{\vec{\xi}_m},\brof{t-\tau_m}} = \varrho_n\of{\vec{r},\brof{\vec{\xi}_m},\brof{t-\tau_m}} \prod_{j=1}^n \Theta\of{t-\tau_j}\]
+The spatial part of the function cannot in general be simplified.
+Some physical systems, for example crystalline materials, are only invariant
+under finite translations.
+While these symmetries do influence the functional form of the kernel,
+they don't do so in a general enough manner to be treated here, but they do prevent
+us from having a function that only depends on distances, rather than absolute positions.\\[1em]
+In systems that are symmetric under infinitesimal translations, such as fluids
+or amorphous materials, we can write the Volterra series in the \textbf{semilocal approximation}.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\brof{\vec{r}-\vec{\xi}_m},\brof{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
+An even stronger approximation is the \textbf{local approximation}, where the
+response is assumed to only be due to the value of the stimulus at the same
+point in space.
+That is to say, the spatial part of the kernel is a Dirac delta.
+\[\varrho_n\of{\brof{\vec{r}-\vec{\xi}_m},\brof{t-\tau_m}} = \varrho_n\of{\brof{t-\tau_m}} \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\]
+In terms of the Volterra series, this gives us the following expression.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\brof{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{r},\tau_j} \de\tau_j\]
+Finally, we have the case of a \textbf{non-dispersive medium}, where both the
+spatial and temporal part of the kernel are Dirac deltas.
+\[\varrho_n\of{\brof{\vec{r}-\vec{\xi}_m},\brof{t-\tau_m}} = \varrho_n \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\delta\of{t-\tau_j}\]
+In this last case, the Volterra series simply becomes a Taylor series.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \varrho_n \, \mathcal{X}^n\of{\vec{r},t}\]
+%
+%
+\subsection{Response functions for electromagnetic fields}
+This allows us to define the \textbf{susceptibility} \(\chi\) of the material.
+Depending on which field we choose to work with, we obtain two different definitions
+of susceptibility, we denote the susceptibility to the physical field as \(\chi'\) and
+the susceptibility to the auxiliary field as \(\chi''\).
+\begin{equation}
+  \vpfi = \frac{\chi_\mathrm{e}'}{\kappa_\mathrm{e}} \vefi = \chi_\mathrm{e}'' \vdfi
+  \qquad
+  \vmfi = \frac{\chi_\mathrm{m}'}{\kappa_\mathrm{m}} \vbfi = \chi_\mathrm{m}'' \vhfi
+\end{equation}
+While it might be tempting to say that the two definitions provide the same value,
+since in a vacuum we have that \(\vefi = \kappa_\mathrm{e} \, \vdfi\) and
+\(\vbfi = \kappa_\mathrm{m} \, \vhfi\), that is only true in a vacuum where, in
+any case, the susceptibilities vanish.\\[1em]
+We now substitute these relations into the definitions of the auxiliary fields in
+order to find a response function binding the physical to the auxiliary field.
+We start by using the susceptibility to the physical fields.
+\[\vdfi = \frac{1}{\kappa_\mathrm{e}} \of{\vefi + \lambda_\mathrm{e} \vpfi}
+  = \frac{1}{\kappa_\mathrm{e}} \of{\vefi + \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}' \vefi}
+  = \frac{1}{\kappa_\mathrm{e}} \of{1 + \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}'} \vefi
+  = \frac{\epsilon_\mathrm{r}}{\kappa_\mathrm{e}} \, \vefi = \epsilon \, \vefi
+\]
+\[\vhfi = \frac{1}{\kappa_\mathrm{m}} \of{\vbfi + \lambda_\mathrm{m} \vmfi}
+  = \frac{1}{\kappa_\mathrm{m}} \of{\vbfi + \frac{\lambda_\mathrm{m}}{\kappa_\mathrm{m}} \chi_\mathrm{m}' \vbfi}
+  = \frac{1}{\kappa_\mathrm{m}} \of{1 + \frac{\lambda_\mathrm{m}}{\kappa_\mathrm{m}} \chi_\mathrm{m}'} \vbfi
+  = \frac{\nu_\mathrm{r}}{\kappa_\mathrm{m}} \, \vbfi = \nu \, \vbfi
+\]
+Unfortunately \(\epsilon\) usually named \textbf{permittivity} despite being
+a measure of how strongly the material is able to resist the electric field by
+polarizing. In order to get around this contradiction, we shall be naming this
+quantity \textbf{austerity}. On the other hand \(\nu\) is more aptly named \textbf{reluctivity}.\\[1em]
+We now switch to using the susceptibility to the auxiliary fields.
+\[\vefi = \kappa_\mathrm{e} \vdfi - \lambda_\mathrm{e} \vpfi
+  = \kappa_\mathrm{e} \vdfi - \lambda_\mathrm{e} \chi_\mathrm{e}'' \vdfi
+  = \kappa_\mathrm{e} \of{1 - \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}''} \vdfi
+  = \kappa_\mathrm{e} \, \eta_\mathrm{r} \vdfi = \eta \, \vdfi
+\]
+\[\vbfi = \kappa_\mathrm{m} \vhfi - \lambda_\mathrm{m} \vmfi
+  = \kappa_\mathrm{m} \vhfi - \lambda_\mathrm{m} \chi_\mathrm{m}'' \vhfi
+  = \kappa_\mathrm{m} \of{1 - \frac{\lambda_\mathrm{m}}{\kappa_\mathrm{m}} \chi_\mathrm{m}''} \vhfi
+  = \kappa_\mathrm{m} \, \mu_\mathrm{r} \vhfi = \mu \, \vhfi
+\]
+The quantity \(\eta\) is rarely used and does not have a name, we shall refer to
+it as \textbf{leniency}. The much more commonly used \(\mu\) is named \textbf{permeability}.\\[1em]
+All of the quantities we have defined have both an \textbf{absolute} value (\(\epsilon\), \(\nu\),
+\(\eta\), \(\mu\)) and a \textbf{relative} (\(\epsilon_\mathrm{r}\), \(\nu_\mathrm{r}\), \(\eta_\mathrm{r}\), \(\mu_\mathrm{r}\))
+value, although if we are working with the non-rescaled fields the two values are the same
+since \(\kappa_\mathrm{e} = \kappa_\mathrm{m} = 1\).\\[1em]
+We can prove that \(\epsilon\) and \(\eta\) are mutually inverse and the same is
+true for \(\nu\) and \(\mu\).
+\[\vefi = \eta \, \vdfi = \eta \epsilon \, \vefi \qquad \eta \epsilon = 1\]
+\[\vbfi = \mu \, \vhfi = \mu \nu \, \vbfi \qquad \mu \nu = 1\]
+The same is true for the relative values. By writing this explicitly, for example
+in the case of \(\epsilon\) and \(\eta\) we can gain further insight in the matter.
+\[\eta = \frac{1}{\epsilon} \qquad\Rightarrow\qquad 1 - \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}'' = \frac{1}{1 + \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}'}
+  = 1 - \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}' + \omicron\of{\chi_\mathrm{e}'}\]
+This shows that, for small susceptibilities, \(\chi_\mathrm{e}' \approx \chi_\mathrm{e}''\).\\[1em]
+All the previous considerations can be generalised to dispersive media if they are
+written in terms of Fourier components, rather than treating them as constants (at
+least up to the semi-local approximation). In the case of anisotropic media the
+response functions become tensors.\\[1em]
+Due to a long-standing debate on whether the \(\bfi\)-field or the \(\hfi\)-field
+is the most fundamental, possibly spurred by the fact that magnetic phenomena are often
+weak in matter, there is an unfortunate difference in which quantity is most commonly
+used as a response function. While for the electric field the choice falls on
+\(\epsilon\) (for some reason there has never been any doubt that \(\vefi\) is the
+most fundamental), called the \textbf{dielectric constant}, for the magnetic field
+it is customary to use \(\mu\), called the \textbf{diamagnetic constant}.
+The reason for this is that it is much easier to measure the \(\hfi\)-field, leading
+to a preference for this field in the engineering community.
+In physical terms, however, the \(\bfi\)-field is clearly the most fundamental
+for several reasons, including the fact that it appears in the Lorentz force and
+that its source term is the total current, rather than just the free current.
+%
+%
+\section{Systems}
+%
+A system of units is said to be \textbf{rationalised} when no factors of \(4 \pi\)
+appear in Maxwell's equations.
+This is useful because the absence of such factors implies that equations relating
+to specific charge distributions will end up having factors related to the symmetry
+of the system, such as \(4 \pi\) for spherical symmetry or \(2 \pi\) for cylindrical
+symmetry.
+\subsection{The International System -- SI}
+The International System of units makes the following choice for the couplings.
+\[\alphaG = \frac{1}{\epsilon_0} \qquad \alphaA = \mu_0 \qquad \kappac = 1 \qquad \kappaf = 1 \qquad \gammaM = c^2 \qquad \gammaF = 1\]
+Here \(\epsilon_0\) and \(\mu_0\) are constants determined by experiment; the current (2020) CODATA recommended values are
+\[\epsilon_0 = \SI{8.8541878128(13)e-12}{\farad\per\meter} \qquad \mu_0 = \SI{1.25663706212(19)e-6}{\henry\per\meter}\]
+The SI is now a truly rationalised system. Before its redefinition in 2019 it used to
+be an unrationalised system in disguise, because \(\mu_0\) was defined as
+exactly \(4\pi \cdot \SI{e-7}{\newton\per\ampere\squared}\).
+We can make this explicit by defining a scaling constant
+\(a = \SI{e7}{\ampere\squared\per\newton}\).
+\[\alphaG = \frac{4 \pi c^2}{a} \qquad \alphaA = \frac{4 \pi}{a} \qquad \kappac = 1 \qquad \kappaf = 1 \qquad \gammaM = c^2 \qquad \gammaF = 1\]
+%
+\subsection{Electrostatic units -- ESU}
+Electrostatic units are defined by taking Coulomb's constant to be unity.
+\[\alphaG = 4 \pi \qquad \alphaA = \frac{4\pi}{c^2} \qquad \kappac = 1 \qquad \kappaf = 1 \qquad \gammaM = c^2 \qquad \gammaF = 1\]
+This system is explicitly unrationalised.
+%
+\subsection{Electromagnetic units -- EMU}
+Electromagnetic units are defined in order to make Ampere's force constant unity.
+The name electromagnetic is not very apt, since Ampere's force law is only valid
+in the magnetostatic limit.
+\[\alphaG = 4 \pi c^2 \qquad \alphaA = 4\pi \qquad \kappac = 1 \qquad \kappaf = 1 \qquad \gammaM = c^2 \qquad \gammaF = 1\]
+This system is explicitly unrationalised, but notice how it is the same as the old SI
+units, except for the lack of the scaling factor \(a\).
+The reason for this is that the SI adopted a rescaled version of EMU that were in
+practical use among engineers.
+%
+\subsection{Gaussian units -- GU}
+Gaussian units are defined as follows.
+\[\alphaG = 4 \pi \qquad \alphaA = \frac{4\pi}{c} \qquad \kappac = 1 \qquad \kappaf = c \qquad \gammaM = c \qquad \gammaF = c\]
+This system is explicitly unrationalised.
+%
+\subsection{Lorentz-Heaviside units -- LHU}
+Lorentz-Heaviside units are obtained by rationalising Gaussian units.
+\[\alphaG = 1 \qquad \alphaA = \frac{1}{c} \qquad \kappac = 1 \qquad \kappaf = c \qquad \gammaM = c \qquad \gammaF = c\]
+Obviously, this system is rationalised.
+%
+\subsection{Symetrised Gaussian units -- SGU}
+Gaussian units can be made fully symmetrical, with \(\alphaG = \alphaA = 4 \pi\),
+by taking \(\kappac = c\). This also has the advantage of making current
+density and charge density have the same units, like the electric and magnetic
+field in the standard Gaussian system.
+\[\alphaG = 4 \pi \qquad \alphaA = 4\pi \qquad \kappac = c \qquad \kappaf = c \qquad \gammaM = c \qquad \gammaF = c\]
+This system is explicitly unrationalised.
+%
+\subsection{Symmetrised Lorentz-Heaviside units -- SLHU}
+Lorentz-Heaviside units can also be made fully symmetrical, with \(\alphaG = \alphaA = 1\).
+\[\alphaG = 1 \qquad \alphaA = 1 \qquad \kappac = c \qquad \kappaf = c \qquad \gammaM = c \qquad \gammaF = c\]
+This system is rationalised.
+%
+%
+\section{Magnetic monopoles}
+Looking at Maxwell's equations, there appears to be a fundamental lack of symmetry
+between the electric and magnetic fields.
+This lack of symmetry is due to the fact that, as of now, no experiment has ever
+observed particles which carry such a thing as \textbf{magnetic charge}, that is
+to say some particle which is capable of generating a magnetic field while standing still.
+All magnetic phenomena are related to the motion of \emph{electric} charges, whether
+this motion is macroscopic (as is the case with current-carrying wires) or microscopic
+(as is the case with bar magnets).\\[1em]
+Despite the absence of evidence, there have been theoretical arguments for the existence of such particles,
+and a correction to Maxwell's equations is in order to account for their presence.
+From here on we denote electric charges and currents  with the subscript \(\mathrm{e}\)
+and magnetic charges and currents with the subscript \(\mathrm{m}\).\\[1em]
+After introducing the concept of magnetic charge \(Q_\mathrm{m}\), the concept of
+magnetic current quickly follows. While we could, in principle, take a different
+proportionality constant between the current and the time derivative of charge,
+this would not be particularly useful, we thus use \(\kappac\) as we
+did for electric charge.
+\[I_\mathrm{m} = - \frac{1}{\kappac} \pderiv{Q_\mathrm{m}}{t}\]
+Naturally, we can define the corresponding densities.
+\[Q_\mathrm{m} = \iiint_\Omega \rho_\mathrm{m}\of{\vec{\xi},t} \de^3\xi
+\qquad I_\mathrm{m} = \iint_\Sigma \vec{j}_\mathrm{m}\of{\vec{\xi},t} \cdot \vec{n} \de^2\xi\]
+The densities must satisfy a continuity equation, the proof of which is identical
+to the one given for the electric case, and shall not be repeated.
+\[\frac{1}{\kappac} \pderiv{\rho_\mathrm{m}}{t} + \dvg{\vec{j}_\mathrm{m}} = 0\]
+Due to the existence of a continuity equation, we also have the following relation
+with the velocity field, once again the proof is identical to the previous.
+\[\vec{j}_\mathrm{m}\of{\vec{r},t} = \frac{\vec{v}\of{\vec{r},t} \, \rho_\mathrm{m}\of{\vec{r},t}}{\kappac}\]
+To correct Maxwell's equations we introduce two new coupling constants \(\beta_\mathrm{G}\)
+and \(\beta_\mathrm{A}\) for Gauss's law and Ampère--Maxwell's law, respectively.
+\begin{center}
+  \begin{tabular}{ccccl}
+    \(\mathrm{M}_\mathrm{I}\) & \textbf{Gauss's law (for \(\vefi\))} & \(\dvg{\vefi}\) & \(=\) & \(\alphaG \, \rho_\mathrm{e}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \textbf{Gauss's law (for \(\vbfi\))} & \(\dvg{\vbfi}\) & \(=\) & \(\beta_\mathrm{G} \, \rho_\mathrm{m}\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \textbf{Faraday--Maxwell's law} & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \beta_\mathrm{A} \, \vec{j}_\mathrm{m} - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \textbf{Ampère--Maxwell's law} & \(\crl{\vbfi}\) & \(=\) & \(\displaystyle \alphaA \, \vec{j}_\mathrm{e} + \frac{1}{\gammaM} \pderiv{\vefi}{t}\) \\
+  \end{tabular}
+\end{center}
+We must now find the correct expression for the Lorentz force of a magnetically
+charged particle. To do so we attempt to find an analogue of the Faraday--Neumann--Lenz
+law that relates the flux of the electric field to the work done per unit charge.
+As before, we consider a closed loop delimiting a surface \(\Sigma\) and we take
+the time derivative of the flux of the electric field through this surface.
+\[\D{\Phi_\vefi}{t} = \D{}{t} \iint_{\Sigma\of{t}} \vefi\of{\vec{\xi},t} \cdot \vec{n}\of{\vec{\xi},t} \de^2\xi\]
+We apply the Reynolds transport theorem in order to compute this derivative.
+\[\D{\Phi_\vefi}{t} = \iint_{\Sigma\of{t}} \of{\pderiv{\vefi}{t} + \of{\dvg{\vefi}} \vec{v}} \cdot \vec{n} \, \de^2\xi
+- \oint_{\partial\Sigma(t)} \of{\vec{v} \times \vefi} \cdot \vec{t}\,  \de\xi\]
+This time the field is not solenoidal, using Gauss's law for the electric field and the Ampère--Maxwell law, we get the
+following expression.
+\[\D{\Phi_\vefi}{t} = \iint_{\Sigma\of{t}} \of{\gammaM \crl{\vbfi} - \alphaA \gammaM \vec{j}_\mathrm{e} +
+\alphaG \, \rho_\mathrm{e} \, \vec{v}} \cdot \vec{n} \, \de^2\xi
+- \oint_{\partial\Sigma(t)} \of{\vec{v} \times \vefi} \cdot \vec{t}\,  \de\xi\]
+\[\D{\Phi_\vefi}{t} = \iint_{\Sigma\of{t}} \of{- \alphaA \gammaM \vec{j}_\mathrm{e} +
+\alphaG \, \rho_\mathrm{e} \, \vec{v}} \cdot \vec{n} \, \de^2\xi
++ \oint_{\partial\Sigma(t)} \of{\gammaM \, \vbfi - \vec{v} \times \vefi} \cdot \vec{t}\,  \de\xi\]
+We recall that \(\alphaA \gammaM = \alphaG \kappac\),
+giving us the following expression.
+\[\D{\Phi_\vefi}{t} = \alphaG \iint_{\Sigma\of{t}} \of{ \rho_\mathrm{e} \, \vec{v} - \kappac \, \vec{j}_\mathrm{e}} \cdot \vec{n} \, \de^2\xi + \gammaM \oint_{\partial\Sigma(t)} \of{ \vbfi - \frac{\vec{v} \times \vefi}{\gammaM}} \cdot \vec{t} \, \de\xi\]
+Then we notice that the first integral vanishes, because \(\rho_\mathrm{e} \, \vec{v} = \kappac \, \vec{j}_\mathrm{e}\).
+\[\D{\Phi_\vefi}{t} = \gammaM \oint_{\partial\Sigma(t)} \of{ \vbfi - \frac{\vec{v} \times \vefi}{\gammaM}} \cdot \vec{t} \, \de\xi\]
+We have managed to find an expression similar to the Faraday--Neumann--Lenz law,
+but some care must be taken in naming the right hand side of this equation. We shall
+call this \textbf{magnetomotive force} \(\emf_\mathrm{m}\), but we remark that this term is already
+in use for a distinct concept in magnetic circuits.
+\begin{equation}
+  \D{\Phi_\vefi}{t} = \gammaM \, \emf_\mathrm{m}
+\end{equation}
+We notice there is a difference in sign with the Faraday--Neumann--Lenz law
+for the electromotive force, this is in line with the difference in sign between the
+Faraday--Maxwell and the Ampère--Maxwell laws. By analogy with the electromotive force,
+we can reasonably expect the Lorentz force for a moving magnetically charge particle to have the following expression.
+\begin{equation}
+  \vec{F}\of{\vec{r},t} = q_\mathrm{m} \of{\vbfi\of{\vec{r},t} - \frac{\vec{v} \times \vefi\of{\vec{r},t}}{\gammaM}}
+\end{equation}
+If a particle has both an electric and magnetic charge, then the Lorentz force must
+include both contributions.
+\begin{equation}
+  \vec{F} = q_\mathrm{e} \of{\vefi + \frac{\vec{v} \times \vbfi}{\gammaF}} + q_\mathrm{m} \of{\vbfi - \frac{\vec{v} \times \vefi}{\gammaM}}
+\end{equation}
+
+\newpage
+\section{Other laws}
+\textbf{Coulomb's law}
+\[\vec{F}_{12} = k_\mathrm{C} \iiint_{\Omega_1} \iiint_{\Omega_2} \frac{\rho_1\!\!\of{\vec{\xi_1}} \rho_2\!\!\of{\vec{\xi_2}}}{\nrm{\vec{r}_1 - \vec{r}_2}^3} \of{\vec{r}_1 - \vec{r}_2} \de^3\xi_1 \de^3\xi_2\]
+\[\vefi(\vec{r}) = k_\mathrm{C} \iiint_\Omega \frac{\rho\!\of{\vec{\xi}}}{\nrm{\vec{r} - \vec{\xi}}^3} \of{\vec{r} - \vec{\xi}} \de^3\xi\]
+\textbf{Ampère's law}
+\[\vec{F}_{12} = k_\mathrm{A} \iiint_{\Omega_1} \iiint_{\Omega_2} \frac{\vec{j}_1\!\!\of{\vec{\xi_1}} \times \of{\vec{j}_2\!\!\of{\vec{\xi_2}} \times \of{\vec{\xi}_1 - \vec{\xi}_2}}}{\nrm{\vec{\xi}_1 - \vec{\xi}_2}^3} \de^3\xi_1 \de^3\xi_2\]
+\textbf{Biot-Savart's law}
+\[\vbfi(\vec{r}) = k_\mathrm{S} \iiint_\Omega \frac{\vec{j}\!\of{\vec{\xi}} \times \of{\vec{r} - \vec{\xi}}}{\nrm{\vec{r} - \vec{\xi}}^3} \de^3\xi\]
+
+\newpage
+\section{Continuum mechanics}
+Consider a body undergoing deformation, a reference configuration in which the
+coordinates of the points are given by \(\vec{X}\) (Lagrangian or material picture) and the
+current configuration in which they are given by \(\vec{x}\) (Eulerian or spatial picture).\\[1em]
+A \textbf{motion} in the body is given by a function \(\vec{\chi}\) mapping the coordinates
+in the reference configuration to those in the current configuration.
+\[\vec{x} = \vec{\chi}\of{\vec{X},t}\]
+We take this function to be invertible; we denote its inverse by \(\vec{\xi}\).
+\[\vec{X} = \vec{\xi}\of{\vec{x},t}\]
+We moreover take \(\vec{\chi}\) to be continuously differentiable and name its
+gradient (a rank 2 tensor) the \textbf{material deformation gradient} \(\vec{F}\).
+\[\vec{F} = \pderiv{\vec{x}}{\vec{X}} = \Grd{\vec{x}}\]
+In the same way, we name the gradient of \(\vec{\xi}\) the \textbf{spatial
+deformation gradient} \(\vec{H}\).
+\[\vec{H} = \pderiv{\vec{X}}{\vec{x}} = \grd{\vec{X}}\]
+These two tensors are such that the following relations on the differentials are true.
+\[\de\vec{x} = \vec{F} \cdot \de\vec{X} \qquad \de\vec{X} = \vec{H} \cdot \de\vec{x}\]
+The spatial deformation gradient is the inverse of the material deformation gradient,
+depending on the order in which they are contracted, we obtain either the Lagrangian
+or Eulerian identity tensor.
+\[\vec{F} \cdot \vec{H} = \vec{I}_\mathrm{E} \qquad \vec{H} \cdot \vec{F} = \vec{I}_\mathrm{L}\]
+Another useful property of the material deformation gradient is that its determinant,
+usually denoted by \(\mathcal{J}\) is a measure of the change of a volume element
+(trivial, since \(\vec{F}\) is the Jacobian of the coordinate change).
+\[\mathcal{J} = \det \vec{F} \qquad \de^3x = \mathcal{J} \de^3X\]
+A useful relation to know is the derivative of \(\mathcal{J}\) with regards to \(\vec{F}\),
+which is just a restatement of the formula for the derivative of a determinant.
+\[\pderiv{\mathcal{J}}{\vec{F}} = \mathcal{J} \, \tr{\vec{H}}\]
+Less trivial is \textbf{Nanson's formula}, used to change the oriented area elements,
+here \(\vec{n}\) is the normal vector in the current configuration and \(\vec{N}\)
+is the normal vector in the reference configuration.
+\[\vec{n} \, \de^2x = \mathcal{J} \tr{\vec{H}} \cdot \vec{N} \, \de^2X\]
+We now take the time derivative of the material deformation gradient.
+\[\dot{\vec{F}} = \D{}{t} \pderiv{\vec{x}}{\vec{X}} = \pderiv{}{\vec{X}} \D{\vec{x}}{t} = \pderiv{\vec{V}}{\vec{X}} = \Grd{\vec{V}}\]
+We have introduced the \textbf{velocity} \(\vec{V}\of{\vec{X},t}\) as the time derivative of the
+position in the current configuration.
+The time derivative of the material deformation gradient is thus the material velocity gradient.
+It is often more useful to express things in terms of a spatial gradient,
+in which case we denote the velocity by \(\vec{v}\of{\vec{x},t}\) because we consider it in
+the Eulerian picture, rather than in the Lagrangian.
+\[\dot{\vec{F}} = \pderiv{\vec{v}}{\vec{x}} \cdot \pderiv{\vec{x}}{\vec{X}} = \vec{L} \cdot \vec{F}\]
+This led us to defining the \textbf{spatial velocity gradient} \(\vec{L}\).
+\[\vec{L} = \pderiv{\vec{v}}{\vec{x}} = \grd{\vec{v}}\]
+We can use this result to compute the time derivative of the spatial deformation gradient, we
+do this by invoking the formula for the derivative of matrix inverse.
+\[\dot{\vec{H}} = - \vec{H} \cdot \dot{\vec{F}} \cdot \vec{H} = - \vec{H} \cdot \vec{L} \cdot \vec{F} \cdot \vec{H} = - \vec{H} \cdot \vec{L}\]
+And we can compute the time derivative of the determinant \(\mathcal{J}\) as well.
+\[\dot{\mathcal{J}} = \pderiv{\mathcal{J}}{\vec{F}} : \dot{\vec{F}} = \mathcal{J} \tr{\vec{H}} : \vec{L} \cdot \vec{F} = \mathcal{J} \trace{\vec{L}} = \mathcal{J} \, \dvg{\vec{v}}\]
+Where we have used the property that \(\vec{A}:\vec{B} = \trace\of{\tr{\vec{A}}\cdot\vec{B}}\)
+and the fact that the trace is conserved under transformations, so \(\trace\of{\vec{H}\cdot\vec{L}\cdot{\vec{F}}} = \trace{\vec{L}}\).
+%
+%
+\section{Proof of the Reynolds Transport Theorem}
+%
+Consider the flux of some vector field \(\vec{a}\of{\vec{x},t}\) through a surface
+\(\Sigma\of{t}\), and take its time derivative, which will depend both on the intrinsic
+change in the vector field, and in the change of shape of the surface.
+\[\D{\Phi_\vec{a}}{t} = \D{}{t} \iint_{\Sigma\of{t}} \vec{a}\of{\vec{x},t} \cdot \vec{n}\of{\vec{x},t} \de^2x\]
+We use Nanson's formula to bring the integral to the reference configuration, where
+the domain of intgration is independent of time, we denote by \(\vec{A}\) the material
+representation of the vector field: \(\vec{A}\of{\vec{X},t} = \vec{a}\of{\vec{x}\of{\vec{X},t},t}\).
+\[\D{\Phi_\vec{a}}{t} = \D{}{t} \iint_{\Sigma_0} \vec{A} \cdot \mathcal{J} \tr{\vec{H}} \cdot \vec{N}\,\de^2X\]
+We can now bring the derivative inside the integral, giving us the following.
+\[\D{\Phi_\vec{a}}{t} = \iint_{\Sigma_0} \of{\dot{\vec{A}} \cdot \mathcal{J} \tr{\vec{H}} +
+    \vec{A} \cdot \dot{\mathcal{J}} \tr{\vec{H}} +
+    \vec{A} \cdot \mathcal{J} \tr{\dot{\vec{H}}}} \cdot \vec{N}\,\de^2X
+\]
+Substituting the relevant quantities we find the following.
+\begin{align*}
+    \D{\Phi_\vec{a}}{t} &= \iint_{\Sigma_0} \of{\dot{\vec{A}} \cdot \mathcal{J} \tr{\vec{H}} +
+    \vec{A} \cdot \of{\mathcal{J} \trace \vec{L}} \tr{\vec{H}} -
+    \vec{A} \cdot \mathcal{J} \of{\tr{\vec{L}} \cdot \tr{\vec{H}}}} \cdot \vec{N}\,\de^2X \\
+    &= \iint_{\Sigma_0} \of{\dot{\vec{A}} + \vec{A} \trace \vec{L} - \vec{A} \cdot \tr{\vec{L}}} \cdot \mathcal{J} \tr{\vec{H}} \cdot \vec{N}\,\de^2X
+\end{align*}
+We can now apply Nanson's formula backwards to bring the integral back to the
+current configuration.
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \of{\dot{\vec{a}} + \vec{a} \trace \vec{L} - \vec{a} \cdot \tr{\vec{L}}} \cdot \vec{n}\,\de^2x\]
+We expand \(\dot{\vec{a}}\) as the material derivative and replace \(\vec{L}\) with the
+relevant expressions in terms of \(\vec{v}\).
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \of{\pderiv{\vec{a}}{t} + \vec{v} \cdot \grd{\vec{a}} + \vec{a} \of{\dvg{\vec{v}}} - \vec{a} \cdot \grd{\vec{v}}} \cdot \vec{n}\,\de^2x\]
+We now recall the following vector identity for the curl of a cross product.
+\[\crl{\of{\vec{a}\times\vec{v}}} = \vec{a} \of{\dvg{\vec{v}}} - \vec{v} \of{\dvg{\vec{a}}} + \vec{v} \cdot \grd{\vec{a}} - \vec{a} \cdot \grd{\vec{v}}\]
+We notice that most of the terms appear in our expression, we thus obtain one of
+the many possible expressions of the transport theorem for the flux of a vector field.
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \of{\pderiv{\vec{a}}{t} + \vec{v} \of{\dvg{\vec{a}}} + \crl{\of{\vec{a}\times\vec{v}}}} \cdot \vec{n}\,\de^2x\]
+Using the curl theorem we can also bring the last term in terms of a circulation.
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \of{\pderiv{\vec{a}}{t} + \vec{v} \of{\dvg{\vec{a}}}} \cdot \vec{n}\,\de^2x
+  + \oint_{\partial\Sigma\of{t}} \of{\vec{a}\times\vec{v}} \cdot \vec{t} \, \de x\]
+This form is especially useful for solenoidal fields, where \(\dvg{\vec{a}}\) disappears.
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \pderiv{\vec{a}}{t} \cdot \vec{n}\,\de^2x
+  + \oint_{\partial\Sigma\of{t}} \of{\vec{a}\times\vec{v}} \cdot \vec{t} \, \de x\]
+
+\end{document}
