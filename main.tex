@@ -437,6 +437,46 @@ In these terms, Poynting's theorem states the following.
 \[\frac{1}{\kappac} \D{u}{t} = \frac{1}{\kappac} \pderiv{u}{t} + \dvg{\vpoy}\]
 %
 %
+\section{Electromagnetic Radiation}
+We have already shown that the solution to Maxwell's equations in the absence of
+charges and currents gives us d'Alembert's equation.
+\[\frac{1}{c^2} \pderiv[2]{\vefi}{t} - \lp{\vefi} = 0 \qquad \frac{1}{c^2} \pderiv[2]{\vbfi}{t} - \lp{\vbfi} = 0\]
+We know that the solutions to d'Alembert's equation are complex exponentials, we
+take \(\omega\) to be the pulsatance and \(\vec{k}\) to be the wave vector of the solution.
+\[\vefi\of{\vec{r},t} = \vefi_0 \, \exp^{\iun \vec{k} \cdot \vec{r}} \exp^{-\iun \omega t} \qquad \vbfi\of{\vec{r},t} = \vbfi_0 \, \exp^{\iun \vec{k} \cdot \vec{r}} \exp^{-\iun \omega t}\]
+We compute the Laplacian and the second derivative of the electric field.
+\[\lp{\vefi} = - k^2 \vefi \qquad \pderiv[2]{\vefi}{t} = - \omega^2 \vefi\]
+Substituting these results into d'Alembert's equation gives us the \emph{dispersion relation}.
+\[\frac{\omega^2}{c^2} \vefi - k^2 \vefi = 0 \qquad \omega = c \, k\]
+On the other hand, substituting the solution into Maxwell's equations (with no charges
+and currents) gives us the following conditions.
+\[\vec{k} \cdot \vefi = 0 \qquad \vec{k} \times \vefi = - \frac{\omega}{\kappaf} \vbfi\]
+Taking the norm of the second equation, recalling the identity for the norm of
+a cross product and using the dispersion relation, we find the relation between the
+magnitudes of the electric and magnetic fields in free space.
+\[\nrm{\vec{k} \times \vefi} = \sqrt{k^2 \efi^2 - \of{\vec{k}\cdot\vefi}^2} = k \efi\]
+\[k \efi = \frac{\omega}{\kappaf} \bfi \qquad \efi = \frac{c}{\kappaf} \bfi\]
+We can also compute the Poynting vector of the wave.
+\[\vpoy = \frac{\vefi \times \vbfi}{\alphaA} =
+- \frac{\kappaf}{\omega \alphaA} \vefi \times \of{\vec{k} \times \vefi} =
+- \frac{\kappaf}{\omega \alphaA} \efi^2 \vec{k} =
+- \frac{\kappaf}{c \alphaA} \efi^2 \; \uvec{k}
+\]
+We notice that it is antiparallel to the wave vector, meaning that the
+direction in which the wave carries energy, i.e. the direction in which it propagates,
+is opposite to the wave vector.
+Taking just its norm we can write the following.
+\[\poy = \frac{\efi^2}{Z_0} \qquad Z_0 = \frac{c}{\kappaf} \alphaA = \frac{\kappac}{c} \alphaG\]
+Where \(Z_0\) is the \textbf{impedance of free space}.
+Another convention is sometimes in use, where one naïvely extends the
+impedance of free space found in the SI to another unit system. This does not, in
+general, have the correct units to be called an impedance and doesn’t, of course, give
+the correct ratio between the Poynting vector and the electric field. We shall denote
+this by \(\widetilde{Z}_0\).
+\[\widetilde{Z}_0 = \sqrt{\alphaG \, \alphaA} = \frac{c}{\sqrt{\kappac \kappaf}} \, \alphaA = \frac{\sqrt{\kappac \kappaf}}{c} \, \alphaG\]
+We see that this definition is identical to \(Z_0\) only when \(\kappac = \kappaf\).
+%
+%
 \section{Maxwell's stress tensor}
 %
 We start with the expression of the Lorentz force density and replace the charge
@@ -689,41 +729,6 @@ With this new convention Maxwell's equations take the following form.
     \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vhfi}\) & \(=\) & \(\displaystyle \frac{\alphaA}{\kappa_\mathrm{m}} \vec{j}_\mathrm{f} + \frac{\kappa_\mathrm{e}}{\kappa_\mathrm{m}} \frac{1}{\gammaM} \pderiv{\vdfi}{t}\) \\
   \end{tabular}
 \end{center}
-%
-%
-\section{Impedance of free space}
-We have already shown that the solution to Maxwell's equations in the absence of
-charges and currents gives us d'Alembert's equation.
-\[\frac{1}{c^2} \pderiv[2]{\vefi}{t} - \lp{\vefi} = 0 \qquad \frac{1}{c^2} \pderiv[2]{\vbfi}{t} - \lp{\vbfi} = 0\]
-We know that the solutions to d'Alembert's equation are complex exponentials, we
-take \(\omega\) to be the pulsatance and \(\vec{k}\) to be the wave vector of the solution.
-\[\vefi\of{\vec{r},t} = \vefi_0 \, \exp^{\iun \vec{k} \cdot \vec{r}} \exp^{-\iun \omega t} \qquad \vbfi\of{\vec{r},t} = \vbfi_0 \, \exp^{\iun \vec{k} \cdot \vec{r}} \exp^{-\iun \omega t}\]
-We compute the Laplacian and the second derivative of the electric field.
-\[\lp{\vefi} = - k^2 \vefi \qquad \pderiv[2]{\vefi}{t} = - \omega^2 \vefi\]
-Substituting these results into d'Alembert's equation gives us the \emph{dispersion relation}.
-\[\frac{\omega^2}{c^2} \vefi - k^2 \vefi = 0 \qquad \omega = c \, k\]
-On the other hand, substituting the solution into Maxwell's equations (with no charges
-and currents) gives us the following conditions, showing that electromagnetic
-waves in free space are transverse (the fields are orthogonal to the wave vector).
-\[\vec{k} \cdot \vefi = 0 \qquad \vec{k} \times \vefi = - \frac{\omega}{\kappaf} \vbfi\]
-Taking the norm of the second equation, recalling the identity for the norm of
-a cross product and using the dispersion relation, we find the ratio of the magnitude
-of the electric and magnetic fields in free space.
-\[\nrm{\vec{k} \times \vefi} = \sqrt{k^2 \efi^2 - \of{\vec{k}\cdot\vefi}^2} = k \efi\]
-\[k \efi = \frac{\omega}{\kappaf} \bfi \qquad \efi = \frac{c}{\kappaf} \bfi\]
-The \textbf{impedance of free space} \(Z_0\) is not defined as this ratio, but rather
-as the ratio of the magnitude of the electric field to that of the auxiliary magnetic field \(\vhfi\)
-making it dependent on our choice of \(\kappa_\mathrm{m}\).
-\[Z_0 = \frac{\efi}{\hfi} = \frac{\kappa_\mathrm{m} \efi}{\bfi} = \frac{\kappa_\mathrm{m}}{\kappaf} c\]
-Specifying the result to the case of the non-rescaled and rescaled fields, as defined
-previously, we find the following results.
-\[Z_0^{(1)} = \frac{c}{\kappaf} \qquad Z_0^{(2)} = \frac{c}{\kappac} \, \alphaA\]
-Finally, another convetion is sometimes in use, where one naïvely extends the
-impedance of free space found in the SI to another unit system. This does not, in
-general, provide the correct magnitude ratio for any pair of fields. We shall denote
-this by \(\widetilde{Z}_0\).
-\[\widetilde{Z}_0 = \sqrt{\alphaG \, \alphaA} = \frac{c}{\sqrt{\kappac \kappaf}} \, \alphaA\]
-We see that this definition is identical to \(Z_0^{(2)}\) only when \(\kappac = \kappaf\).
 %
 %
 \section{Response functions}
