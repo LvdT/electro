@@ -1,0 +1,83 @@
+\section{Electric and magnetic fields}
+%
+The force acting on a small \emph{test charge} \(q\) as a result of electromagnetic
+phenomena can be split into two contributions, an electric force which is independent
+of the charge's motion and a magnetic term which also depends on its velocity.
+\[\vec{F}\of{\vec{r},t} = \vec{F}_\mathrm{e}\of{\vec{r},t} + \vec{F}_\mathrm{m}\of{\vec{v},\vec{r},t}\]
+Experimentally, both terms are observed to be linear in \(q\).\\[1em]
+The \textbf{electric field} \(\vefi\) is defined in terms of the electric force
+and is obtained by factoring out charge, since we have just observed that
+the force depends linearly upon it.
+\[\vec{F}_\mathrm{e}\of{\vec{r},t} = q \, \vefi\of{\vec{r},t}\]
+The \textbf{magnetic field} \(\vbfi\) behaves in a slightly more complicated manner.
+The magnetic force is observed to always be perpendicular to the particle's velocity, which
+suggests that a cross product is involved in the definition.
+Moreover, we need to introduce a scaling constant \(\kappaf\), which will
+be necessary to give us the correct value for the speed of light as an electromagnetic
+wave.
+\[\vec{F}_\mathrm{m}\of{\vec{v},\vec{r},t} = \frac{q\vec{v} \times \vbfi\of{\vec{r},t}}{\kappaf}\]
+The sum of these two contributions is called the \textbf{Lorentz force}.
+\begin{equation}
+  \vec{F}\of{\vec{r},t} = q \of{\vefi\of{\vec{r},t} + \frac{\vec{v} \times \vbfi\of{\vec{r},t}}{\kappaf}}
+\end{equation}
+The Lorentz force can also be expressed in terms of charge and current densities,
+in order to do so it is convenient to define the \textbf{force density} \(\vec{f}\),
+a local property defined by the amount of force per unit volume.
+\[\vec{F}(t) = \iiint_\Omega \vec{f}\of{\vec{\xi},t} \de^3 \xi\]
+We start with the electric force, we can turn the expression above into a volume
+integral by using the definition of the Dirac delta.
+\[\vec{F}_\mathrm{e}\of{\vec{r},t} = \iiint_\Omega q \, \delta\of{\vec{r}-\vec{\xi}} \vefi\of{\vec{\xi},t}\de^3 \xi\]
+The expression \(q \, \delta\of{\vec{r}-\vec{\xi}}\) is the charge density of a
+point charge \(q\) located at \(\vec{r}\), this leads us to an expression for the
+electric force density.
+\[\vec{F}_\mathrm{e}\of{t} = \iiint_\Omega \rho\of{\vec{\xi},t} \vefi\of{\vec{\xi},t} \de^3 \xi
+\qquad \vec{f}_\mathrm{e}\of{\vec{r},t} = \rho\of{\vec{r},t} \vefi\of{\vec{r},t}\]
+We can proceed in a similar manner with the magnetic force, we immediately identify
+the expression for the charge density.
+\[\vec{F}_\mathrm{m}\of{t} = \iiint_\Omega \frac{\rho\of{\vec{\xi},t}\vec{v} \times \vbfi\of{\vec{\xi},t}}{\kappaf} \de^3 \xi\]
+We now refer to equation \eqref{eq::current-density-moving} and replace \(\rho\of{\vec{\xi},t}\vec{v}\)
+with \(\kappac \, \vec{j}\of{\vec{\xi},t}\), obtaining an expression for the
+magnetic force density.
+\[\vec{F}_\mathrm{m}\of{t} = \iiint_\Omega \frac{\kappac}{\kappaf} \vec{j}\of{\vec{\xi},t} \times \vbfi\of{\vec{\xi,t}} \de^3 \xi
+\qquad \vec{f}_\mathrm{m}\of{\vec{r},t} = \frac{\kappac}{\kappaf} \, \vec{j}\of{\vec{r},t} \times \vbfi\of{\vec{r},t}\]
+%
+Taking both contributions together gives us the Lorentz force density.
+\[\vec{f}\of{\vec{r},t} = \rho\of{\vec{r},t} \vefi\of{\vec{r},t} + \frac{\kappac}{\kappaf} \, \vec{j}\of{\vec{r},t} \times \vbfi\of{\vec{r},t}\]
+%
+\subsection{Electromotive force}
+%
+We consider a closed loop built out of an electrical conductor, delimiting a surface
+\(\Sigma\). We define the \textbf{electromotive force} as the work per unit
+of charge performed by the electromagnetic force on a charge going around the whole loop,
+which is to say, the \emph{circulation} of the Lorentz force per unit charge.
+\[\emf\of{t} = \frac{1}{q} \oint_{\partial\Sigma\of{t}} \vec{F}\of{\xi,t} \cdot \vec{t}\of{\xi,t} \de\xi\]
+By substituting the expression for the Lorentz force we obtain the following.
+\[\emf\of{t} = \oint_{\partial\Sigma\of{t}} \of{\vefi\of{\xi,t} + \frac{\vec{v}\of{\xi,t} \times \vbfi\of{\xi,t}}{\kappaf}} \cdot \vec{t}\of{\xi,t} \de\xi\]
+%
+The electromotive force is therefore the sum of two contributions, the first is
+due to the electric field and is called \textbf{induced electromotive force},
+the second is due to motion in a magnetic field and is called \textbf{motional
+electromotive force}.
+%
+\[\emf = \emf_\mathrm{ind} + \emf_\mathrm{mot}\]
+\[\emf_\mathrm{ind}\of{t} = \oint_{\partial\Sigma\of{t}} \vefi\of{\xi,t} \cdot \vec{t}\of{\xi,t} \de\xi \qquad
+\emf_\mathrm{mot}\of{t} = \oint_{\partial\Sigma\of{t}} \frac{\vec{v}\of{\xi,t} \times \vbfi\of{\xi,t}}{\kappaf} \cdot \vec{t}\of{\xi,t} \de\xi\]
+%
+Experimentally, it is known that the electromotive force on a circuit depends upon
+the time derivative of the magnetic flux through the surface delimited by the circuit;
+this relationship is known as the \textbf{Faraday--Neumann--Lenz law}.
+\[\emf = - k_\mathrm{F} \D{\Phi_\vbfi}{t}\]
+%
+\subsection{Joule--Lenz law}
+%
+Consider a charge distribution \(\rho\of{\vec{r},t}\) together with a velocity
+field \(\vec{v}\of{\vec{r},t}\) in a region where both an electric and magnetic fields
+exist.
+The power density of such a system can be computed as the dot product between the
+force density and the velocity field.
+\[\dot{u} = \vec{f} \cdot \vec{v} = \rho \vefi \cdot \vec{v} + \frac{\kappac}{\kappaf} \of{\vec{v} \times \vbfi} \cdot \vec{v} = \vefi \cdot \of{\rho \, \vec{v}}\]
+The second term vanishes because we're taking the dot product of two perpendicular
+vectors. We recognise the expression for the current density.
+\[\dot{u} = \kappac \, \vefi \cdot \vec{j} \qquad \frac{1}{\kappac} \D{u}{t} = \vefi \cdot \vec{j}\]
+This is known as the \textbf{Joule--Lenz law}.
+%

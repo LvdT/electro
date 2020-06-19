@@ -1,0 +1,99 @@
+\section{Charge and current}
+%
+We take the concept of \textbf{electric charge} \(Q\) as a primitive.
+All particles have a certain electric charge, which can be positive, negative or zero,
+this value determines how the particle couples with electromagnetic interactions.
+A fundamental law of physics is that total electric charge is conserved.
+The amount of charge contained within some region of space can still change due
+to particles moving in or out of the region itself, so that in general \(Q\) can
+be taken to be a function of time.\\[1em]
+The force acting between two point charges \(Q_1\) and \(Q_2\) at a distance \(d\)
+from each other is observed experimentally to follow \textbf{Coulomb's law}.
+\[F = k_\mathrm{C} \frac{\abs{Q_1}\abs{Q_2}}{d^2}\]
+The choice of units for charge is implicit in the value given to \(k_\mathrm{C}\);
+two fundamentally distinct approaches are possible: in the first electrical units
+arise naturally from mechanical units and \(k_\mathrm{C}\) is just a number, in the second
+electrical phenomena are linked to a new \emph{base} quantity and \(k_\mathrm{C}\)
+is a constant with its own units.\\[1em]
+We follow by defining the \textbf{electric current} \(i\) as the rate of change of
+the electric charge contained in a region of space, scaled by a constant \(\kappac\).
+The negative sign is used so that a positive current means that charge is leaving
+the region.
+\begin{equation}\label{eq::current-definition}
+  i = - \frac{1}{\kappac} \pderiv{Q}{t}
+\end{equation}
+While \(\kappac\) is often taken to be unity, its presence is useful
+for several reasons.
+It allows us to choose the units of current independently of the units of charge,
+moreover, with the choice \(\kappac = c\), it gives additional symmetry
+to Maxwell's equations and makes the relativistic treatment of electromagnetism
+appear more natural.\\[1em]
+The force (per unit length) acting between two straight wires at a distance \(d\)
+from each other, each carrying a \emph{constant} current (respectively \(i_1\)
+and \(i_2\)) is observed experimentally to follow \textbf{Ampère's force law}.
+\[\frac{F}{L} = 2 \, k_\mathrm{A} \frac{\abs{i_1}\abs{i_2}}{d}\]
+Once again, the choice of units for current is implicit in the value given to
+\(k_\mathrm{A}\) and we can either take it to be a number, or give it units.
+We could, in principle, define two distinct base quantities, one for charge and
+one for current, and choose the appropriate units for \(\kappac\),
+although this is not very convenient in practice.
+%
+%
+\subsection{Densitites}
+%
+It is often useful to work with \textbf{charge density} \(\rho\), rather than
+total electric charge.
+We define \(\rho\) as a function of position and time, such that its volume integral
+over some region \(\Omega\) gives us exactly the charge contained in the region
+at the given time.
+\begin{equation}\label{eq::charge-density}
+  Q\of{t} = \iiint_\Omega \rho\of{\vec{\xi},t} \de^3\xi
+\end{equation}
+Since total electric charge must be conserved, this implies that in the presence
+of current, some motion of charges across the boundary of the region is taking place.
+There exists some some quantity, which we shall name the \textbf{current density}
+vector \(\vec{j}\), of which the total electric current is the flux.
+\begin{equation}\label{eq::current-flux}
+  i(t) = \iint_{\Sigma} \vec{j}\of{\vec{\xi},t} \cdot \vec{n} \, \de^2\xi
+\end{equation}
+Two special cases are the charge density of a point charge \(Q\) located at \(\vec{r}_0\)
+\[\rho\of{\vec{r}} = Q \, \delta\of{\vec{r} - \vec{r}_0}\]
+and the current density of a thin wire described by a curve \(\gamma\) and carrying a current \(i\).
+\[\vec{j}\of{\vec{r}} = i \, \int_{\mathbb{R}} \delta\of{\vec{r} - \vec{\gamma}\of{s}} \vec{t}\of{s}\de s\]
+%
+%
+\subsection{Continuity equation}
+%
+We now take equation and \eqref{eq::current-flux} specify it to the case where
+\(\Sigma\) is the boundary of the region \(\Omega\) where the charge is contained,
+we also take equation \eqref{eq::charge-density} and
+substitute both in \eqref{eq::current-definition} and apply the divergence theorem.
+\begin{align*}
+  \oiint_{\partial \Omega} \vec{j}\of{\vec{\xi},t} \cdot \vec{n} \, \de^2\xi &= - \frac{1}{\kappac} \pderiv{}{t} \iiint_\Omega \rho\of{\vec{\xi},t} \de^3\xi \\
+  \iiint_{\Omega} \dvg{\vec{j}} \, \de^3\xi &= - \frac{1}{\kappac} \iiint_\Omega \pderiv{\rho}{t} \de^3\xi
+\end{align*}
+\[\iiint_{\Omega} \of{\dvg{\vec{j}} + \frac{1}{\kappac} \pderiv{\rho}{t}} \de^3\xi = 0\]
+Since this identity must hold regardless of the choice of \(\Omega\) it must be
+that the integrand itself is zero. We get the \textbf{continuity equation}.
+\begin{equation}\label{eq::continuity}
+  \frac{1}{\kappac} \pderiv{\rho}{t} + \dvg{\vec{j}} = 0
+\end{equation}
+We can now relate the current density to the velocity field. Let us consider a
+surface enclosing a region \(\Omega_0\) at time \(t_0\) and containing a charge \(Q\).
+We define \(\Omega\of{t}\) as the region containing exactly the same particles as
+\(\Omega_0\). If the motion of the particles is continuous, the motion of the surface
+will also be continuous; we can therefore apply the Reynolds transport theorem
+from continuum mechanics. We take the time derivative of the charge within the
+region, which must be zero since it is constant.
+\[\D{Q}{t} = \D{}{t} \iiint_{\Omega\of{t}} \rho\of{\vec{\xi},t} \de^3\xi = \iiint_{\Omega\of{t}} \of{\pderiv{\rho}{t} + \dvg{\of{\rho \, \vec{v}}}} \de^3\xi = 0\]
+If we divide everything by \(\kappac\) we obtain an integrand that shows
+a strong resemblance to the continuity equation.
+\[\frac{1}{\kappac} \D{Q}{t} = \iiint_{\Omega\of{t}} \of{\frac{1}{\kappac} \pderiv{\rho}{t} + \dvg{\frac{\rho \, \vec{v}}{\kappac}}} \de^3\xi = 0\]
+As this integral must be zero for any choice of the starting sufrace \(\Omega_0\),
+it is the integrand itself that must vanish. For this to happen it must be true
+that the term of which we are taking the divergence must be the current density.
+\begin{equation}\label{eq::current-density-moving}
+  \vec{j}\of{\vec{r},t} = \frac{\vec{v}\of{\vec{r},t} \, \rho\of{\vec{r},t}}{\kappac}
+\end{equation}
+%
+%

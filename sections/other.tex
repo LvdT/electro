@@ -1,0 +1,102 @@
+
+\section{Other laws}
+\textbf{Coulomb's law}
+\[\vec{F}_{12} = k_\mathrm{C} \iiint_{\Omega_1} \iiint_{\Omega_2} \frac{\rho_1\!\!\of{\vec{\xi_1}} \rho_2\!\!\of{\vec{\xi_2}}}{\nrm{\vec{r}_1 - \vec{r}_2}^3} \of{\vec{r}_1 - \vec{r}_2} \de^3\xi_1 \de^3\xi_2\]
+\[\vefi(\vec{r}) = k_\mathrm{C} \iiint_\Omega \frac{\rho\!\of{\vec{\xi}}}{\nrm{\vec{r} - \vec{\xi}}^3} \of{\vec{r} - \vec{\xi}} \de^3\xi\]
+\textbf{Ampère's law}
+\[\vec{F}_{12} = k_\mathrm{A} \iiint_{\Omega_1} \iiint_{\Omega_2} \frac{\vec{j}_1\!\!\of{\vec{\xi_1}} \times \of{\vec{j}_2\!\!\of{\vec{\xi_2}} \times \of{\vec{\xi}_1 - \vec{\xi}_2}}}{\nrm{\vec{\xi}_1 - \vec{\xi}_2}^3} \de^3\xi_1 \de^3\xi_2\]
+\textbf{Biot-Savart's law}
+\[\vbfi(\vec{r}) = k_\mathrm{S} \iiint_\Omega \frac{\vec{j}\!\of{\vec{\xi}} \times \of{\vec{r} - \vec{\xi}}}{\nrm{\vec{r} - \vec{\xi}}^3} \de^3\xi\]
+
+\newpage
+\section{Continuum mechanics}
+Consider a body undergoing deformation, a reference configuration in which the
+coordinates of the points are given by \(\vec{X}\) (Lagrangian or material picture) and the
+current configuration in which they are given by \(\vec{x}\) (Eulerian or spatial picture).\\[1em]
+A \textbf{motion} in the body is given by a function \(\vec{\chi}\) mapping the coordinates
+in the reference configuration to those in the current configuration.
+\[\vec{x} = \vec{\chi}\of{\vec{X},t}\]
+We take this function to be invertible; we denote its inverse by \(\vec{\xi}\).
+\[\vec{X} = \vec{\xi}\of{\vec{x},t}\]
+We moreover take \(\vec{\chi}\) to be continuously differentiable and name its
+gradient (a rank 2 tensor) the \textbf{material deformation gradient} \(\vec{F}\).
+\[\vec{F} = \pderiv{\vec{x}}{\vec{X}} = \Grd{\vec{x}}\]
+In the same way, we name the gradient of \(\vec{\xi}\) the \textbf{spatial
+deformation gradient} \(\vec{H}\).
+\[\vec{H} = \pderiv{\vec{X}}{\vec{x}} = \grd{\vec{X}}\]
+These two tensors are such that the following relations on the differentials are true.
+\[\de\vec{x} = \vec{F} \cdot \de\vec{X} \qquad \de\vec{X} = \vec{H} \cdot \de\vec{x}\]
+The spatial deformation gradient is the inverse of the material deformation gradient,
+depending on the order in which they are contracted, we obtain either the Lagrangian
+or Eulerian identity tensor.
+\[\vec{F} \cdot \vec{H} = \vec{I}_\mathrm{E} \qquad \vec{H} \cdot \vec{F} = \vec{I}_\mathrm{L}\]
+Another useful property of the material deformation gradient is that its determinant,
+usually denoted by \(\mathcal{J}\) is a measure of the change of a volume element
+(trivial, since \(\vec{F}\) is the Jacobian of the coordinate change).
+\[\mathcal{J} = \det \vec{F} \qquad \de^3x = \mathcal{J} \de^3X\]
+A useful relation to know is the derivative of \(\mathcal{J}\) with regards to \(\vec{F}\),
+which is just a restatement of the formula for the derivative of a determinant.
+\[\pderiv{\mathcal{J}}{\vec{F}} = \mathcal{J} \, \tr{\vec{H}}\]
+Less trivial is \textbf{Nanson's formula}, used to change the oriented area elements,
+here \(\vec{n}\) is the normal vector in the current configuration and \(\vec{N}\)
+is the normal vector in the reference configuration.
+\[\vec{n} \, \de^2x = \mathcal{J} \tr{\vec{H}} \cdot \vec{N} \, \de^2X\]
+We now take the time derivative of the material deformation gradient.
+\[\dot{\vec{F}} = \D{}{t} \pderiv{\vec{x}}{\vec{X}} = \pderiv{}{\vec{X}} \D{\vec{x}}{t} = \pderiv{\vec{V}}{\vec{X}} = \Grd{\vec{V}}\]
+We have introduced the \textbf{velocity} \(\vec{V}\of{\vec{X},t}\) as the time derivative of the
+position in the current configuration.
+The time derivative of the material deformation gradient is thus the material velocity gradient.
+It is often more useful to express things in terms of a spatial gradient,
+in which case we denote the velocity by \(\vec{v}\of{\vec{x},t}\) because we consider it in
+the Eulerian picture, rather than in the Lagrangian.
+\[\dot{\vec{F}} = \pderiv{\vec{v}}{\vec{x}} \cdot \pderiv{\vec{x}}{\vec{X}} = \vec{L} \cdot \vec{F}\]
+This led us to defining the \textbf{spatial velocity gradient} \(\vec{L}\).
+\[\vec{L} = \pderiv{\vec{v}}{\vec{x}} = \grd{\vec{v}}\]
+We can use this result to compute the time derivative of the spatial deformation gradient, we
+do this by invoking the formula for the derivative of matrix inverse.
+\[\dot{\vec{H}} = - \vec{H} \cdot \dot{\vec{F}} \cdot \vec{H} = - \vec{H} \cdot \vec{L} \cdot \vec{F} \cdot \vec{H} = - \vec{H} \cdot \vec{L}\]
+And we can compute the time derivative of the determinant \(\mathcal{J}\) as well.
+\[\dot{\mathcal{J}} = \pderiv{\mathcal{J}}{\vec{F}} : \dot{\vec{F}} = \mathcal{J} \tr{\vec{H}} : \vec{L} \cdot \vec{F} = \mathcal{J} \trace{\vec{L}} = \mathcal{J} \, \dvg{\vec{v}}\]
+Where we have used the property that \(\vec{A}:\vec{B} = \trace\of{\tr{\vec{A}}\cdot\vec{B}}\)
+and the fact that the trace is conserved under transformations, so \(\trace\of{\vec{H}\cdot\vec{L}\cdot{\vec{F}}} = \trace{\vec{L}}\).
+%
+%
+\section{Proof of the Reynolds Transport Theorem}
+%
+Consider the flux of some vector field \(\vec{a}\of{\vec{x},t}\) through a surface
+\(\Sigma\of{t}\), and take its time derivative, which will depend both on the intrinsic
+change in the vector field, and in the change of shape of the surface.
+\[\D{\Phi_\vec{a}}{t} = \D{}{t} \iint_{\Sigma\of{t}} \vec{a}\of{\vec{x},t} \cdot \vec{n}\of{\vec{x},t} \de^2x\]
+We use Nanson's formula to bring the integral to the reference configuration, where
+the domain of intgration is independent of time, we denote by \(\vec{A}\) the material
+representation of the vector field: \(\vec{A}\of{\vec{X},t} = \vec{a}\of{\vec{x}\of{\vec{X},t},t}\).
+\[\D{\Phi_\vec{a}}{t} = \D{}{t} \iint_{\Sigma_0} \vec{A} \cdot \mathcal{J} \tr{\vec{H}} \cdot \vec{N}\,\de^2X\]
+We can now bring the derivative inside the integral, giving us the following.
+\[\D{\Phi_\vec{a}}{t} = \iint_{\Sigma_0} \of{\dot{\vec{A}} \cdot \mathcal{J} \tr{\vec{H}} +
+    \vec{A} \cdot \dot{\mathcal{J}} \tr{\vec{H}} +
+    \vec{A} \cdot \mathcal{J} \tr{\dot{\vec{H}}}} \cdot \vec{N}\,\de^2X
+\]
+Substituting the relevant quantities we find the following.
+\begin{align*}
+    \D{\Phi_\vec{a}}{t} &= \iint_{\Sigma_0} \of{\dot{\vec{A}} \cdot \mathcal{J} \tr{\vec{H}} +
+    \vec{A} \cdot \of{\mathcal{J} \trace \vec{L}} \tr{\vec{H}} -
+    \vec{A} \cdot \mathcal{J} \of{\tr{\vec{L}} \cdot \tr{\vec{H}}}} \cdot \vec{N}\,\de^2X \\
+    &= \iint_{\Sigma_0} \of{\dot{\vec{A}} + \vec{A} \trace \vec{L} - \vec{A} \cdot \tr{\vec{L}}} \cdot \mathcal{J} \tr{\vec{H}} \cdot \vec{N}\,\de^2X
+\end{align*}
+We can now apply Nanson's formula backwards to bring the integral back to the
+current configuration.
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \of{\dot{\vec{a}} + \vec{a} \trace \vec{L} - \vec{a} \cdot \tr{\vec{L}}} \cdot \vec{n}\,\de^2x\]
+We expand \(\dot{\vec{a}}\) as the material derivative and replace \(\vec{L}\) with the
+relevant expressions in terms of \(\vec{v}\).
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \of{\pderiv{\vec{a}}{t} + \vec{v} \cdot \grd{\vec{a}} + \vec{a} \of{\dvg{\vec{v}}} - \vec{a} \cdot \grd{\vec{v}}} \cdot \vec{n}\,\de^2x\]
+We now recall the following vector identity for the curl of a cross product.
+\[\crl{\of{\vec{a}\times\vec{v}}} = \vec{a} \of{\dvg{\vec{v}}} - \vec{v} \of{\dvg{\vec{a}}} + \vec{v} \cdot \grd{\vec{a}} - \vec{a} \cdot \grd{\vec{v}}\]
+We notice that most of the terms appear in our expression, we thus obtain one of
+the many possible expressions of the transport theorem for the flux of a vector field.
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \of{\pderiv{\vec{a}}{t} + \vec{v} \of{\dvg{\vec{a}}} + \crl{\of{\vec{a}\times\vec{v}}}} \cdot \vec{n}\,\de^2x\]
+Using the curl theorem we can also bring the last term in terms of a circulation.
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \of{\pderiv{\vec{a}}{t} + \vec{v} \of{\dvg{\vec{a}}}} \cdot \vec{n}\,\de^2x
+  + \oint_{\partial\Sigma\of{t}} \of{\vec{a}\times\vec{v}} \cdot \vec{t} \, \de x\]
+This form is especially useful for solenoidal fields, where \(\dvg{\vec{a}}\) disappears.
+\[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \pderiv{\vec{a}}{t} \cdot \vec{n}\,\de^2x
+  + \oint_{\partial\Sigma\of{t}} \of{\vec{a}\times\vec{v}} \cdot \vec{t} \, \de x\]

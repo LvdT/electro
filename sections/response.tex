@@ -1,0 +1,129 @@
+\section{Response functions}
+%
+We have mentioned that the polarisation and magnetisation vectors are induced by
+the presence of, respectively, an electric or magnetic field.
+We consider, in more general terms, how to write an induced response \(\mathcal{Y}\of{\vec{r},t}\)
+in terms of a stimulus \(\mathcal{X}\of{\vec{r},t}\); both fields can be either scalar,
+vectors or tensors of higher orders.
+The most general case is given by the \textbf{Volterra series}, giving a nonlinear
+response that depends upon the value of the stimulus at all points in space and
+at all instants in time.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\vec{r},\brof{\vec{\xi}_m},t,\brof{\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
+The functions \(\varrho_n\) are the \textbf{Volterra kernels}.
+In this formula and the following, we shall use the convention that the index \(m\)
+varies between \(1\) and \(n\).
+To clarify what this means we write the arguments of the first three kernels explicitly.
+\begin{align*}
+  \varrho_0 &= \varrho_0\of{\vec{r},t} \\
+  \varrho_1 &= \varrho_1\of{\vec{r},\vec{\xi}_1,t,\tau_1} \\
+  \varrho_2 &= \varrho_2\of{\vec{r},\vec{\xi}_1,\vec{\xi}_2,t,\tau_1,\tau_2}
+\end{align*}
+An important assumption in physics is that physical laws must be time-invariant,
+i.e. there is no such thing as \emph{absolute time}.
+Therefore, the kernels can only depend on differences between their
+temporal arguments, and not just the argument itself.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\vec{r},\brof{\vec{\xi}_m},\brof{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
+In addition, physical systems must obey causality; this further restricts the
+choice of kernels to functions that vanish if, for any of their arguments, \(\tau_m > t\)
+so that future values of the stimulus cannot influence the response.
+This can be enforced through the use of the Heaviside step function \(\Theta\).
+\[\varrho_n\of{\vec{r},\brof{\vec{\xi}_m},\brof{t-\tau_m}} = \varrho_n\of{\vec{r},\brof{\vec{\xi}_m},\brof{t-\tau_m}} \prod_{j=1}^n \Theta\of{t-\tau_j}\]
+The spatial part of the function cannot in general be simplified.
+Some physical systems, for example crystalline materials, are only invariant
+under finite translations.
+While these symmetries do influence the functional form of the kernel,
+they don't do so in a general enough manner to be treated here, but they do prevent
+us from having a function that only depends on distances, rather than absolute positions.\\[1em]
+In systems that are symmetric under infinitesimal translations, such as fluids
+or amorphous materials, we can write the Volterra series in the \textbf{semilocal approximation}.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\brof{\vec{r}-\vec{\xi}_m},\brof{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
+An even stronger approximation is the \textbf{local approximation}, where the
+response is assumed to only be due to the value of the stimulus at the same
+point in space.
+That is to say, the spatial part of the kernel is a Dirac delta.
+\[\varrho_n\of{\brof{\vec{r}-\vec{\xi}_m},\brof{t-\tau_m}} = \varrho_n\of{\brof{t-\tau_m}} \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\]
+In terms of the Volterra series, this gives us the following expression.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\brof{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{r},\tau_j} \de\tau_j\]
+Finally, we have the case of a \textbf{non-dispersive medium}, where both the
+spatial and temporal part of the kernel are Dirac deltas.
+\[\varrho_n\of{\brof{\vec{r}-\vec{\xi}_m},\brof{t-\tau_m}} = \varrho_n \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\delta\of{t-\tau_j}\]
+In this last case, the Volterra series simply becomes a Taylor series.
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \varrho_n \, \mathcal{X}^n\of{\vec{r},t}\]
+%
+%
+\subsection{Response functions for electromagnetic fields}
+%
+This allows us to define the \textbf{susceptibility} \(\chi\) of the material.
+Depending on which field we choose to work with, we obtain two different definitions
+of susceptibility, we denote the susceptibility to the physical field as \(\chi'\) and
+the susceptibility to the auxiliary field as \(\chi''\).
+\begin{equation}
+  \vpfi = \frac{\chi_\mathrm{e}'}{\kappa_\mathrm{e}} \vefi = \chi_\mathrm{e}'' \vdfi
+  \qquad
+  \vmfi = \frac{\chi_\mathrm{m}'}{\kappa_\mathrm{m}} \vbfi = \chi_\mathrm{m}'' \vhfi
+\end{equation}
+While it might be tempting to say that the two definitions provide the same value,
+since in a vacuum we have that \(\vefi = \kappa_\mathrm{e} \, \vdfi\) and
+\(\vbfi = \kappa_\mathrm{m} \, \vhfi\), that is only true in a vacuum where, in
+any case, the susceptibilities vanish.\\[1em]
+We now substitute these relations into the definitions of the auxiliary fields in
+order to find a response function binding the physical to the auxiliary field.
+We start by using the susceptibility to the physical fields.
+\[\vdfi = \frac{1}{\kappa_\mathrm{e}} \of{\vefi + \lambda_\mathrm{e} \vpfi}
+  = \frac{1}{\kappa_\mathrm{e}} \of{\vefi + \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}' \vefi}
+  = \frac{1}{\kappa_\mathrm{e}} \of{1 + \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}'} \vefi
+  = \frac{\epsilon_\mathrm{r}}{\kappa_\mathrm{e}} \, \vefi = \epsilon \, \vefi
+\]
+\[\vhfi = \frac{1}{\kappa_\mathrm{m}} \of{\vbfi + \lambda_\mathrm{m} \vmfi}
+  = \frac{1}{\kappa_\mathrm{m}} \of{\vbfi + \frac{\lambda_\mathrm{m}}{\kappa_\mathrm{m}} \chi_\mathrm{m}' \vbfi}
+  = \frac{1}{\kappa_\mathrm{m}} \of{1 + \frac{\lambda_\mathrm{m}}{\kappa_\mathrm{m}} \chi_\mathrm{m}'} \vbfi
+  = \frac{\nu_\mathrm{r}}{\kappa_\mathrm{m}} \, \vbfi = \nu \, \vbfi
+\]
+Unfortunately \(\epsilon\) usually named \textbf{permittivity} despite being
+a measure of how strongly the material is able to resist the electric field by
+polarizing. In order to get around this contradiction, we shall be naming this
+quantity \textbf{austerity}. On the other hand \(\nu\) is more aptly named \textbf{reluctivity}.\\[1em]
+We now switch to using the susceptibility to the auxiliary fields.
+\[\vefi = \kappa_\mathrm{e} \vdfi - \lambda_\mathrm{e} \vpfi
+  = \kappa_\mathrm{e} \vdfi - \lambda_\mathrm{e} \chi_\mathrm{e}'' \vdfi
+  = \kappa_\mathrm{e} \of{1 - \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}''} \vdfi
+  = \kappa_\mathrm{e} \, \eta_\mathrm{r} \vdfi = \eta \, \vdfi
+\]
+\[\vbfi = \kappa_\mathrm{m} \vhfi - \lambda_\mathrm{m} \vmfi
+  = \kappa_\mathrm{m} \vhfi - \lambda_\mathrm{m} \chi_\mathrm{m}'' \vhfi
+  = \kappa_\mathrm{m} \of{1 - \frac{\lambda_\mathrm{m}}{\kappa_\mathrm{m}} \chi_\mathrm{m}''} \vhfi
+  = \kappa_\mathrm{m} \, \mu_\mathrm{r} \vhfi = \mu \, \vhfi
+\]
+The quantity \(\eta\) is rarely used and does not have a name, we shall refer to
+it as \textbf{leniency}. The much more commonly used \(\mu\) is named \textbf{permeability}.\\[1em]
+All of the quantities we have defined have both an \textbf{absolute} value (\(\epsilon\), \(\nu\),
+\(\eta\), \(\mu\)) and a \textbf{relative} (\(\epsilon_\mathrm{r}\), \(\nu_\mathrm{r}\), \(\eta_\mathrm{r}\), \(\mu_\mathrm{r}\))
+value, although if we are working with the non-rescaled fields the two values are the same
+since \(\kappa_\mathrm{e} = \kappa_\mathrm{m} = 1\).\\[1em]
+We can prove that \(\epsilon\) and \(\eta\) are mutually inverse and the same is
+true for \(\nu\) and \(\mu\).
+\[\vefi = \eta \, \vdfi = \eta \epsilon \, \vefi \qquad \eta \epsilon = 1\]
+\[\vbfi = \mu \, \vhfi = \mu \nu \, \vbfi \qquad \mu \nu = 1\]
+The same is true for the relative values. By writing this explicitly, for example
+in the case of \(\epsilon\) and \(\eta\) we can gain further insight in the matter.
+\[\eta = \frac{1}{\epsilon} \qquad\Rightarrow\qquad 1 - \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}'' = \frac{1}{1 + \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}'}
+  = 1 - \frac{\lambda_\mathrm{e}}{\kappa_\mathrm{e}} \chi_\mathrm{e}' + \omicron\of{\chi_\mathrm{e}'}\]
+This shows that, for small susceptibilities, \(\chi_\mathrm{e}' \approx \chi_\mathrm{e}''\).\\[1em]
+All the previous considerations can be generalised to dispersive media if they are
+written in terms of Fourier components, rather than treating them as constants (at
+least up to the semi-local approximation). In the case of anisotropic media the
+response functions become tensors.\\[1em]
+Due to a long-standing debate on whether the \(\bfi\)-field or the \(\hfi\)-field
+is the most fundamental, possibly spurred by the fact that magnetic phenomena are often
+weak in matter, there is an unfortunate difference in which quantity is most commonly
+used as a response function. While for the electric field the choice falls on
+\(\epsilon\) (for some reason there has never been any doubt that \(\vefi\) is the
+most fundamental), called the \textbf{dielectric constant}, for the magnetic field
+it is customary to use \(\mu\), called the \textbf{diamagnetic constant}.
+The reason for this is that it is much easier to measure the \(\hfi\)-field, leading
+to a preference for this field in the engineering community.
+In physical terms, however, the \(\bfi\)-field is clearly the most fundamental
+for several reasons, including the fact that it appears in the Lorentz force and
+that its source term is the total current, rather than just the free current.
+%
+%

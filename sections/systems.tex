@@ -1,0 +1,59 @@
+\section{Systems}
+%
+A system of units is said to be \textbf{rationalised} when no factors of \(4 \pi\)
+appear in Maxwell's equations.
+This is useful because the absence of such factors implies that equations relating
+to specific charge distributions will end up having factors related to the symmetry
+of the system, such as \(4 \pi\) for spherical symmetry or \(2 \pi\) for cylindrical
+symmetry.
+\subsection{The International System -- SI}
+The International System of units makes the following choice for the couplings.
+\[\alphaG = \frac{1}{\epsilon_0} \qquad \alphaA = \mu_0 \qquad \kappac = 1 \qquad \kappaf = 1 \qquad \gammaM = c^2 \qquad \gammaF = 1\]
+Here \(\epsilon_0\) and \(\mu_0\) are constants determined by experiment; the current (2020) CODATA recommended values are
+\[\epsilon_0 = \SI{8.8541878128(13)e-12}{\farad\per\meter} \qquad \mu_0 = \SI{1.25663706212(19)e-6}{\henry\per\meter}\]
+The SI is now a truly rationalised system. Before its redefinition in 2019 it used to
+be an unrationalised system in disguise, because \(\mu_0\) was defined as
+exactly \(4\pi \cdot \SI{e-7}{\henry\per\meter}\).
+We can make this explicit by defining a scaling constant
+\(a = \SI{e7}{\ampere\squared\per\newton}\).
+\[\alphaG = \frac{4 \pi c^2}{a} \qquad \alphaA = \frac{4 \pi}{a} \qquad \kappac = 1 \qquad \kappaf = 1 \qquad \gammaM = c^2 \qquad \gammaF = 1\]
+%
+\subsection{Electrostatic units -- ESU}
+Electrostatic units are defined by taking Coulomb's constant to be unity.
+\[\alphaG = 4 \pi \qquad \alphaA = \frac{4\pi}{c^2} \qquad \kappac = 1 \qquad \kappaf = 1 \qquad \gammaM = c^2 \qquad \gammaF = 1\]
+This system is explicitly unrationalised.
+%
+\subsection{Electromagnetic units -- EMU}
+Electromagnetic units are defined in order to make Ampère's force constant unity.
+The name electromagnetic is not very apt, since Ampère's force law is only valid
+in the magnetostatic limit.
+\[\alphaG = 4 \pi c^2 \qquad \alphaA = 4\pi \qquad \kappac = 1 \qquad \kappaf = 1 \qquad \gammaM = c^2 \qquad \gammaF = 1\]
+This system is explicitly unrationalised, but notice how it is the same as the old SI
+units, except for the lack of the scaling factor \(a\).
+The reason for this is that the SI adopted a rescaled version of EMU that were in
+practical use among engineers.
+%
+\subsection{Gaussian units -- GU}
+Gaussian units are defined as follows.
+\[\alphaG = 4 \pi \qquad \alphaA = \frac{4\pi}{c} \qquad \kappac = 1 \qquad \kappaf = c \qquad \gammaM = c \qquad \gammaF = c\]
+This system is explicitly unrationalised.
+%
+\subsection{Lorentz-Heaviside units -- LHU}
+Lorentz-Heaviside units are obtained by rationalising Gaussian units.
+\[\alphaG = 1 \qquad \alphaA = \frac{1}{c} \qquad \kappac = 1 \qquad \kappaf = c \qquad \gammaM = c \qquad \gammaF = c\]
+Obviously, this system is rationalised.
+%
+\subsection{Symetrised Gaussian units -- SGU}
+Gaussian units can be made fully symmetrical, with \(\alphaG = \alphaA = 4 \pi\),
+by taking \(\kappac = c\). This also has the advantage of making current
+density and charge density have the same units, like the electric and magnetic
+field in the standard Gaussian system.
+\[\alphaG = 4 \pi \qquad \alphaA = 4\pi \qquad \kappac = c \qquad \kappaf = c \qquad \gammaM = c \qquad \gammaF = c\]
+This system is explicitly unrationalised.
+%
+\subsection{Symmetrised Lorentz-Heaviside units -- SLHU}
+Lorentz-Heaviside units can also be made fully symmetrical, with \(\alphaG = \alphaA = 1\).
+\[\alphaG = 1 \qquad \alphaA = 1 \qquad \kappac = c \qquad \kappaf = c \qquad \gammaM = c \qquad \gammaF = c\]
+This system is rationalised.
+%
+%

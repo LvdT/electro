@@ -1,0 +1,133 @@
+\section{Maxwell's equations for macroscopic fields}
+%
+Maxwell's equations depend upon all of the charges and currents present in a physical
+system; if we study the behaviour of the electric and magnetic field given by
+Maxwell's equation in some medium, we have contributions coming from the nuclei
+and electrons of each atom in the medium.
+We obtain two fields \(\vefi_\mathrm{loc}\) and \(\vbfi_\mathrm{loc}\) are called the
+\textbf{microscopic} or \textbf{local fields} because they explicitly depend upon
+these microscopic phenomena, which are generally not easy to treat.\\[1em]
+We can simplify the problem by averaging the local fields over a volume \(\Delta \Omega\),
+that must be chosen so that the average is statistically significant, but at the
+same time it must be small enough to still allow us to treat the system as
+a continuum. Doing so we obtain the \textbf{macroscopic fields} \(\vefi\) and \(\vbfi\).
+\[\vefi\of{\vec{r},t} = \frac{1}{\Delta \Omega} \iiint_{\Delta \Omega} \vefi_\mathrm{loc}\of{\vec{r}+\vec{\xi},t}\de^3\xi\]
+\[\vbfi\of{\vec{r},t} = \frac{1}{\Delta \Omega} \iiint_{\Delta \Omega} \vbfi_\mathrm{loc}\of{\vec{r}+\vec{\xi},t}\de^3\xi\]
+Despite this approximation, several contributions still find their way into the
+source terms in Maxwell's equations.
+The total charge and current densities can be split into a free and a bound term.
+\[\rho = \rho_\mathrm{f} + \rho_\mathrm{b} \qquad \vec{j} = \vec{j}_\mathrm{f} + \vec{j}_\mathrm{b}\]
+Bound charges or currents are phenomena that generally happen as a result of
+the interaction of a physical system with the electric and magnetic field, such
+as polarisation or magnetisation.
+The former produces both a charge and a current density, while the latter only
+produces a current density.
+\[\rho_\mathrm{b} = \rho_\mathrm{p} \qquad \vec{j}_\mathrm{b} = \vec{j}_\mathrm{p} + \vec{j}_\mathrm{m}\]
+The polarisation terms can be represented by a \textbf{polarisation field} \(\vpfi\).
+\[\rho_\mathrm{p} = - \dvg{\vpfi} \qquad \vec{j}_\mathrm{p} = \frac{1}{\kappac} \pderiv{\vpfi}{t}\]
+The magnetisation term can be represented by a \textbf{magnetisation field} \(\vmfi\).
+\[\vec{j}_\mathrm{m} = \frac{\kappaf}{\kappac} \crl{\vmfi}\]
+The polarisation and magnetisation fields are defined in such a way that the
+corresponding densities each respect a continuity equation.
+In the case of the magnetisation current, no charge density is necessary, since the
+divergence of a curl is zero.\\[1em]
+We rewrite Maxwell's equations, explicitly separating the free and bound terms.
+\begin{center}
+  \begin{tabular}{cccl}
+    \(\mathrm{M}_\mathrm{I}\) & \(\dvg{\vefi}\) & \(=\) & \(\alphaG \of{\rho_\mathrm{f} + \rho_\mathrm{p}}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vbfi}\) & \(=\) & \(\displaystyle \alphaA \of{\vec{j}_\mathrm{f} + \vec{j}_\mathrm{p} + \vec{j}_\mathrm{m}} + \frac{1}{\gammaM} \pderiv{\vefi}{t}\) \\
+  \end{tabular}
+\end{center}
+We focus on Gauss's law for electricity.
+\begin{gather*}
+  \dvg{\vefi} = \alphaG \of{\rho_\mathrm{f} + \rho_\mathrm{p}} \\
+  \dvg{\vefi} - \alphaG \, \rho_\mathrm{p} = \alphaG \, \rho_\mathrm{f} \\
+  \dvg{\vefi} + \alphaG \, \dvg{\vpfi} = \alphaG \, \rho_\mathrm{f} \\
+  \dvg{\of{\vefi + \alphaG \, \vpfi}} = \alphaG \, \rho_\mathrm{f}
+\end{gather*}
+We have two choices on how to define the \textbf{electric displacement field} \(\vdfi\).
+\begin{equation}
+  \vdfi_1 = \vefi + \alphaG \, \vpfi \qquad \vdfi_2 = \frac{\vefi}{\alphaG} + \vpfi
+\end{equation}
+They produce, respectively, the following equations.
+\begin{equation}
+  \dvg{\vdfi_1} = \alphaG \, \rho_\mathrm{f} \qquad \dvg{\vdfi_2} = \rho_\mathrm{f}
+\end{equation}
+We now take Ampère--Maxwell's law.
+\begin{gather*}
+  \crl{\vbfi} = \alphaA \of{\vec{j}_\mathrm{f} + \vec{j}_\mathrm{p} + \vec{j}_\mathrm{m}} + \frac{1}{\gammaM} \pderiv{\vefi}{t} \\
+  \crl{\vbfi} - \alphaA \vec{j}_\mathrm{m} = \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vefi}{t} + \alphaA \vec{j}_\mathrm{p} \\
+  \crl{\vbfi} - \frac{\kappaf}{\kappac} \alphaA \crl{\vmfi} = \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vefi}{t} + \frac{\alphaA}{\kappac} \pderiv{\vpfi}{t} \\
+  \crl{\of{\vbfi - \frac{\kappaf}{\kappac} \alphaA \vmfi}} = \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vefi}{t} + \frac{\alphaG}{\gammaM} \pderiv{\vpfi}{t} \\
+  \crl{\of{\vbfi - \frac{\kappaf}{\kappac} \alphaA \vmfi}} = \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{}{t} \of{\vefi + \alphaG \pderiv{\vpfi}{t}}
+\end{gather*}
+We have two choices on how to define the \textbf{magnetising field} \(\vhfi\).
+\begin{equation}
+  \vhfi_1 = \vbfi - \frac{\kappaf}{\kappac} \alphaA \vmfi \qquad \vhfi_2 = \frac{\kappac}{\kappaf} \frac{\vbfi}{\alphaA} - \vmfi
+\end{equation}
+They produce, respectively, the following equations.
+\begin{equation}
+  \crl{\vhfi_1} = \alphaA \, \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vdfi_1}{t} \qquad \crl{\vhfi_2} = \frac{\kappac}{\kappaf} \, \vec{j}_\mathrm{f} + \frac{1}{\kappaf} \pderiv{\vdfi_2}{t}
+\end{equation}
+%
+%
+\subsection{Auxiliary fields}
+%
+We have defined two \textbf{auxiliary fields} to aid in our description of
+electromagnetic phenomena in matter, these are \(\vdfi\) and \(\vhfi\).
+We can take two different approaches in the way we define these fields, one is
+aimed at maintaining the appearance of Maxwell's equations substantially unchanged,
+while the other is aimed at getting rid of the coupling constants with the sources
+by including them in the definition of the auxiliary field.
+For the sake of brevity, we define the following constants.
+\[\lambda_\mathrm{e} = \alphaG \qquad \lambda_\mathrm{m} = \alphaA \frac{\kappaf}{\kappac}\]
+We call the fields in the first approach \textbf{non-rescaled auxiliary fields}
+because in a vacuum (absence of polarisation/magnetisation) we have \(\vdfi_1 = \vefi\)
+and \(\vhfi_1 = \vbfi\).
+\[\vdfi_1 = \vefi + \lambda_\mathrm{e} \, \vpfi \qquad \vhfi_1 = \vbfi - \lambda_\mathrm{m} \, \vmfi\]
+In contrast to this, we call the fields in the first approach \textbf{rescaled auxiliary fields}
+because in a vacuum we have \(\vdfi_2 = \frac{1}{\lambda_\mathrm{e}} \vefi\)
+and \(\vhfi_2 = \frac{1}{\lambda_\mathrm{m}} \vbfi\).
+\[\vdfi_2 = \frac{1}{\lambda_\mathrm{e}} \vefi + \vpfi \qquad \vhfi_2 = \frac{1}{\lambda_\mathrm{m}} \vbfi - \vmfi\]
+Both approaches are equally legitimate, and each provides a set of Maxwell's
+equations in which only the free charges and currents appear.
+\begin{center}
+  \begin{tabular}{c|ccl|ccl}
+    \toprule
+    & \multicolumn{3}{c|}{\textbf{Non-rescaled}} & \multicolumn{3}{c}{\textbf{Rescaled}} \\
+    \midrule
+    \(\mathrm{M}_\mathrm{I}\) & \(\dvg{\vdfi_1}\) & \(=\) & \(\alphaG \rho_\mathrm{f}\) & \(\dvg{\vdfi_2}\) & \(=\) & \(\rho_\mathrm{f}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\kappaf} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vhfi_1}\) & \(=\) & \(\displaystyle \alphaA \vec{j}_\mathrm{f} + \frac{1}{\gammaM} \pderiv{\vdfi_1}{t}\) & \(\crl{\vhfi_2}\) & \(=\) & \(\displaystyle \frac{\kappac}{\kappaf} \, \vec{j}_\mathrm{f} + \frac{1}{\kappaf} \pderiv{\vdfi_2}{t}\) \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+Equations \(\mathrm{M}_\mathrm{II}\) and \(\mathrm{M}_\mathrm{III}\) do not change,
+however in the rescaling approach we have written \(\kappaf\) instead
+of \(\gammaF\) to make it apparent that the equations do not depend upon
+physical coupling constants, but only upon the constants used in the definition of the
+magnetic field and of current (\(\kappac\) and \(\kappaf\)).\\[1em]
+It can be convenient to summarise the two approaches into a single expression
+involving constants \(\kappa_\mathrm{e}\) and \(\kappa_\mathrm{m}\) as follows.
+\[\vdfi = \frac{1}{\kappa_\mathrm{e}} \of{\vefi + \lambda_\mathrm{e} \vpfi} \qquad \vhfi = \frac{1}{\kappa_\mathrm{m}} \of{\vbfi - \lambda_\mathrm{m} \vmfi}\]
+Choosing \(\kappa_\mathrm{e} = \kappa_\mathrm{m} = 1\) gives us the non-rescaled
+fields, while we get the rescaled fields with \(\kappa_\mathrm{e} = \lambda_\mathrm{e}\)
+and \(\kappa_\mathrm{m} = \lambda_\mathrm{m}\).
+We once again remark that, while the definition of \(\lambda_\mathrm{e}\) and
+\(\lambda_\mathrm{m}\) is simply a matter of convenience, and they depend solely
+upon previously defined constants, the choice of \(\kappa_\mathrm{e}\) and \(\kappa_\mathrm{m}\)
+is entirely independent of our previous conventions.\\[1em]
+With this new convention Maxwell's equations take the following form.
+\begin{center}
+  \begin{tabular}{cccl}
+    \(\mathrm{M}_\mathrm{I}\) & \(\dvg{\vdfi}\) & \(=\) & \(\dfrac{\alphaG}{\kappa_\mathrm{e}} \rho_\mathrm{f}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vhfi}\) & \(=\) & \(\displaystyle \frac{\alphaA}{\kappa_\mathrm{m}} \vec{j}_\mathrm{f} + \frac{\kappa_\mathrm{e}}{\kappa_\mathrm{m}} \frac{1}{\gammaM} \pderiv{\vdfi}{t}\) \\
+  \end{tabular}
+\end{center}
+%
+%

@@ -1,0 +1,59 @@
+\section{Electromagnetic Radiation}
+%
+We have already shown that the solution to Maxwell's equations in the absence of
+charges and currents gives us d'Alembert's equation.
+\[\frac{1}{c^2} \pderiv[2]{\vefi}{t} - \lp{\vefi} = 0 \qquad \frac{1}{c^2} \pderiv[2]{\vbfi}{t} - \lp{\vbfi} = 0\]
+We know that a possible set of solutions to d'Alembert's equation are plane waves, we
+take \(\omega\) to be the pulsatance and \(\vec{k}\) to be the (angular) wave vector of the solution.
+\[\vefi\of{\vec{r},t} = \vefi_0 \, \exp^{\iun \vec{k} \cdot \vec{r}} \exp^{-\iun \omega t} \qquad \vbfi\of{\vec{r},t} = \vbfi_0 \, \exp^{\iun \vec{k} \cdot \vec{r}} \exp^{-\iun \omega t}\]
+%We compute the Laplacian and the second derivative of the electric field.
+%\[\lp{\vefi} = - k^2 \vefi \qquad \pderiv[2]{\vefi}{t} = - \omega^2 \vefi\]
+%
+%
+\subsection{Dispersion relation}
+%
+Substituting the plane waves into d'Alembert's equation gives us the \emph{dispersion relation}.
+\[\frac{\omega^2}{c^2} \vefi - k^2 \vefi = 0 \qquad \omega = c \, k\]
+%
+%
+\subsection{Orientation of the fields}
+%
+Substituting the plane waves into \(\mathrm{M}_\mathrm{I}\) and \(\mathrm{M}_\mathrm{II}\)
+gives us the following conditions.
+\[\vec{k} \cdot \vefi = 0 \qquad \vec{k} \cdot \vbfi = 0\]
+This shows that the electric and magnetic fields are \emph{transverse}, i.e. they are perpendicular to the direction
+of propagation of the wave.\\
+Substituting instead into \(\mathrm{M}_\mathrm{III}\) and \(\mathrm{M}_\mathrm{IV}\)
+gives us the following conditions.
+\[\vec{k} \times \vefi = \frac{\omega}{\kappaf} \vbfi \qquad \vec{k} \times \vbfi = - \frac{\kappaf \, \omega}{c^2} \vefi\]
+Through the dispersion relation, these can be rewritten as follows.
+\[\vbfi = \frac{\kappaf}{c} \uvec{k} \times \vefi \qquad \vefi = - \frac{c}{\kappaf} \uvec{k} \times \vbfi\]
+This shows that the electric and magnetic field are perpendicular to each other.
+%Taking the norm of the second equation, recalling the identity for the norm of
+%a cross product and using the dispersion relation, we find the relation between the
+%magnitudes of the electric and magnetic fields in free space.
+%\[\nrm{\vec{k} \times \vefi} = \sqrt{k^2 \efi^2 - \of{\vec{k}\cdot\vefi}^2} = k \efi\]
+%\[k \efi = \frac{\omega}{\kappaf} \bfi \qquad \efi = \frac{c}{\kappaf} \bfi\]
+%
+%
+\subsection{Impedance of free space}
+%
+We can also compute the Poynting vector of the wave.
+\[\vpoy = \frac{\vefi \times \vbfi}{\alphaA} =
+\frac{\kappaf}{c} \frac{1}{\alphaA} \vefi \times \of{\uvec{k} \times \vefi} =
+\frac{\kappaf}{c} \frac{\efi^2}{\alphaA} \uvec{k}
+\]
+We take notice of the fact that it is in the same direction as the wave vector,
+i.e. in the direction of wave propagation.
+Taking just its norm we can write the following.
+\[\poy = \frac{\efi^2}{Z_0} \qquad Z_0 = \frac{c}{\kappaf} \alphaA = \frac{\kappac}{c} \alphaG\]
+Where \(Z_0\) is the \textbf{impedance of free space}.
+Another convention is sometimes in use, where one naïvely extends the
+impedance of free space found in the SI to another unit system. This does not, in
+general, have the correct units to be called an impedance and doesn’t, of course, give
+the correct ratio between the Poynting vector and the electric field. We shall denote
+this by \(\widetilde{Z}_0\).
+\[\widetilde{Z}_0 = \sqrt{\alphaG \, \alphaA} = \frac{c}{\sqrt{\kappac \kappaf}} \, \alphaA = \frac{\sqrt{\kappac \kappaf}}{c} \, \alphaG\]
+We see that this definition is identical to \(Z_0\) only when \(\kappac = \kappaf\).
+%
+%

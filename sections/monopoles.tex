@@ -1,0 +1,92 @@
+\section{Magnetic monopoles}
+%
+Looking at Maxwell's equations, there appears to be a fundamental lack of symmetry
+between the electric and magnetic fields.
+This lack of symmetry is due to the fact that, as of now, no experiment has ever
+observed particles which carry such a thing as \textbf{magnetic charge}, that is
+to say some particle which is capable of generating a magnetic field while standing still.
+All magnetic phenomena are related to the motion of \emph{electric} charges, whether
+this motion is macroscopic (as is the case with current-carrying wires) or microscopic
+(as is the case with bar magnets).\\[1em]
+Despite the absence of evidence, there have been theoretical arguments for the existence of such particles,
+and a correction to Maxwell's equations is in order to account for their presence.
+From here on we denote electric charges and currents  with the subscript \(\mathrm{e}\)
+and magnetic charges and currents with the subscript \(\mathrm{m}\).\\[1em]
+After introducing the concept of magnetic charge \(Q_\mathrm{m}\), the concept of
+magnetic current quickly follows. While we could, in principle, take a different
+proportionality constant between the current and the time derivative of charge,
+this would not be particularly useful, we thus use \(\kappac\) as we
+did for electric charge.
+\[I_\mathrm{m} = - \frac{1}{\kappac} \pderiv{Q_\mathrm{m}}{t}\]
+%
+%
+\subsection{Continuity equation}
+%
+Naturally, we can define the corresponding densities.
+\[Q_\mathrm{m} = \iiint_\Omega \rho_\mathrm{m}\of{\vec{\xi},t} \de^3\xi
+\qquad I_\mathrm{m} = \iint_\Sigma \vec{j}_\mathrm{m}\of{\vec{\xi},t} \cdot \vec{n} \de^2\xi\]
+The densities must satisfy a continuity equation, the proof of which is identical
+to the one given for the electric case, and shall not be repeated.
+\[\frac{1}{\kappac} \pderiv{\rho_\mathrm{m}}{t} + \dvg{\vec{j}_\mathrm{m}} = 0\]
+Due to the existence of a continuity equation, we also have the following relation
+with the velocity field, once again the proof is identical to the previous.
+\[\vec{j}_\mathrm{m}\of{\vec{r},t} = \frac{\vec{v}\of{\vec{r},t} \, \rho_\mathrm{m}\of{\vec{r},t}}{\kappac}\]
+%
+%
+\subsection{Maxwell’s equations}
+%
+To correct Maxwell's equations we introduce two new coupling constants \(\betaG\)
+and \(\betaA\) for Gauss's law and Faraday--Maxwell's law, respectively.
+\begin{center}
+  \begin{tabular}{ccccl}
+    \(\mathrm{M}_\mathrm{I}\) & \textbf{Gauss's law (for \(\vefi\))} & \(\dvg{\vefi}\) & \(=\) & \(\alphaG \, \rho_\mathrm{e}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \textbf{Gauss's law (for \(\vbfi\))} & \(\dvg{\vbfi}\) & \(=\) & \(\betaG \, \rho_\mathrm{m}\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \textbf{Faraday--Maxwell's law} & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \betaA \, \vec{j}_\mathrm{m} - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \textbf{Ampère--Maxwell's law} & \(\crl{\vbfi}\) & \(=\) & \(\displaystyle \alphaA \, \vec{j}_\mathrm{e} + \frac{1}{\gammaM} \pderiv{\vefi}{t}\) \\
+  \end{tabular}
+\end{center}
+%
+%
+\subsection{Lorentz force}
+%
+We must now find the correct expression for the Lorentz force of a magnetically
+charged particle. To do so we attempt to find an analogue of the Faraday--Neumann--Lenz
+law that relates the flux of the electric field to the work done per unit charge.
+As before, we consider a closed loop delimiting a surface \(\Sigma\) and we take
+the time derivative of the flux of the electric field through this surface.
+\[\D{\Phi_\vefi}{t} = \D{}{t} \iint_{\Sigma\of{t}} \vefi\of{\vec{\xi},t} \cdot \vec{n}\of{\vec{\xi},t} \de^2\xi\]
+We apply the Reynolds transport theorem in order to compute this derivative.
+\[\D{\Phi_\vefi}{t} = \iint_{\Sigma\of{t}} \of{\pderiv{\vefi}{t} + \of{\dvg{\vefi}} \vec{v}} \cdot \vec{n} \, \de^2\xi
+- \oint_{\partial\Sigma(t)} \of{\vec{v} \times \vefi} \cdot \vec{t}\,  \de\xi\]
+This time the field is not solenoidal, using Gauss's law for the electric field and the Ampère--Maxwell law, we get the
+following expression.
+\[\D{\Phi_\vefi}{t} = \iint_{\Sigma\of{t}} \of{\gammaM \crl{\vbfi} - \alphaA \gammaM \vec{j}_\mathrm{e} +
+\alphaG \, \rho_\mathrm{e} \, \vec{v}} \cdot \vec{n} \, \de^2\xi
+- \oint_{\partial\Sigma(t)} \of{\vec{v} \times \vefi} \cdot \vec{t}\,  \de\xi\]
+\[\D{\Phi_\vefi}{t} = \iint_{\Sigma\of{t}} \of{- \alphaA \gammaM \vec{j}_\mathrm{e} +
+\alphaG \, \rho_\mathrm{e} \, \vec{v}} \cdot \vec{n} \, \de^2\xi
++ \oint_{\partial\Sigma(t)} \of{\gammaM \, \vbfi - \vec{v} \times \vefi} \cdot \vec{t}\,  \de\xi\]
+We recall that \(\alphaA \gammaM = \alphaG \kappac\),
+giving us the following expression.
+\[\D{\Phi_\vefi}{t} = \alphaG \iint_{\Sigma\of{t}} \of{ \rho_\mathrm{e} \, \vec{v} - \kappac \, \vec{j}_\mathrm{e}} \cdot \vec{n} \, \de^2\xi + \gammaM \oint_{\partial\Sigma(t)} \of{ \vbfi - \frac{\vec{v} \times \vefi}{\gammaM}} \cdot \vec{t} \, \de\xi\]
+Then we notice that the first integral vanishes, because \(\rho_\mathrm{e} \, \vec{v} = \kappac \, \vec{j}_\mathrm{e}\).
+\[\D{\Phi_\vefi}{t} = \gammaM \oint_{\partial\Sigma(t)} \of{ \vbfi - \frac{\vec{v} \times \vefi}{\gammaM}} \cdot \vec{t} \, \de\xi\]
+We have managed to find an expression similar to the Faraday--Neumann--Lenz law,
+but some care must be taken in naming the right hand side of this equation. We shall
+call this \textbf{magnetomotive force} \(\emf_\mathrm{m}\), but we remark that this term is already
+in use for a distinct concept in magnetic circuits.
+\begin{equation}
+  \D{\Phi_\vefi}{t} = \gammaM \, \emf_\mathrm{m}
+\end{equation}
+We notice there is a difference in sign with the Faraday--Neumann--Lenz law
+for the electromotive force, this is in line with the difference in sign between the
+Faraday--Maxwell and the Ampère--Maxwell laws. By analogy with the electromotive force,
+we can reasonably expect the Lorentz force for a moving magnetically charge particle to have the following expression.
+\begin{equation}
+  \vec{F}\of{\vec{r},t} = q_\mathrm{m} \of{\vbfi\of{\vec{r},t} - \frac{\vec{v} \times \vefi\of{\vec{r},t}}{\gammaM}}
+\end{equation}
+If a particle has both an electric and magnetic charge, then the Lorentz force must
+include both contributions.
+\begin{equation}
+  \vec{F} = q_\mathrm{e} \of{\vefi + \frac{\vec{v} \times \vbfi}{\gammaF}} + q_\mathrm{m} \of{\vbfi - \frac{\vec{v} \times \vefi}{\gammaM}}
+\end{equation}
