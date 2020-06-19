@@ -296,9 +296,13 @@ We now use Gauss's law for magnetism to remove the term involving the divergence
 of the magnetic field, which is zero.
 \[\D{\Phi_\vbfi}{t} = \iint_{\Sigma\of{t}} \pderiv{\vbfi}{t} \cdot \vec{n}\of{\vec{\xi},t} \de^2\xi
 - \oint_{\partial\Sigma(t)} \of{\vec{v}\of{\vec{\xi},t} \times \vbfi\of{\vec{\xi},t}} \cdot \vec{t}\of{\vec{\xi},t} \de\xi\]
-We then use Faraday--Maxwell's law to replace the first term.
-\[\D{\Phi_\vbfi}{t} = - \gammaF \oint_{\partial\Sigma\of{t}} \vefi\of{\vec{\xi},t} \cdot \vec{t}\of{\vec{\xi},t} \de\xi
-- \oint_{\partial\Sigma(t)} \of{\vec{v}\of{\vec{\xi},t} \times \vbfi\of{\vec{\xi},t}} \cdot \vec{t}\of{\vec{\xi},t} \de\xi\]
+We then use Faraday--Maxwell's law to replace the first term
+\begin{align*}
+\D{\Phi_\vbfi}{t} &= - \gammaF \iint_{\Sigma\of{t}} \crl{\vefi} \cdot \vec{n}\of{\vec{\xi},t} \de^2\xi
+- \oint_{\partial\Sigma(t)} \of{\vec{v}\of{\vec{\xi},t} \times \vbfi\of{\vec{\xi},t}} \cdot \vec{t}\of{\vec{\xi},t} \de\xi \\
+\D{\Phi_\vbfi}{t} &= - \gammaF \oint_{\partial\Sigma\of{t}} \vefi\of{\vec{\xi},t} \cdot \vec{t}\of{\vec{\xi},t} \de\xi
+- \oint_{\partial\Sigma(t)} \of{\vec{v}\of{\vec{\xi},t} \times \vbfi\of{\vec{\xi},t}} \cdot \vec{t}\of{\vec{\xi},t} \de\xi
+\end{align*}
 Finally, we recognise the expressions for the induced and motional electromotive
 forces.
 \[\D{\Phi_\vbfi}{t} = - \gammaF \emf_\mathrm{ind} - \kappaf \, \emf_\mathrm{mot}\]
@@ -996,13 +1000,13 @@ to the one given for the electric case, and shall not be repeated.
 Due to the existence of a continuity equation, we also have the following relation
 with the velocity field, once again the proof is identical to the previous.
 \[\vec{j}_\mathrm{m}\of{\vec{r},t} = \frac{\vec{v}\of{\vec{r},t} \, \rho_\mathrm{m}\of{\vec{r},t}}{\kappac}\]
-To correct Maxwell's equations we introduce two new coupling constants \(\beta_\mathrm{G}\)
-and \(\beta_\mathrm{A}\) for Gauss's law and Ampère--Maxwell's law, respectively.
+To correct Maxwell's equations we introduce two new coupling constants \(\betaG\)
+and \(\betaA\) for Gauss's law and Faraday--Maxwell's law, respectively.
 \begin{center}
   \begin{tabular}{ccccl}
     \(\mathrm{M}_\mathrm{I}\) & \textbf{Gauss's law (for \(\vefi\))} & \(\dvg{\vefi}\) & \(=\) & \(\alphaG \, \rho_\mathrm{e}\) \\[1em]
-    \(\mathrm{M}_\mathrm{II}\) & \textbf{Gauss's law (for \(\vbfi\))} & \(\dvg{\vbfi}\) & \(=\) & \(\beta_\mathrm{G} \, \rho_\mathrm{m}\) \\[1em]
-    \(\mathrm{M}_\mathrm{III}\) & \textbf{Faraday--Maxwell's law} & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \beta_\mathrm{A} \, \vec{j}_\mathrm{m} - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \textbf{Gauss's law (for \(\vbfi\))} & \(\dvg{\vbfi}\) & \(=\) & \(\betaG \, \rho_\mathrm{m}\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \textbf{Faraday--Maxwell's law} & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \betaA \, \vec{j}_\mathrm{m} - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
     \(\mathrm{M}_\mathrm{IV}\) & \textbf{Ampère--Maxwell's law} & \(\crl{\vbfi}\) & \(=\) & \(\displaystyle \alphaA \, \vec{j}_\mathrm{e} + \frac{1}{\gammaM} \pderiv{\vefi}{t}\) \\
   \end{tabular}
 \end{center}
