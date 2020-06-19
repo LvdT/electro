@@ -1,0 +1,57 @@
+\section{Conduction}
+%
+Another interesting response function is the one linking current density to the
+electric field, called \textbf{conductivity} \(\sigma\).
+\begin{equation}
+\vec{j} = \sigma \vefi
+\end{equation}
+Its reciprocal is called \textbf{resistivity} and is unfortunately denoted with
+the letter \(\rho\), risking confusion with the charge density.
+Resistivity is widely used in engineering applications, but in solid state physics
+it is more common to work with conductivity, possibly because the electric field
+causing the current density is the more direct implication.
+%
+%
+\subsection{Ohm’s Laws}
+%
+We can consider a simple system consisting of a conductor of length \(\ell\),
+cross section \(a\) and uniform conductivity \(\sigma\) to which a uniform electric
+field \(\vefi\of{t}\) is applied.
+The current density through the conductor will have the following expression,
+where \(f\of{\vec{x}}\) is a function that is unity within the conductor an zero outside.
+\[\vec{j}\of{\vec{x},t} = \sigma f\of{\vec{x}}\vefi\of{t} \]
+We can compute the current from the definition of current density, for brevity we
+stop writing the time dependence explicitly.
+\[i = \iint_{\Sigma} \vec{j}\of{\vec{\xi}} \cdot \vec{n} \, \de^2\xi
+= \sigma \vefi \cdot \vec{n} \iint_\Sigma f\of{\vec{\xi}} \, \de^2\xi\]
+From the way we defined \(f\), its integral is the area of the cross section.
+\[i = \sigma a \vefi \cdot \vec{n}\]
+We integrate again along the path \(\gamma\) of the conductor.
+\[\int_\gamma i \de\lambda = \sigma a \int_\gamma \vefi \cdot \vec{n} \, \de\lambda\]
+The normal to the cross section \(\vec{n}\) is the tangent to the path of the conductor,
+allowing us to recognise the expression for the electromotive force.
+\[i \ell = \sigma a \emf\]
+This leads us to Ohm’s laws expressed in terms of the \textbf{conductance} \(G\).
+\[i = G \emf \qquad G = \sigma \frac{a}{\ell}\]
+%
+%
+\subsection{Drude model}
+%
+A very simple model for conduction involves considering a gas of charged particles
+with mass \(m\), charge \(q\) and number density \(n\) subject to scattering with
+a relaxation time of \(\tau\).
+The motion of these particles is described by the following differential equation.
+\[\D{\vec{p}}{t} = q \vefi - \frac{1}{\tau} \vec{p}\]
+This equation can be easily solved in Fourier space.
+\[- \icmp \omega \vec{p} = q \vefi - \frac{1}{\tau} \vec{p}
+\qquad
+\vec{p} = \frac{q \tau}{1 - \icmp \omega \tau} \vefi\]
+We now recall equation \eqref{eq::current-density-moving} and observe that charge
+density is simply \(nq\).
+\[\vec{j} = \frac{\rho}{\kappac} \vec{v} = \frac{nq}{\kappac} \frac{\vec{p}}{m}
+= \frac{n q^2 \tau}{\kappac m} \frac{1}{1 - \icmp \omega \tau} \vefi\]
+We denote the steady state (\(\omega \to 0\)) conductivity as \(\sigma_0\),
+obtaining the following expression for conductivity as a function of angular frequency.
+\begin{equation}
+\sigma(\omega) = \frac{\sigma_0}{1 - \icmp \omega \tau} \qquad \sigma_0 = \frac{n q^2 \tau}{\kappac m}
+\end{equation}
