@@ -11,26 +11,39 @@ Resistivity is widely used in engineering applications, but in solid state physi
 it is more common to work with conductivity, possibly because the electric field
 causing the current density is the more direct implication.
 %
+\newpage
 %
 \subsection{Ohm’s Laws}
 %
-We can consider a simple system consisting of a conductor of length \(\ell\),
-cross section \(a\) and uniform conductivity \(\sigma\) to which a uniform electric
-field \(\vefi\of{t}\) is applied.
-The current density through the conductor will have the following expression,
-where \(f\of{\vec{x}}\) is a function that is unity within the conductor an zero outside.
-\[\vec{j}\of{\vec{x},t} = \sigma f\of{\vec{x}}\vefi\of{t} \]
-We can compute the current from the definition of current density, for brevity we
-stop writing the time dependence explicitly.
-\[i = \iint_{\Sigma} \vec{j}\of{\vec{\xi}} \cdot \vec{n} \, \de^2\xi
-= \sigma \vefi \cdot \vec{n} \iint_\Sigma f\of{\vec{\xi}} \, \de^2\xi\]
-From the way we defined \(f\), its integral is the area of the cross section.
-\[i = \sigma a \vefi \cdot \vec{n}\]
-We integrate again along the path \(\gamma\) of the conductor.
-\[\int_\gamma i \de\lambda = \sigma a \int_\gamma \vefi \cdot \vec{n} \, \de\lambda\]
-The normal to the cross section \(\vec{n}\) is the tangent to the path of the conductor,
-allowing us to recognise the expression for the electromotive force.
-\[i \ell = \sigma a \emf\]
+We consider a system consisting of a conductor with uniform conductivity \(\sigma\)
+described by a curve \(\gamma\) parametised by \(\lambda\).
+The curve has length \(\ell = \int_\gamma \de\lambda\).
+The conductor has a uniform cross section which can be represented by a function
+\(f\of{\vec{r}}\), where \(\vec{r}\) is the radial coordinate in the normal plane,
+which is unity within the conductor an zero outside.
+The area of the cross section is \(a = \iint_{\mathbb{R}^2} f\of{\vec{r}} \de^2 r\).\\[1em]
+An electric field \(\vefi\of{\lambda,t}\) is applied to the curve, we consider the
+approximation in which the thickness of the conductor is small enough that we can
+disregard changes in the field along the radial coordinate, which we have represented
+by a dependence on \(\lambda\) alone.
+The current density through the conductor will have the following expression.
+\[\vec{j}\of{\vec{x},t} = \sigma f\of{\vec{r}}\vefi\of{\lambda,t} \]
+We can compute the current at a point \(\lambda\) along the curve by integrating
+on a surface \(\Sigma\) in the normal plane that is wide enough to include all points
+where \(f\of{\vec{r}} \neq 0\).
+We observe that the normal vector to such a surface is simply the tangent vector
+to the curve and therefore we denote it as \(\vec{t}(\lambda)\).
+\begin{align*}
+i\of{\lambda,t} &= \iint_{\Sigma} \vec{j}\of{\vec{x}} \cdot \vec{t}\of{\lambda} \, \de^2 r
+= \sigma \vefi\of{\lambda,t} \cdot \vec{t}\of{\lambda} \iint_\Sigma f\of{\vec{r}} \, \de^2 r \\
+&= \sigma a \vefi\of{\lambda,t} \cdot \vec{t}\of{\lambda}
+\end{align*}
+We now compute the average current \(i\of{t}\) across the conductor.
+\[i\of{t} = \frac{1}{\ell} \int_\gamma i\of{\lambda,t} \de\lambda = \sigma \frac{a}{\ell} \int_\gamma \vefi\of{\lambda,t} \cdot \vec{t}\of{\lambda} \de\lambda\]
+This allows us to recognise the expression for the electromotive force (technically
+only for the induced electromotive force, but given the absence of a magnetic
+field the motional electromotive force would be zero).
+\[i\of{t} = \sigma \frac{a}{\ell} \emf\of{t}\]
 This leads us to \textbf{Ohm’s laws} expressed in terms of the \textbf{conductance} \(G\).
 \[i = G \emf \qquad G = \sigma \frac{a}{\ell}\]
 The laws are more commonly written using the reciprocal quantity, the
