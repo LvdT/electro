@@ -22,15 +22,22 @@ third terms in the right hand side.
 - \vefi \cdot \vec{j} &= \dvg{\of{\frac{\vefi \times \vbfi}{\alphaA}}} +
 \frac{1}{2} \pderiv{}{t} \of{\frac{\vefi \cdot \vefi}{\kappac\alphaG} + \frac{\vbfi \cdot \vbfi}{\kappaf\alphaA}}\\
 - \vefi \cdot \vec{j} &= \dvg{\of{\frac{\vefi \times \vbfi}{\alphaA}}} +
-\frac{1}{2\kappac} \pderiv{}{t} \of{\frac{\vefi \cdot \vefi}{\alphaG} + \frac{\kappac}{\kappaf}\frac{\vbfi \cdot \vbfi}{\alphaA}}
+\frac{1}{2\kappac} \pderiv{}{t} \of{\frac{\vefi \cdot \vefi}{\alphaG} + \frac{\kappac}{\kappaf}\frac{\vbfi \cdot \vbfi}{\alphaA}}\\
+- \kappac \vefi \cdot \vec{j} &= \dvg{\of{\frac{\kappac}{\alphaA}\vefi \times \vbfi}} +
+\frac{1}{2} \pderiv{}{t} \of{\frac{\vefi \cdot \vefi}{\alphaG} + \frac{\kappac}{\kappaf}\frac{\vbfi \cdot \vbfi}{\alphaA}}
 \end{align*}
-The left hand side is related to the power density dissipated due to the Joule--Lenz
-effect; this suggests that the term in the derivative is an \textbf{energy density},
+The left hand side is the power density dissipated due to the Joule--Lenz effect;
+this suggests that the term in the derivative is an \textbf{energy density},
 and the vector of which we are taking the divergence is its flux, called the
 \textbf{Poynting vector} \(\vpoy\).
-\[\vpoy = \frac{\vefi \times \vbfi}{\alphaA} \qquad u = \frac{1}{2} \of{\frac{\vefi \cdot \vefi}{\alphaG} + \frac{\kappac}{\kappaf}\frac{\vbfi \cdot \vbfi}{\alphaA}}\]
+\begin{equation}
+\vpoy = \frac{\kappac}{\alphaA} \vefi \times \vbfi \qquad
+u = \frac{1}{2} \of{\frac{\vefi \cdot \vefi}{\alphaG} + \frac{\kappac}{\kappaf}\frac{\vbfi \cdot \vbfi}{\alphaA}}
+\end{equation}
 In these terms, Poynting's theorem states the following.
-\[\frac{1}{\kappac} \D{u}{t} = \frac{1}{\kappac} \pderiv{u}{t} + \dvg{\vpoy}\]
+\begin{equation}
+\D{u}{t} = \pderiv{u}{t} + \dvg{\vpoy}
+\end{equation}
 %
 \subsection{Maxwell's stress tensor}
 %
@@ -53,11 +60,11 @@ of \(\vbfi\), which is zero, so it can be freely added to the expression.
 \[\vec{f} + \frac{\kappac}{c^2} \pderiv{}{t} \of{\frac{\vefi \times \vbfi}{\alphaA}} = \frac{\vefi \of{\dvg{\vefi}} - \vefi \times \of{\crl{\vefi}}}{\alphaG}
   + \frac{\kappac}{\kappaf} \frac{\vbfi \of{\dvg{\vbfi}} - \vbfi \times \of{\crl{\vbfi}}}{\alphaA}\]
 We recognise the Poynting vector and use \(\vec{a} \times \of{\crl{\vec{a}}} = \frac{1}{2} \grd{\of{\vec{a}\cdot\vec{a}}} - \of{\vec{a} \cdot \grd{}}\vec{a}\).
-\[\vec{f} + \frac{\kappac}{c^2} \pderiv{\vpoy}{t} =
+\[\vec{f} + \frac{1}{c^2} \pderiv{\vpoy}{t} =
   \frac{\vefi \of{\dvg{\vefi}} + \of{\vefi \cdot \grd{}} \vefi - \frac{1}{2} \grd{\of{\vefi\cdot\vefi}}}{\alphaG}
   + \frac{\kappac}{\kappaf} \frac{\vbfi \of{\dvg{\vbfi}} + \of{\vbfi \cdot \grd{}} \vbfi - \frac{1}{2} \grd{\of{\vbfi\cdot\vbfi}}}{\alphaA}\]
 We use the identity \(\dvg{\of{\vec{a} \otimes \vec{a}}} = \vec{a} \of{\dvg{\vec{a}}} + \of{\vec{a} \cdot \grd{}}\vec{a}\).
-\[\vec{f} + \frac{\kappac}{c^2} \pderiv{\vpoy}{t} =
+\[\vec{f} + \frac{1}{c^2} \pderiv{\vpoy}{t} =
   \frac{\dvg{\of{\vefi\otimes\vefi}} - \frac{1}{2} \grd{\of{\vefi\cdot\vefi}}}{\alphaG}
   + \frac{\kappac}{\kappaf} \frac{\dvg{\of{\vbfi\otimes\vbfi}} - \frac{1}{2} \grd{\of{\vbfi\cdot\vbfi}}}{\alphaA}\]
 By recalling that we can write the gradient of a scalar function as the divergence
@@ -67,7 +74,7 @@ side of this expression as the divergence of a tensor called the \textbf{Maxwell
   - \frac{\vec{1}}{2} \of{\frac{\vefi \cdot \vefi}{\alphaG} + \frac{\kappac}{\kappaf}\frac{\vbfi \cdot \vbfi}{\alphaA}}\]
 We obtain the following expression, which expresses conservation of momentum (recall
 that force is the time derivative of momentum).
-\[\vec{f} + \frac{\kappac}{c^2} \pderiv{\vpoy}{t} = \dvg{\vmxw}\]
+\[\D{\vec{p}}{t} + \frac{1}{c^2} \pderiv{\vpoy}{t} = \dvg{\vmxw}\]
 Looking at the expression for \(\vmxw\), we notice that it can be written as a tensor
 minus half its trace. Moreover, the trace part is exactly the energy density for
 the electromagnetic field which we found in Poynting's theorem, for this reason
