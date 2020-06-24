@@ -8,7 +8,7 @@ vectors or tensors of higher orders.
 The most general case is given by the \textbf{Volterra series}, giving a nonlinear
 response that depends upon the value of the stimulus at all points in space and
 at all instants in time.
-\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\vec{r},\brof{\vec{\xi}_m},t,\brof{\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\vec{r},\offf{\vec{\xi}_m},t,\offf{\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
 The functions \(\varrho_n\) are the \textbf{Volterra kernels}.
 In this formula and the following, we shall use the convention that the index \(m\)
 varies between \(1\) and \(n\).
@@ -22,12 +22,12 @@ An important assumption in physics is that physical laws must be time-invariant,
 i.e. there is no such thing as \emph{absolute time}.
 Therefore, the kernels can only depend on differences between their
 temporal arguments, and not just the argument itself.
-\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\vec{r},\brof{\vec{\xi}_m},\brof{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\vec{r},\offf{\vec{\xi}_m},\offf{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
 In addition, physical systems must obey causality; this further restricts the
 choice of kernels to functions that vanish if, for any of their arguments, \(\tau_m > t\)
 so that future values of the stimulus cannot influence the response.
 This can be enforced through the use of the Heaviside step function \(\Theta\).
-\[\varrho_n\of{\vec{r},\brof{\vec{\xi}_m},\brof{t-\tau_m}} = \varrho_n\of{\vec{r},\brof{\vec{\xi}_m},\brof{t-\tau_m}} \prod_{j=1}^n \Theta\of{t-\tau_j}\]
+\[\varrho_n\of{\vec{r},\offf{\vec{\xi}_m},\offf{t-\tau_m}} = \varrho_n\of{\vec{r},\offf{\vec{\xi}_m},\offf{t-\tau_m}} \prod_{j=1}^n \Theta\of{t-\tau_j}\]
 The spatial part of the function cannot in general be simplified.
 Some physical systems, for example crystalline materials, are only invariant
 under finite translations.
@@ -36,17 +36,17 @@ they don't do so in a general enough manner to be treated here, but they do prev
 us from having a function that only depends on distances, rather than absolute positions.\\[1em]
 In systems that are symmetric under infinitesimal translations, such as fluids
 or amorphous materials, we can write the Volterra series in the \textbf{semilocal approximation}.
-\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\brof{\vec{r}-\vec{\xi}_m},\brof{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\offf{\vec{r}-\vec{\xi}_m},\offf{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
 An even stronger approximation is the \textbf{local approximation}, where the
 response is assumed to only be due to the value of the stimulus at the same
 point in space.
 That is to say, the spatial part of the kernel is a Dirac delta.
-\[\varrho_n\of{\brof{\vec{r}-\vec{\xi}_m},\brof{t-\tau_m}} = \varrho_n\of{\brof{t-\tau_m}} \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\]
+\[\varrho_n\of{\offf{\vec{r}-\vec{\xi}_m},\offf{t-\tau_m}} = \varrho_n\of{\offf{t-\tau_m}} \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\]
 In terms of the Volterra series, this gives us the following expression.
-\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\brof{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{r},\tau_j} \de\tau_j\]
+\[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\offf{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{r},\tau_j} \de\tau_j\]
 Finally, we have the case of a \textbf{non-dispersive medium}, where both the
 spatial and temporal part of the kernel are Dirac deltas.
-\[\varrho_n\of{\brof{\vec{r}-\vec{\xi}_m},\brof{t-\tau_m}} = \varrho_n \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\delta\of{t-\tau_j}\]
+\[\varrho_n\of{\offf{\vec{r}-\vec{\xi}_m},\offf{t-\tau_m}} = \varrho_n \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\delta\of{t-\tau_j}\]
 In this last case, the Volterra series simply becomes a Taylor series.
 \[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \varrho_n \, \mathcal{X}^n\of{\vec{r},t}\]
 %
