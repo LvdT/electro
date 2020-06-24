@@ -41,6 +41,11 @@
 \NewDocumentCommand{\betaG}{}{\ensuremath{\beta_\mathrm{G}}}
 \NewDocumentCommand{\betaA}{}{\ensuremath{\beta_\mathrm{A}}}
 
+\LetLtxMacro\originalleft\left
+\LetLtxMacro\originalright\right
+\RenewDocumentCommand{\left}{}{\mathopen{}\mathclose\bgroup\originalleft}
+\RenewDocumentCommand{\right}{}{\aftergroup\egroup\originalright}
+
 \NewDocumentCommand{\abs}{m}{\left|{#1}\right|}
 \NewDocumentCommand{\of}{m}{\left({#1}\right)}
 \NewDocumentCommand{\brof}{m}{\left\{{#1}\right\}}
