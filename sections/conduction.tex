@@ -5,38 +5,52 @@ electric field, called \textbf{conductivity} \(\sigma\).
 \begin{equation}
 \vec{j} = \sigma \vefi
 \end{equation}
-Its reciprocal is called \textbf{resistivity} and is unfortunately denoted with
+Conduction is due to the motion of charged particles called \textbf{(charge) carriers}.
+In the presence of multiple types of charge carriers, each will contribute to the
+total conductivity of the material.
+\[\sigma = \sum_n \sigma_n\]
+A different view of this phenomenon can be given by studying the \textbf{mobility}
+\(\mu\), which links the velocity to the electric field instead.
+\[\vec{v} = \mu \vefi\]
+The main difference in this approach is that, in general, each carrier will have
+a different mobility within the same material.
+In other words, while conductivity is a property of the material, mobility is a
+property of a particle inside that material.\\
+If we consider a single type of carrier, with charge \(q\) and number density \(n\of{\vec{r},t}\),
+we can recall equation \eqref{eq::current-density-moving} and observe that
+\(\rho\of{\vec{r},t} = q n\of{\vec{r},t}\) in order to write the current density
+in terms of velocity.
+\[\vec{j} = \frac{\rho}{\kappac} \vec{v} = \frac{nq}{\kappac} \vec{v}\]
+This allows us to find an expression for the conductivity due to that type of
+carrier in terms of their density and mobility.
+\[\sigma = \frac{nq}{\kappac} \mu\]
+The reciprocal of conductivity is called \textbf{resistivity} and is unfortunately denoted with
 the letter \(\rho\), risking confusion with the charge density.
-Resistivity is widely used in engineering applications, but in solid state physics
-it is more common to work with conductivity, possibly because the electric field
-causing the current density is the more direct implication.
 %
-\newpage
-%
-\subsection{Ohm’s Laws}
+\subsection{Circuit Laws}
 %
 We consider a system consisting of a conductor with uniform conductivity \(\sigma\)
 described by a curve \(\gamma\) parametised by \(\lambda\).
 The curve has length \(\ell = \int_\gamma \de\lambda\).
 The conductor has a uniform cross section which can be represented by a function
-\(f\of{\vec{r}}\), where \(\vec{r}\) is the radial coordinate in the normal plane,
+\(f\of{\vec{\xi}}\), where \(\vec{\xi}\) is the radial coordinate in the normal plane,
 which is unity within the conductor an zero outside.
-The area of the cross section is \(a = \iint_{\mathbb{R}^2} f\of{\vec{r}} \de^2 r\).\\[1em]
+The area of the cross section is \(a = \iint_{\mathbb{R}^2} f\of{\vec{\xi}} \de^2 \xi\).\\[1em]
 An electric field \(\vefi\of{\lambda,t}\) is applied to the curve, we consider the
 approximation in which the thickness of the conductor is small enough that we can
 disregard changes in the field along the radial coordinate, which we have represented
 by a dependence on \(\lambda\) alone.
 The current density through the conductor will have the following expression.
-\[\vec{j}\of{\vec{x},t} = \sigma f\of{\vec{r}}\vefi\of{\lambda,t} \]
+\[\vec{j}\of{\vec{r},t} = \sigma f\of{\vec{\xi}}\vefi\of{\lambda,t} \]
 We can compute the current at a point \(\lambda\) along the curve by integrating
 on a surface \(\Sigma\) in the normal plane that is wide enough to include all points
-where \(f\of{\vec{r}} \neq 0\).
+where \(f\of{\vec{\xi}} \neq 0\).
 We observe that the normal vector to such a surface is simply the tangent vector
 to the curve and therefore we denote it as \(\vec{t}(\lambda)\).
 \begin{align*}
-i\of{\lambda,t} &= \iint_{\Sigma} \vec{j}\of{\vec{x}} \cdot \vec{t}\of{\lambda} \, \de^2 r
-= \sigma \vefi\of{\lambda,t} \cdot \vec{t}\of{\lambda} \iint_\Sigma f\of{\vec{r}} \, \de^2 r \\
-&= \sigma a \vefi\of{\lambda,t} \cdot \vec{t}\of{\lambda}
+i\of{\lambda,t} &= \iint_{\Sigma} \vec{j}\of{\vec{r},t} \cdot \vec{t}\of{\lambda} \, \de^2 \xi
+= \sigma \, \vefi\of{\lambda,t} \cdot \vec{t}\of{\lambda} \iint_\Sigma f\of{\vec{\xi}} \, \de^2 \xi \\
+&= \sigma \, a \, \vefi\of{\lambda,t} \cdot \vec{t}\of{\lambda}
 \end{align*}
 We now compute the average current \(i\of{t}\) across the conductor.
 \[i\of{t} = \frac{1}{\ell} \int_\gamma i\of{\lambda,t} \de\lambda = \sigma \frac{a}{\ell} \int_\gamma \vefi\of{\lambda,t} \cdot \vec{t}\of{\lambda} \de\lambda\]
@@ -44,7 +58,7 @@ This allows us to recognise the expression for the electromotive force (technica
 only for the induced electromotive force, but given the absence of a magnetic
 field the motional electromotive force would be zero).
 \[i\of{t} = \sigma \frac{a}{\ell} \emf\of{t}\]
-This leads us to \textbf{Ohm’s laws} expressed in terms of the \textbf{conductance} \(G\).
+This leads us to \textbf{Ohm’s law} and \textbf{Pouillet’s law} in terms of the \textbf{conductance} \(G\).
 \[i = G \emf \qquad G = \sigma \frac{a}{\ell}\]
 The laws are more commonly written using the reciprocal quantity, the
 \textbf{resistance} \(R\).
@@ -56,18 +70,19 @@ The laws are more commonly written using the reciprocal quantity, the
 A very simple model for conduction involves considering a gas of charged particles
 with mass \(m\), charge \(q\) and number density \(n\) subject to scattering with
 a relaxation time of \(\tau\).
-The motion of these particles is described by the following differential equation.
+The motion of these particles is described by the following differential equation,
+where \(\vec{p}\) is the average momentum of a particle.
 \[\D{\vec{p}}{t} = q \vefi - \frac{1}{\tau} \vec{p}\]
 This equation can be easily solved in Fourier space.
 \[- \icmp \omega \vec{p} = q \vefi - \frac{1}{\tau} \vec{p}
 \qquad
 \vec{p} = \frac{q \tau}{1 - \icmp \omega \tau} \vefi\]
-We now recall equation \eqref{eq::current-density-moving} and observe that charge
-density is simply \(nq\).
-\[\vec{j} = \frac{\rho}{\kappac} \vec{v} = \frac{nq}{\kappac} \frac{\vec{p}}{m}
-= \frac{n q^2 \tau}{\kappac m} \frac{1}{1 - \icmp \omega \tau} \vefi\]
-We denote the steady state (\(\omega \to 0\)) conductivity as \(\sigma_0\),
-obtaining the following expression for conductivity as a function of angular frequency.
+Bringing this in terms of velocity allows us to find the mobility of the carriers.
+\[\vec{v} = \frac{q\tau}{m} \frac{1}{1 - \icmp \omega \tau} \vefi\]
+We denote the steady state (\(\omega \to 0\)) mobility as \(\mu_0\),
+obtaining the following expression for mobility as a function of angular frequency.
+\[\mu(\omega) = \frac{\mu_0}{1 - \icmp \omega \tau} \qquad \mu_0 = \frac{q \tau}{m}\]
+This, in turn, allows us to write the conductivity of our gas.
 \begin{equation}
-\sigma(\omega) = \frac{\sigma_0}{1 - \icmp \omega \tau} \qquad \sigma_0 = \frac{n q^2 \tau}{\kappac m}
+\sigma(\omega) = \frac{\sigma_0}{1 - \icmp \omega \tau} \qquad \sigma_0 = \frac{n \tau q^2}{\kappac m}
 \end{equation}
