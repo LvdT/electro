@@ -7,10 +7,12 @@ electric field, called \textbf{conductivity} \(\sigma\).
 \end{equation}
 Conduction is due to the motion of charged particles called \textbf{(charge) carriers}.
 In the presence of multiple types of charge carriers, each will contribute to the
-total conductivity of the material.
+total conductivity of the material, allowing us to express the latter as a sum of
+several contributions.
 \[\sigma = \sum_n \sigma_n\]
 A different view of this phenomenon can be given by studying the \textbf{mobility}
-\(\mu\), which links the velocity to the electric field instead.
+\(\mu\) (a symbol unfortunately shared with permeability), which links the
+\emph{average} or \emph{drift} velocity to the electric field instead.
 \[\vec{v} = \mu \vefi\]
 The main difference in this approach is that, in general, each carrier will have
 a different mobility within the same material.
@@ -21,11 +23,38 @@ we can recall equation \eqref{eq::current-density-moving} and observe that
 \(\rho\of{\vec{r},t} = q n\of{\vec{r},t}\) in order to write the current density
 in terms of velocity.
 \[\vec{j} = \frac{\rho}{\kappac} \vec{v} = \frac{nq}{\kappac} \vec{v}\]
-This allows us to find an expression for the conductivity due to that type of
-carrier in terms of their density and mobility.
+This gives an expression linking mobility and conductivity for a specific type of carrier.
 \[\sigma = \frac{nq}{\kappac} \mu\]
-The reciprocal of conductivity is called \textbf{resistivity} and is unfortunately denoted with
-the letter \(\rho\), risking confusion with the charge density.
+The reciprocal of conductivity is called the \textbf{resistivity} \(\rho\) (this
+time causing confusion with the symbol used for charge density).
+%
+%
+\subsection{Conductivity in Maxwell’s equations}
+%
+In writing Maxwell’s equations for the auxiliary fields, we have left \emph{free}
+charge and current densities as source terms.
+These can, however, be further split into a conduction and an external term.
+\[\rho_\mathrm{f} = \rho_\mathrm{c} + \rho_\mathrm{e} \qquad \vec{j}_\mathrm{f} = \vec{j}_\mathrm{c} + \vec{j}_\mathrm{e}\]
+The former is induced by the presence of the electric field, therefore the current
+density must depend upon the electric field through the conductivity.
+\[\vec{j}_\mathrm{c} = \sigma \vefi\]
+The latter represents instead the currents and charges not belonging to the material.\\
+We shall work on the Fourier-transformed version of Maxwell’s equations, taking
+\(\mathrm{M}_\mathrm{I}\).
+\[\icmp \vec{k} \cdot \vdfi = \frac{\alphaG}{\kappae} \rho_\mathrm{f} + \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
+We can express \(\rho_\mathrm{e}\) in terms of \(\vec{j}_\mathrm{e}\), and therefore
+\(\vefi\) by using the Fourier-transformed version of the continuity equation.
+\[\vec{k} \cdot \vec{j}_\mathrm{e} - \frac{\omega}{\kappac} \rho_\mathrm{e} = 0
+\qquad \rho_\mathrm{e} = \frac{\kappac}{\omega} \vec{k} \cdot \vec{j}_\mathrm{e}
+= \frac{\kappac}{\omega} \vec{k} \cdot \of{\sigma \vefi}\]
+We substitute into \(\mathrm{M}_\mathrm{I}\), along with \(\vdfi = \epsilon \vefi\).
+\[\icmp \vec{k} \cdot \of{\epsilon \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{f} + \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \vec{k} \cdot \of{\sigma \vefi}\]
+\[\icmp \vec{k} \cdot \of{\epsilon \vefi + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{f}\]
+This suggests that we define a \textbf{complex permittivity} (or austerity, going
+with our terminology) \(\ecmp\) that combines both terms in the left hand into one.
+\[\ecmp\of{\vec{k},\omega} = \epsilon\of{\vec{k},\omega} + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma\of{\vec{k},\omega}
+\qquad \icmp \vec{k} \cdot \of{\ecmp \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{f}\]
+%
 %
 \subsection{Circuit Laws}
 %
