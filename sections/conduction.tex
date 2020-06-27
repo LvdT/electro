@@ -6,9 +6,8 @@ electric field, called \textbf{conductivity} \(\sigma\).
 \vec{j} = \sigma \vefi
 \end{equation}
 Conduction is due to the motion of charged particles called \textbf{(charge) carriers}.
-In the presence of multiple types of charge carriers, each will contribute to the
-total conductivity of the material, allowing us to express the latter as a sum of
-several contributions.
+In the presence of multiple types of charge carriers we can express the total
+conductivity as a sum of several contributions.
 \[\sigma = \sum_n \sigma_n\]
 A different view of this phenomenon can be given by studying the \textbf{mobility}
 \(\mu\) (a symbol unfortunately shared with permeability), which links the
@@ -17,7 +16,7 @@ A different view of this phenomenon can be given by studying the \textbf{mobilit
 The main difference in this approach is that, in general, each carrier will have
 a different mobility within the same material.
 In other words, while conductivity is a property of the material, mobility is a
-property of a particle inside that material.\\
+property of a particle inside that material.\\[1em]
 If we consider a single type of carrier, with charge \(q\) and number density \(n\of{\vec{r},t}\),
 we can recall equation \eqref{eq::current-density-moving} and observe that
 \(\rho\of{\vec{r},t} = q n\of{\vec{r},t}\) in order to write the current density
@@ -38,22 +37,47 @@ These can, however, be further split into a conduction and an external term.
 The former is induced by the presence of the electric field, therefore the current
 density must depend upon the electric field through the conductivity.
 \[\vec{j}_\mathrm{c} = \sigma \vefi\]
-The latter represents instead the currents and charges not belonging to the material.\\
+The latter represents instead the currents and charges not belonging to the material.\\[1em]
 We shall work on the Fourier-transformed version of Maxwell’s equations, taking
 \(\mathrm{M}_\mathrm{I}\).
-\[\icmp \vec{k} \cdot \vdfi = \frac{\alphaG}{\kappae} \rho_\mathrm{f} + \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
-We can express \(\rho_\mathrm{e}\) in terms of \(\vec{j}_\mathrm{e}\), and therefore
+\[\icmp \vec{k} \cdot \vdfi = \frac{\alphaG}{\kappae} \rho_\mathrm{c} + \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
+We can express \(\rho_\mathrm{c}\) in terms of \(\vec{j}_\mathrm{c}\), and therefore
 \(\vefi\) by using the Fourier-transformed version of the continuity equation.
-\[\vec{k} \cdot \vec{j}_\mathrm{e} - \frac{\omega}{\kappac} \rho_\mathrm{e} = 0
-\qquad \rho_\mathrm{e} = \frac{\kappac}{\omega} \vec{k} \cdot \vec{j}_\mathrm{e}
+\[\vec{k} \cdot \vec{j}_\mathrm{c} - \frac{\omega}{\kappac} \rho_\mathrm{c} = 0
+\qquad \rho_\mathrm{c} = \frac{\kappac}{\omega} \vec{k} \cdot \vec{j}_\mathrm{c}
 = \frac{\kappac}{\omega} \vec{k} \cdot \of{\sigma \vefi}\]
 We substitute into \(\mathrm{M}_\mathrm{I}\), along with \(\vdfi = \epsilon \vefi\).
-\[\icmp \vec{k} \cdot \of{\epsilon \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{f} + \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \vec{k} \cdot \of{\sigma \vefi}\]
-\[\icmp \vec{k} \cdot \of{\epsilon \vefi + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{f}\]
+\[\icmp \vec{k} \cdot \of{\epsilon \vefi} = \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \vec{k} \cdot \of{\sigma \vefi} + \frac{\alphaG}{\kappae} \rho_\mathrm{e} \]
+\[\icmp \vec{k} \cdot \of{\epsilon \vefi + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
 This suggests that we define a \textbf{complex permittivity} (or austerity, going
 with our terminology) \(\ecmp\) that combines both terms in the left hand into one.
 \[\ecmp\of{\vec{k},\omega} = \epsilon\of{\vec{k},\omega} + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma\of{\vec{k},\omega}
-\qquad \icmp \vec{k} \cdot \of{\ecmp \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{f}\]
+\qquad \icmp \vec{k} \cdot \of{\ecmp \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
+In this way the only remaining source term is the externally applied charge density.
+The same substitution is possible in \(\mathrm{M}_\mathrm{IV}\) as well.
+\begin{align*}
+\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{c} + \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \vdfi\\
+\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \sigma \vefi + \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \epsilon \vefi\\
+\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \of{\epsilon \vefi + \icmp \frac{\gammaM}{\kappae} \frac{\alphaA}{\omega} \sigma \vefi}
+\end{align*}
+Observing that \(\gammaM \alphaA = \kappac \alphaG\) we arrive at the same expression as before.
+\begin{align*}
+\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \of{\epsilon \vefi + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma \vefi}\\
+\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \ecmp \vefi
+\end{align*}
+By defining a new electric displacement field \(\vddfi\of{\vec{k},\omega} = \ecmp\of{\vec{k},\omega} \vefi\of{\vec{k},\omega}\)
+it becomes possible to write a set Maxwell’s equations where the only source terms
+are the externally applied charge and current densities.
+\begin{center}
+  \begin{tabular}{cccl}
+    \(\mathrm{M}_\mathrm{I}\) & \(\dvg{\vddfi}\) & \(=\) & \(\dfrac{\alphaG}{\kappae} \rho_\mathrm{e}\) \\[1em]
+    \(\mathrm{M}_\mathrm{II}\) & \(\dvg{\vbfi}\) & \(=\) & \(0\) \\[1em]
+    \(\mathrm{M}_\mathrm{III}\) & \(\crl{\vefi}\) & \(=\) & \(\displaystyle - \frac{1}{\gammaF} \pderiv{\vbfi}{t}\) \\[1em]
+    \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vhfi}\) & \(=\) & \(\displaystyle \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} + \frac{\kappae}{\kappam} \frac{1}{\gammaM} \pderiv{\vddfi}{t}\) \\
+  \end{tabular}
+\end{center}
+It is very important to keep in mind that in \(\vddfi\of{\vec{r},t}\) is not just
+the product, but rather the convolution of \(\ecmp\of{\vec{r},t}\) and \(\vefi\of{\vec{r},t}\).
 %
 %
 \subsection{Circuit Laws}
