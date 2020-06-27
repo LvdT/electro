@@ -33,7 +33,7 @@ Some physical systems, for example crystalline materials, are only invariant
 under finite translations.
 While these symmetries do influence the functional form of the kernel,
 they don't do so in a general enough manner to be treated here, but they do prevent
-us from having a function that only depends on distances, rather than absolute positions.\\[1em]
+us from having a function that only depends on distances, rather than positions.\\[1em]
 In systems that are symmetric under infinitesimal translations, such as fluids
 or amorphous materials, we can write the Volterra series in the \textbf{semilocal approximation}.
 \[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \int\!\!\!\dots\!\!\!\int \varrho_n\of{\offf{\vec{r}-\vec{\xi}_m},\offf{t-\tau_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{\xi}_j,\tau_j} \de^3\xi_j\de\tau_j\]
@@ -49,6 +49,46 @@ spatial and temporal part of the kernel are Dirac deltas.
 \[\varrho_n\of{\offf{\vec{r}-\vec{\xi}_m},\offf{t-\tau_m}} = \varrho_n \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\delta\of{t-\tau_j}\]
 In this last case, the Volterra series simply becomes a Taylor series.
 \[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \varrho_n \, \mathcal{X}^n\of{\vec{r},t}\]
+%
+%
+\subsection{Response in Fourier space}
+%
+We consider the first order of the Volterra series in the semilocal approximation.
+\[\mathcal{Y}_1\of{\vec{r},t} = \iiiint \varrho_1\of{\vec{r}-\vec{\xi},t-\tau} \mathcal{X}\of{\vec{\xi},\tau} \de^3\xi\de\tau\]
+This can be seen to be the convolution of \(\varrho_1\) and \(\mathcal{X}\), which
+should become a product if we analyse the response in Fourier space.
+We define our Fourier transforms as follows.
+\begin{equation}
+  \begin{matrix*}[l]
+  f\of{\vec{k},\omega} &=& \displaystyle \iiiint f\of{\vec{r},t} e^{\icmp\of{\vec{k} \cdot r - \omega t}} \de^3r\de t \\[1em]
+  f\of{\vec{r},t} &=& \displaystyle \frac{1}{\of{2\pi}^4}\iiiint f\of{\vec{k},\omega} e^{-\icmp\of{\vec{k} \cdot r - \omega t}} \de^3k\de \omega
+  \end{matrix*}
+\end{equation}
+With these definitions no additional factors appear in the convolution theorem.
+\[\mathcal{Y}_1\of{\vec{k},\omega} = \varrho_1\of{\vec{k},\omega}\mathcal{X}\of{\vec{k},\omega}\]
+A similar approach can be taken with the higher orders, by using a generalisation
+of the convolution theorem, but the result is much less convenient.
+\[\mathcal{Y}_n\of{\vec{k},\omega} = \int\!\!\!\dots\!\!\!\int
+\frac{\varrho_n\of{\offf{\vec{k}_m},\offf{\omega_m}}}{\of{2\pi}^{4n-4}} \prod_{j=1}^n \mathcal{X}\of{\vec{k}_j,\omega_j} \delta\of{\vec{k} - \textstyle
+\sum \vec{k}_s} \delta\of{\omega - \textstyle
+\sum \omega_s} \de^3k_j \de\omega_j\]
+We can (arbitrarily) choose some specific index \(\ell\) to integrate over in
+order to remove the delta, we denote this with a prime symbol next to the integral.
+\[\mathcal{Y}_n\of{\vec{k},\omega} = \int\!\!\!\dots\!\!\!\sideset{}{'}\int
+\frac{\varrho_n\of{\offf{\vec{k}_m},\offf{\omega_m}}}{\of{2\pi}^{4n-4}} \prod_{j=1}^n \mathcal{X}\of{\vec{k}_j,\omega_j} \de^3k_j \de\omega_j\]
+This symbol is meant to reminds us that:
+\begin{itemize}
+\item the differentials \(\de^3k_\ell\) and \(\de\omega_\ell\) are no longer present;
+\item any occurrence of \(\vec{k}_\ell\) should be replaced with \(\vec{k} - \sum' \vec{k}_s\);
+\item any occurrence of \(\omega_\ell\) should be replaced with \(\omega - \sum' \omega_s\).
+\end{itemize}
+We give an example of the two possible ways of writing the second order term.
+\begin{align*}
+\mathcal{Y}_2\of{\vec{k},\omega} &= \frac{1}{\of{2\pi}^4} \iiiint \varrho_n\of{\vec{k}_1,\vec{k}-\vec{k}_1,\omega_1,\omega-\omega_1}
+\mathcal{X}\of{\vec{k}_1,\omega_1} \mathcal{X}\of{\vec{k}-\vec{k}_1,\omega-\omega_1} \de^3 k_1 \de \omega_1\\
+\mathcal{Y}_2\of{\vec{k},\omega} &= \frac{1}{\of{2\pi}^4} \iiiint \varrho_n\of{\vec{k}-\vec{k}_2,\vec{k}_2,\omega-\omega_2,\omega_2}
+\mathcal{X}\of{\vec{k}-\vec{k}_2,\omega-\omega_2} \mathcal{X}\of{\vec{k}_2,\omega_2} \de^3 k_2 \de \omega_2
+\end{align*}
 %
 %
 \subsection{Response functions for electromagnetic fields}
@@ -125,8 +165,3 @@ to a preference for this field in the engineering community.
 In physical terms, however, the \(\bfi\)-field is clearly the most fundamental
 for several reasons, including the fact that it appears in the Lorentz force and
 that its source term is the total current, rather than just the free current.
-%
-%
-\subsection{Response in Fourier space}
-%
-TODO
