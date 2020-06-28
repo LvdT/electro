@@ -60,7 +60,7 @@ should become a product if we analyse the response in Fourier space.
 We define our Fourier transforms as follows.
 \begin{equation}
   \begin{matrix*}[l]
-  f\of{\vec{k},\omega} &=& \displaystyle \iiiint f\of{\vec{r},t} e^{\icmp\of{\vec{k} \cdot r - \omega t}} \de^3r\de t \\[1em]
+  f\of{\vec{k},\omega} &=& \displaystyle \iiiint f\of{\vec{r},t} e^{-\icmp \vec{k} \cdot r} e^{\icmp \omega t} \de^3r\de t \\[1em]
   f\of{\vec{r},t} &=& \displaystyle \frac{1}{\of{2\pi}^4}\iiiint f\of{\vec{k},\omega} e^{-\icmp\of{\vec{k} \cdot r - \omega t}} \de^3k\de \omega
   \end{matrix*}
 \end{equation}

@@ -1,13 +1,14 @@
 
 \section{Other laws}
 \textbf{Coulomb's law}
-\[\vec{F}_{12} = k_\mathrm{C} \iiint_{\Omega_1} \iiint_{\Omega_2} \frac{\rho_1\!\!\of{\vec{\xi_1}} \rho_2\!\!\of{\vec{\xi_2}}}{\nrm{\vec{r}_1 - \vec{r}_2}^3} \of{\vec{r}_1 - \vec{r}_2} \de^3\xi_1 \de^3\xi_2\]
-\[\vefi(\vec{r}) = k_\mathrm{C} \iiint_\Omega \frac{\rho\!\of{\vec{\xi}}}{\nrm{\vec{r} - \vec{\xi}}^3} \of{\vec{r} - \vec{\xi}} \de^3\xi\]
+\[\vec{F}_{12} = k_\mathrm{C} \iiint_{\Omega_1} \iiint_{\Omega_2} \frac{\rho_1\of{\vec{\xi_1}} \rho_2\of{\vec{\xi_2}}}{\nrm{\vec{r}_1 - \vec{r}_2}^3} \of{\vec{r}_1 - \vec{r}_2} \de^3\xi_1 \de^3\xi_2\]
+\[\vefi(\vec{r}) = k_\mathrm{C} \iiint_\Omega \frac{\rho\of{\vec{\xi}}}{\nrm{\vec{r} - \vec{\xi}}^3} \of{\vec{r} - \vec{\xi}} \de^3\xi\]
 \textbf{Ampère's law}
-\[\vec{F}_{12} = k_\mathrm{A} \iiint_{\Omega_1} \iiint_{\Omega_2} \frac{\vec{j}_1\!\!\of{\vec{\xi_1}} \times \of{\vec{j}_2\!\!\of{\vec{\xi_2}} \times \of{\vec{\xi}_1 - \vec{\xi}_2}}}{\nrm{\vec{\xi}_1 - \vec{\xi}_2}^3} \de^3\xi_1 \de^3\xi_2\]
+\[\vec{F}_{12} = k_\mathrm{A} \iiint_{\Omega_1} \iiint_{\Omega_2} \frac{\vec{j}_1\of{\vec{\xi_1}} \times \of{\vec{j}_2\of{\vec{\xi_2}} \times \of{\vec{\xi}_1 - \vec{\xi}_2}}}{\nrm{\vec{\xi}_1 - \vec{\xi}_2}^3} \de^3\xi_1 \de^3\xi_2\]
 \textbf{Biot-Savart's law}
-\[\vbfi(\vec{r}) = k_\mathrm{S} \iiint_\Omega \frac{\vec{j}\!\of{\vec{\xi}} \times \of{\vec{r} - \vec{\xi}}}{\nrm{\vec{r} - \vec{\xi}}^3} \de^3\xi\]
-
+\[\vbfi(\vec{r}) = k_\mathrm{S} \iiint_\Omega \frac{\vec{j}\of{\vec{\xi}} \times \of{\vec{r} - \vec{\xi}}}{\nrm{\vec{r} - \vec{\xi}}^3} \de^3\xi\]
+%
+%
 \newpage
 \section{Continuum mechanics}
 Consider a body undergoing deformation, a reference configuration in which the
@@ -61,7 +62,7 @@ Where we have used the property that \(\vec{A}:\vec{B} = \trace\of{\tr{\vec{A}}\
 and the fact that the trace is conserved under transformations, so \(\trace\of{\vec{H}\cdot\vec{L}\cdot{\vec{F}}} = \trace{\vec{L}}\).
 %
 %
-\section{Proof of the Reynolds Transport Theorem}
+\subsection{Proof of the Reynolds Transport Theorem}
 %
 Consider the flux of some vector field \(\vec{a}\of{\vec{x},t}\) through a surface
 \(\Sigma\of{t}\), and take its time derivative, which will depend both on the intrinsic
@@ -100,3 +101,76 @@ Using the curl theorem we can also bring the last term in terms of a circulation
 This form is especially useful for solenoidal fields, where \(\dvg{\vec{a}}\) disappears.
 \[\D{\Phi_\vec{a}}{t}= \iint_{\Sigma\of{t}} \pderiv{\vec{a}}{t} \cdot \vec{n}\,\de^2x
   + \oint_{\partial\Sigma\of{t}} \of{\vec{a}\times\vec{v}} \cdot \vec{t} \, \de x\]
+%
+%
+\newpage
+\section{Fourier Transforms}
+%
+For the sake of generality we define the Fourier transform as follows, depending
+on parameters \(\mathcal{A}\), \(\mathcal{B}\) and \(a\).
+\begin{equation}
+  \begin{matrix*}[l]
+  f\of{\omega} &=& \displaystyle \mathcal{A} \int_{\mathbb{R}} f\of{t} e^{-\icmp a \omega t} \de t \\[1em]
+  f\of{t} &=& \displaystyle \mathcal{B} \int_{\mathbb{R}} f\of{\omega} e^{\icmp a \omega t} \de \omega
+  \end{matrix*}
+\end{equation}
+We can find a relation between these parameters by checking that the inverse transform
+gives the correct result.
+\begin{align*}
+f\of{t} &= \mathcal{B} \int \of{\mathcal{A} \int f\of{\tau} e^{-\icmp a \omega \tau} \de \tau} e^{\icmp a \omega t} \de \omega \\
+f\of{t} &= \mathcal{A}\mathcal{B} \iint f\of{\tau} e^{-\icmp a \omega \of{t - \tau}} \de\tau \de\omega
+\end{align*}
+We proceed by recognising the integral expression of Dirac’s delta.
+\[f\of{t} = \mathcal{A}\mathcal{B} \frac{2\pi}{\abs{a}} \iint f\of{\tau} \delta\of{t - \tau} \de\tau = \mathcal{A}\mathcal{B} \frac{2\pi}{\abs{a}} f\of{t}\]
+From here we obtain the following relation.
+\begin{equation}
+\mathcal{A}\mathcal{B} = \frac{\abs{a}}{2\pi}
+\end{equation}
+In a similar vein we can extend the definition of Fourier transform to a function
+of multiple (more specifically \(n\)) variables.
+\[
+  \begin{matrix*}[l]
+  f\of{\offf{\omega_m}} &=& \displaystyle \mathcal{A}^n \int_{\mathbb{R}^n} f\of{\offf{t_m}} \prod_{j=1}^n e^{-\icmp a \omega_j t_j} \de t_j \\[1em]
+  f\of{\offf{t_m}} &=& \displaystyle \mathcal{B}^n \int_{\mathbb{R}^n} f\of{\offf{\omega_m}} \prod_{j=1}^n e^{\icmp a \omega_j t_j} \de \omega_j
+  \end{matrix*}
+\]
+%
+%
+\subsection{Generalised Convolution Theorem}
+%
+Consider a function \(h\) of one variable, defined as the convolution of two
+functions of \(n\) variables \(f\) and \(g\).
+\[h\of{t} = \int\!\!\!\dots\!\!\!\int f\of{\offf{t-\tau_m}} g\of{\offf{\tau_m}} \prod_{j=1}^n \de\tau_j\]
+We analyse its Fourier transform.
+\[h\of{\omega} = \mathcal{A} \int\!\!\!\dots\!\!\!\int e^{- \icmp a \omega t} f\of{\offf{t-\tau_m}} g\of{\offf{\tau_m}} \prod_{j=1}^n \de\tau_j \de t\]
+We can decouple the various variables by introducing a number of Dirac deltas.
+\[h\of{\omega} = \mathcal{A} \int\!\!\!\dots\!\!\!\int e^{- \icmp a \omega t} f\of{\offf{\theta_m-\tau_m}} g\of{\offf{\tau_m}} \prod_{j=1}^n \delta\of{\theta_j - t} \de\tau_j \de \theta_j \de t\]
+Then we perform a change of variables \(\vartheta_j = \theta_j - \tau_j\).
+\[h\of{\omega} = \mathcal{A} \int\!\!\!\dots\!\!\!\int e^{- \icmp a \omega t} f\of{\offf{\vartheta_m}} g\of{\offf{\tau_m}} \prod_{j=1}^n \delta\of{\vartheta_j + \tau_j - t} \de\tau_j \de \vartheta_j \de t\]
+We replace the deltas with their integral expression.
+\[h\of{\omega} = \mathcal{A}^{n+1} \mathcal{B}^n \int\!\!\!\dots\!\!\!\int e^{- \icmp a \omega t} f\of{\offf{\vartheta_m}} g\of{\offf{\tau_m}}
+\prod_{j=1}^n e^{-\icmp a \omega_j \of{\vartheta_j + \tau_j - t}} \de\tau_j \de \vartheta_j \de \omega_j \de t\]
+For brevity we denote \(\Omega = \sum \omega_j\).
+\[h\of{\omega} = \mathcal{A}^{n+1} \mathcal{B}^n \int\!\!\!\dots\!\!\!\int e^{- \icmp a \of{\omega - \Omega} t}
+\prod_{j=1}^n f\of{\offf{\vartheta_m}}e^{-\icmp a \omega_j \vartheta_j} g\of{\offf{\tau_m}}e^{-\icmp a \omega_j \tau_j} \de\tau_j \de \vartheta_j \de \omega_j \de t\]
+Solving the integrals in \(\de\tau_j\) and \(\de\vartheta_j\) we obtain the Fourier
+transforms of \(f\) and \(g\).
+\begin{align*}
+h\of{\omega} &= \mathcal{A}^{n+1} \mathcal{B}^n \int\!\!\!\dots\!\!\!\int e^{- \icmp a \of{\omega - \Omega} t}
+\prod_{j=1}^n \frac{f\of{\offf{\omega_m}}}{\mathcal{A}^n} \frac{g\of{\offf{\omega_m}}}{\mathcal{A}^n} \de \omega_j \de t\\
+h\of{\omega} &= \mathcal{A}^{1-n} \mathcal{B}^n \int\!\!\!\dots\!\!\!\int e^{- \icmp a \of{\omega - \Omega} t}
+f\of{\offf{\omega_m}} g\of{\offf{\omega_m}} \prod_{j=1}^n \de \omega_j \de t
+\end{align*}
+Integrating over \(\de t\) gives us a delta instead.
+\begin{align*}
+h\of{\omega} &= \mathcal{A}^{1-n} \mathcal{B}^n \int\!\!\!\dots\!\!\!\int \frac{\delta\of{\omega - \Omega}}{\mathcal{A}\mathcal{B}}
+f\of{\offf{\omega_m}} g\of{\offf{\omega_m}} \prod_{j=1}^n \de \omega_j\\
+h\of{\omega} &= \mathcal{A}^{-n} \mathcal{B}^{n-1} \int\!\!\!\dots\!\!\!\int \delta\of{\omega - \Omega}
+f\of{\offf{\omega_m}} g\of{\offf{\omega_m}} \prod_{j=1}^n \de \omega_j
+\end{align*}
+By rearranging we obtain the final form of the theorem.
+\begin{equation}
+h\of{\omega} = \frac{1}{\mathcal{B}} \of{\frac{\mathcal{B}}{\mathcal{A}}}^{n} \int\!\!\!\dots\!\!\!\int f\of{\offf{\omega_m}} g\of{\offf{\omega_m}} \delta\parens[\Big]{\omega - \sum_{j=1}^n \omega_j} \prod_{j=1}^n \de \omega_j
+\end{equation}
+It is easy to see that for \(n=1\) we obtain the usual convolution theorem.
+\[h\of{\omega} = \frac{1}{\mathcal{B}} \frac{\mathcal{B}}{\mathcal{A}} \int f\of{\omega_1} g\of{\omega_1} \delta\of{\omega - \omega_1} \de \omega_1 = \frac{f\of{\omega}g\of{\omega}}{\mathcal{A}}\]
