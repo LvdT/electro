@@ -54,9 +54,9 @@ of time and therefore all time derivatives vanish. We obtain Poisson's equation.
 \[\lp{\vafi} = - \alphaA \, \vec{j}\]
 Using the Green function for the Laplacian operator we find the \textbf{static potentials}.
 \[
-  \scp\of{\vec{r}} = \frac{\alphaG}{4 \pi} \iiint_\Omega \frac{\rho\of{\vec{\xi}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
+  \scp\of{\vec{r}} = \frac{\alphaG}{2\twopi} \iiint_\Omega \frac{\rho\of{\vec{\xi}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
   \qquad
-  \vafi\of{\vec{r}} = \frac{\alphaA}{4 \pi} \iiint_\Omega \frac{\vec{j}\of{\vec{\xi}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
+  \vafi\of{\vec{r}} = \frac{\alphaA}{2\twopi} \iiint_\Omega \frac{\vec{j}\of{\vec{\xi}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
 \]
 %
 %
@@ -70,9 +70,9 @@ equation for the scalar potential as well.
 \[\dal{\scp} = \alphaG \, \rho\]
 Using the Green function method we find the \textbf{retarded potentials}.
 \[
-  \scp\of{\vec{r},t} = \frac{\alphaG}{4 \pi} \iiint_\Omega \frac{\rho\of{\vec{\xi},t_\mathrm{r}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
+  \scp\of{\vec{r},t} = \frac{\alphaG}{2\twopi} \iiint_\Omega \frac{\rho\of{\vec{\xi},t_\mathrm{r}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
   \qquad
-  \vafi\of{\vec{r},t} = \frac{\alphaA}{4 \pi} \iiint_\Omega \frac{\vec{j}\of{\vec{\xi},t_\mathrm{r}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
+  \vafi\of{\vec{r},t} = \frac{\alphaA}{2\twopi} \iiint_\Omega \frac{\vec{j}\of{\vec{\xi},t_\mathrm{r}}}{\nrm{\vec{r}-\vec{\xi}}} \de^3\xi
 \]
 The \textbf{retarded time} \(t_\mathrm{r}\) used in the expression accounts exactly for the
 time it takes for light to travel from the point \(\vec{r}\) to the point \(\vec{\xi}\)

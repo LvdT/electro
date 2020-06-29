@@ -20,25 +20,25 @@ expression for it.
 We plug this into the previous expression and recall that the sphere has
 radius \(d\), so that \(\xi\) is the same at all points
 and we can extract \(\efi_n\) from the integral.
-\[\oiint_{\partial\Omega} \efi_n\of{d} \de^2\xi = \efi_n\of{d} \oiint_{\partial\Omega} \de^2\xi = 4 \pi d^2 \, \efi_n\of{d}\]
+\[\oiint_{\partial\Omega} \efi_n\of{d} \de^2\xi = \efi_n\of{d} \oiint_{\partial\Omega} \de^2\xi = 2\twopi d^2 \, \efi_n\of{d}\]
 Solving for the electric field gives us an inverse square law.
-\[\efi_n\of{d} = \frac{\alphaG}{4\pi} \frac{Q}{d^2}\]
+\[\efi_n\of{d} = \frac{\alphaG}{2\twopi} \frac{Q}{d^2}\]
 Assuming we have a second charge \(Q_2\) at a distance \(d\) from the first, which
 we shall now denote by \(Q_1\), the resulting force in the radial direction can
 be computed as the electric force produced by this field.
-\[F_n\of{d} = Q_2 \, \efi_n\!\of{d} = \frac{\alphaG}{4\pi} \frac{Q_1\,Q_2}{d^2}\]
+\[F_n\of{d} = Q_2 \, \efi_n\of{d} = \frac{\alphaG}{2\twopi} \frac{Q_1\,Q_2}{d^2}\]
 Taking the magnitude of this force gives us Coulomb's law and therefore Coulomb's
 constant, which only depends upon \(\alphaG\).
-\[F\of{d} = \frac{\alphaG}{4\pi} \frac{\abs{Q_1}\abs{Q_2}}{d^2} \qquad k_\mathrm{C} = \frac{\alphaG}{4\pi}\]
+\[F\of{d} = \frac{\alphaG}{2\twopi} \frac{\abs{Q_1}\abs{Q_2}}{d^2} \qquad k_\mathrm{C} = \frac{\alphaG}{2\twopi}\]
 %
 %
 \subsection{Ampère's force law}
 %
-We consider an infinitely long straight wire carrying a current \(I\), passing
+We consider an infinitely long straight wire carrying a current \(i\), passing
 through the origin and going in the direction \(z\). The wire can be parametrised
 \(\vec{\gamma}\of{s} = \of{0,0,s}\), the tangent to which is simply \(\uvec{z}\).
 The current density for such a system is as follows.
-\[\vec{j}\of{\vec{r},t} = I \delta\of{x} \delta\of{y} \uvec{z} \int_{\mathbb{R}} \delta\of{z - s} \de s = I \delta\of{x} \delta\of{y} \uvec{z}\]
+\[\vec{j}\of{\vec{r},t} = I \delta\of{x} \delta\of{y} \uvec{z} \int_{\mathbb{R}} \delta\of{z - s} \de s = i \delta\of{x} \delta\of{y} \uvec{z}\]
 We take the flux of Ampère-Maxwell's law over a circle \(\Sigma\) with radius \(d\)
 lying in the \(\of{x,y}\) plane and thus having the vector \(\uvec{z}\) as a normal.
 \[\iint_\Sigma \of{\crl{\vbfi}} \cdot \uvec{z} \, \de^2\xi = \alphaA \iint_\Sigma \of{I \delta\of{x}\delta\of{y}} \uvec{z} \cdot \uvec{z} \, \de^2\xi
@@ -51,14 +51,14 @@ at each point and have a magnitude dependent only upon the distance from the ori
 We plug this into the previous expression and recall that the circle has
 radius \(d\), so that \(\xi\) is the same at all points
 and we can extract \(\bfi_\phi\) from the integral.
-\[\oint_{\partial\Sigma} \bfi_\phi\of{d} \de\xi = \bfi_\phi\of{d} \oint_{\partial\Sigma} \de\xi = 2 \pi d \, \bfi_\phi\of{d}\]
+\[\oint_{\partial\Sigma} \bfi_\phi\of{d} \de\xi = \bfi_\phi\of{d} \oint_{\partial\Sigma} \de\xi = \twopi d \, \bfi_\phi\of{d}\]
 Solving for the magnetic field gives us the \textbf{Biot--Savart law}.
-\[\bfi_\phi\of{d} = \frac{\alpha_A}{2 \pi} \frac{I}{d}\]
-We now take a second wire carrying a current \(I_2\), parallel to the original wire
+\[\bfi_\phi\of{d} = \frac{\alpha_A}{\twopi} \frac{i}{d}\]
+We now take a second wire carrying a current \(i_2\), parallel to the original wire
 and located at a point \(\of{x_0,y_0}\) such that its distance from the first wire
 is \(d\), that is to say that \({x_0}^2 + {y_0}^2 = d^2\).
-The current density for this wire is \(\vec{j_2}\of{\vec{r},t} = I_2 \delta\of{x-x_0}\delta\of{y-y_0} \uvec{z}\).
-We also denote the current on the first wire by \(I_1\).\\[1em]
+The current density for this wire is \(\vec{j_2}\of{\vec{r},t} = i_2 \delta\of{x-x_0}\delta\of{y-y_0} \uvec{z}\).
+We also denote the current on the first wire by \(i_1\).\\[1em]
 We should expect the force acting between the two wires to be infinite, since they
 are indefinitely long, to get around this we must consider the force per unit lenght,
 which we can compute by considering the expression for the magnetic force density,
@@ -67,15 +67,15 @@ between \(0\) and \(L\) in the \(z\) direction, then dividing this result by \(L
 \[\frac{\vec{F}}{L} = \frac{1}{L} \int_0^L \of{\iint_{\mathbb{R}^2} \vec{f}_\mathrm{m} \de x \, \de y} \de z
  = \frac{1}{L} \int_0^L \of{\iint_{\mathbb{R}^2} \frac{\kappac}{\kappaf} \vec{j}_2 \times \vbfi \, \de x \, \de y} \de z\]
 Replacing the expressions relating to our case we find the following.
-\[\frac{\vec{F}}{L} = \frac{\kappac}{\kappaf} \frac{\alpha_A}{2 \pi} \frac{1}{L} \int_0^L \de z
-\iint_{\mathbb{R}^2} \frac{I_1 \, I_2 \of{\uvec{\phi} \times \uvec{z}}}{\sqrt{x^2 - y^2}} \delta\of{x-x_0}\delta\of{y-y_0}\de x \de y\]
+\[\frac{\vec{F}}{L} = \frac{\kappac}{\kappaf} \frac{\alpha_A}{\twopi} \frac{1}{L} \int_0^L \de z
+\iint_{\mathbb{R}^2} \frac{i_1 \, i_2 \of{\uvec{\phi} \times \uvec{z}}}{\sqrt{x^2 - y^2}} \delta\of{x-x_0}\delta\of{y-y_0}\de x \de y\]
 Solving the integral on \(z\) simply gives us \(L\), then by using the property of the Dirac's delta,
 replacing \(\sqrt{{x_0}^2 + {y_0}^2}\) with \(d\) and recalling that \(\uvec{\phi} \times \uvec{z} = - \uvec{r}\)
 we obtain the following expression for the force per unit lenght.
-\[\frac{\vec{F}}{L} = - \frac{\kappac}{\kappaf} \frac{\alpha_A}{2 \pi} \frac{I_1 \, I_2}{d} \, \uvec{r}\]
+\[\frac{\vec{F}}{L} = - \frac{\kappac}{\kappaf} \frac{\alpha_A}{\twopi} \frac{i_1 \, i_2}{d} \, \uvec{r}\]
 Taking its magnitude we find Ampère's force law and therefore find the relation between
 Ampère's force constant and \(\alphaA\), \(\kappac\) and \(\kappaf\).
-\[\frac{F}{L} = 2 \frac{\kappac}{\kappaf} \frac{\alpha_A}{4 \pi} \frac{\abs{I_1} \abs{I_2}}{d} \qquad k_\mathrm{A} = \frac{\kappac}{\kappaf} \frac{\alpha_A}{4 \pi}\]
+\[\frac{F}{L} = 2 \frac{\kappac}{\kappaf} \frac{\alpha_A}{2\twopi} \frac{\abs{i_1} \abs{i_2}}{d} \qquad k_\mathrm{A} = \frac{\kappac}{\kappaf} \frac{\alpha_A}{2\twopi}\]
 We notice that, unlike Coulomb's constant, Ampère's force constant does not depend
 solely upon the coupling constant in the relevant Maxwell's equation, but also
 on the scaling constants for the currents and fields.
