@@ -43,29 +43,29 @@ We shall work on the Fourier-transformed version of Maxwell’s equations, takin
 \[\icmp \vec{k} \cdot \vdfi = \frac{\alphaG}{\kappae} \rho_\mathrm{c} + \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
 We can express \(\rho_\mathrm{c}\) in terms of \(\vec{j}_\mathrm{c}\), and therefore
 \(\vefi\) by using the Fourier-transformed version of the continuity equation.
-\[\vec{k} \cdot \vec{j}_\mathrm{c} - \frac{\omega}{\kappac} \rho_\mathrm{c} = 0
+\[\icmp \vec{k} \cdot \vec{j}_\mathrm{c} - \icmp \frac{\omega}{\kappac} \rho_\mathrm{c} = 0
 \qquad \rho_\mathrm{c} = \frac{\kappac}{\omega} \vec{k} \cdot \vec{j}_\mathrm{c}
-= \frac{\kappac}{\omega} \vec{k} \cdot \of{\sigma \vefi}\]
-We substitute into \(\mathrm{M}_\mathrm{I}\), along with \(\vdfi = \epsilon \vefi\).
-\[\icmp \vec{k} \cdot \of{\epsilon \vefi} = \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \vec{k} \cdot \of{\sigma \vefi} + \frac{\alphaG}{\kappae} \rho_\mathrm{e} \]
-\[\icmp \vec{k} \cdot \of{\epsilon \vefi + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
+= \frac{\kappac}{\omega} \vec{k} \cdot \of{\twopi^2 \, \sigma \vefi}\]
+We substitute this result into \(\mathrm{M}_\mathrm{I}\), along with \(\vdfi = \twopi^2 \, \epsilon \vefi\).
+\[\icmp \vec{k} \cdot \of{\twopi^2 \, \epsilon \vefi} = \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \vec{k} \cdot \of{\twopi^2 \, \sigma \vefi} + \frac{\alphaG}{\kappae} \rho_\mathrm{e} \]
+\[\icmp \twopi^2 \, \vec{k} \cdot \of{\epsilon \vefi + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
 This suggests that we define a \textbf{complex permittivity} (or austerity, going
 with our terminology) \(\ecmp\) that combines both terms in the left hand into one.
 \[\ecmp\of{\vec{k},\omega} = \epsilon\of{\vec{k},\omega} + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma\of{\vec{k},\omega}
-\qquad \icmp \vec{k} \cdot \of{\ecmp \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
+\qquad \icmp \vec{k} \cdot \of{\twopi^2 \, \ecmp \vefi} = \frac{\alphaG}{\kappae} \rho_\mathrm{e}\]
 In this way the only remaining source term is the externally applied charge density.
 The same substitution is possible in \(\mathrm{M}_\mathrm{IV}\) as well.
 \begin{align*}
 \icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{c} + \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \vdfi\\
-\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \sigma \vefi + \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \epsilon \vefi\\
-\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \of{\epsilon \vefi + \icmp \frac{\gammaM}{\kappae} \frac{\alphaA}{\omega} \sigma \vefi}
+\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \of{\twopi^2 \, \sigma \vefi} + \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \of{\twopi^2 \, \epsilon \vefi}\\
+\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \twopi^2 \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \of{\epsilon \vefi + \icmp \frac{\gammaM}{\kappae} \frac{\alphaA}{\omega} \sigma \vefi}
 \end{align*}
 Observing that \(\gammaM \alphaA = \kappac \alphaG\) we arrive at the same expression as before.
 \begin{align*}
-\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \of{\epsilon \vefi + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma \vefi}\\
-\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \ecmp \vefi
+\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \twopi^2 \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \of{\epsilon \vefi + \icmp \frac{\kappac}{\kappae} \frac{\alphaG}{\omega} \sigma \vefi}\\
+\icmp \vec{k} \times \vhfi &= \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \of{\twopi^2 \, \ecmp \vefi}
 \end{align*}
-By defining a new electric displacement field \(\vddfi\of{\vec{k},\omega} = \ecmp\of{\vec{k},\omega} \vefi\of{\vec{k},\omega}\)
+By defining a new electric displacement field \(\vddfi\of{\vec{k},\omega} = \twopi^2 \, \ecmp\of{\vec{k},\omega} \vefi\of{\vec{k},\omega}\)
 it becomes possible to write a set Maxwell’s equations where the only source terms
 are the externally applied charge and current densities.
 \begin{center}
@@ -76,8 +76,9 @@ are the externally applied charge and current densities.
     \(\mathrm{M}_\mathrm{IV}\) & \(\crl{\vhfi}\) & \(=\) & \(\displaystyle \frac{\alphaA}{\kappam} \vec{j}_\mathrm{e} + \frac{\kappae}{\kappam} \frac{1}{\gammaM} \pderiv{\vddfi}{t}\) \\
   \end{tabular}
 \end{center}
-It is very important to keep in mind that in \(\vddfi\of{\vec{r},t}\) is not just
-the product, but rather the convolution of \(\ecmp\of{\vec{r},t}\) and \(\vefi\of{\vec{r},t}\).
+It is very important to keep in mind that, going back to expressing fields in terms
+of position and time, \(\vddfi\of{\vec{r},t}\) is not just the product, but rather
+the convolution of \(\ecmp\of{\vec{r},t}\) and \(\vefi\of{\vec{r},t}\).
 %
 %
 \subsection{Circuit Laws}

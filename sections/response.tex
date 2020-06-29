@@ -49,33 +49,35 @@ spatial and temporal part of the kernel are Dirac deltas.
 \[\varrho_n\of{\offf{\vec{r}-\vec{\xi}_m},\offf{t-\tau_m}} = \varrho_n \prod_{j=1}^n \delta\of{\vec{r}-\vec{\xi}_j}\delta\of{t-\tau_j}\]
 In this last case, the Volterra series simply becomes a Taylor series.
 \[\mathcal{Y}\of{\vec{r},t} = \sum_{n=0}^\infty \varrho_n \, \mathcal{X}^n\of{\vec{r},t}\]
+Often only the first term of the series is considered, dropping the subscript.
+\[\mathcal{Y}\of{\vec{r},t} = \varrho\,  \mathcal{X}\of{\vec{r},t}\]
 %
 %
 \subsection{Response in Fourier space}
 %
 We consider the first order of the Volterra series in the semilocal approximation.
 \[\mathcal{Y}_1\of{\vec{r},t} = \iiiint \varrho_1\of{\vec{r}-\vec{\xi},t-\tau} \mathcal{X}\of{\vec{\xi},\tau} \de^3\xi\de\tau\]
-This can be seen to be the convolution of \(\varrho_1\) and \(\mathcal{X}\), which
+This can be seen to be the convolution of \(\varrho\) and \(\mathcal{X}\), which
 should become a product if we analyse the response in Fourier space.
 We define our Fourier transforms as follows.
 \begin{equation}
   \begin{matrix*}[l]
-  f\of{\vec{k},\omega} &=& \displaystyle \iiiint f\of{\vec{r},t} e^{-\icmp \vec{k} \cdot r} e^{\icmp \omega t} \de^3r\de t \\[1em]
-  f\of{\vec{r},t} &=& \displaystyle \frac{1}{\of{2\pi}^4}\iiiint f\of{\vec{k},\omega} e^{-\icmp\of{\vec{k} \cdot r - \omega t}} \de^3k\de \omega
+  f\of{\vec{k},\omega} &=& \displaystyle \frac{1}{\twopi^2} \iiiint f\of{\vec{r},t} e^{-\icmp \vec{k} \cdot r} e^{\icmp \omega t} \de^3r\de t \\[1em]
+  f\of{\vec{r},t} &=& \displaystyle \frac{1}{\twopi^2} \iiiint f\of{\vec{k},\omega} e^{\icmp \vec{k} \cdot r} e^{-\icmp \omega t} \de^3k\de \omega
   \end{matrix*}
 \end{equation}
-With these definitions no additional factors appear in the convolution theorem.
-\[\mathcal{Y}_1\of{\vec{k},\omega} = \varrho_1\of{\vec{k},\omega}\mathcal{X}\of{\vec{k},\omega}\]
+With these definitions the convolution theorem is stated as follows.
+\[\mathcal{Y}_1\of{\vec{k},\omega} = \twopi^2 \; \varrho_1\of{\vec{k},\omega}\mathcal{X}\of{\vec{k},\omega}\]
 A similar approach can be taken with the higher orders, by using a generalisation
 of the convolution theorem, but the result is much less convenient.
-\[\mathcal{Y}_n\of{\vec{k},\omega} = \int\!\!\!\dots\!\!\!\int
-\frac{\varrho_n\of{\offf{\vec{k}_m},\offf{\omega_m}}}{\of{2\pi}^{4n-4}} \prod_{j=1}^n \mathcal{X}\of{\vec{k}_j,\omega_j} \delta\of{\vec{k} - \textstyle
+\[\mathcal{Y}_n\of{\vec{k},\omega} = \twopi^2 \int\!\!\!\dots\!\!\!\int
+\varrho_n\of{\offf{\vec{k}_m},\offf{\omega_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{k}_j,\omega_j} \delta\of{\vec{k} - \textstyle
 \sum \vec{k}_s} \delta\of{\omega - \textstyle
 \sum \omega_s} \de^3k_j \de\omega_j\]
 We can (arbitrarily) choose some specific index \(\ell\) to integrate over in
 order to remove the delta, we denote this with a prime symbol next to the integral.
-\[\mathcal{Y}_n\of{\vec{k},\omega} = \int\!\!\!\dots\!\!\!\sideset{}{'}\int
-\frac{\varrho_n\of{\offf{\vec{k}_m},\offf{\omega_m}}}{\of{2\pi}^{4n-4}} \prod_{j=1}^n \mathcal{X}\of{\vec{k}_j,\omega_j} \de^3k_j \de\omega_j\]
+\[\mathcal{Y}_n\of{\vec{k},\omega} = \twopi^2 \int\!\!\!\dots\!\!\!\sideset{}{'}\int
+\varrho_n\of{\offf{\vec{k}_m},\offf{\omega_m}} \prod_{j=1}^n \mathcal{X}\of{\vec{k}_j,\omega_j} \de^3k_j \de\omega_j\]
 This symbol is meant to reminds us that:
 \begin{itemize}
 \item the differentials \(\de^3k_\ell\) and \(\de\omega_\ell\) are no longer present;
@@ -84,9 +86,9 @@ This symbol is meant to reminds us that:
 \end{itemize}
 We give an example of the two possible ways of writing the second order term.
 \begin{align*}
-\mathcal{Y}_2\of{\vec{k},\omega} &= \frac{1}{\of{2\pi}^4} \iiiint \varrho_n\of{\vec{k}_1,\vec{k}-\vec{k}_1,\omega_1,\omega-\omega_1}
+\mathcal{Y}_2\of{\vec{k},\omega} &= \twopi^2 \iiiint \varrho_n\of{\vec{k}_1,\vec{k}-\vec{k}_1,\omega_1,\omega-\omega_1}
 \mathcal{X}\of{\vec{k}_1,\omega_1} \mathcal{X}\of{\vec{k}-\vec{k}_1,\omega-\omega_1} \de^3 k_1 \de \omega_1\\
-\mathcal{Y}_2\of{\vec{k},\omega} &= \frac{1}{\of{2\pi}^4} \iiiint \varrho_n\of{\vec{k}-\vec{k}_2,\vec{k}_2,\omega-\omega_2,\omega_2}
+\mathcal{Y}_2\of{\vec{k},\omega} &= \twopi^2 \iiiint \varrho_n\of{\vec{k}-\vec{k}_2,\vec{k}_2,\omega-\omega_2,\omega_2}
 \mathcal{X}\of{\vec{k}-\vec{k}_2,\omega-\omega_2} \mathcal{X}\of{\vec{k}_2,\omega_2} \de^3 k_2 \de \omega_2
 \end{align*}
 %
@@ -151,8 +153,34 @@ in the case of \(\epsilon\) and \(\eta\) we can gain further insight in the matt
 This shows that, for small susceptibilities, \(\chi_\mathrm{e}' \approx \chi_\mathrm{e}''\).\\[1em]
 All the previous considerations can be generalised to dispersive media if they are
 written in terms of Fourier components, rather than treating them as constants (at
-least up to the semi-local approximation). In the case of anisotropic media the
-response functions become tensors.\\[1em]
+least up to the first order of the semilocal approximation).
+In order to do this, we must recall that all occurrences of \(1\) in the response
+functions must be replaced with a \(\delta\), to give the correct result when
+performing a convolution.
+Using out definition of Fourier transform, the resulting response functions are
+the following.
+\[
+\begin{matrix}
+\epsilon_\mathrm{r}\of{\vec{r},t} = \delta\of{\vec{r},t} + \dfrac{\lambda_\mathrm{e}}{\kappae} \chi_\mathrm{e}'\of{\vec{r},t}
+&\Rightarrow&
+\epsilon_\mathrm{r}\of{\vec{k},\omega} = \twopi^2 + \dfrac{\lambda_\mathrm{e}}{\kappae} \chi_\mathrm{e}'\of{\vec{k},\omega}
+\\[1em]
+\mu_\mathrm{r}\of{\vec{r},t} = \delta\of{\vec{r},t} + \dfrac{\lambda_\mathrm{e}}{\kappae} \chi_\mathrm{m}'\of{\vec{r},t}
+&\Rightarrow&
+\mu_\mathrm{r}\of{\vec{k},\omega} = \twopi^2 + \dfrac{\lambda_\mathrm{e}}{\kappae} \chi_\mathrm{m}'\of{\vec{k},\omega}
+\\[1em]
+\eta_\mathrm{r}\of{\vec{r},t} = \delta\of{\vec{r},t} - \dfrac{\lambda_\mathrm{e}}{\kappae} \chi_\mathrm{e}''\of{\vec{r},t}
+&\Rightarrow&
+\eta_\mathrm{r}\of{\vec{k},\omega} = \twopi^2 - \dfrac{\lambda_\mathrm{e}}{\kappae} \chi_\mathrm{e}'\of{\vec{k},\omega}
+\\[1em]
+\nu_\mathrm{r}\of{\vec{r},t} = \delta\of{\vec{r},t} - \dfrac{\lambda_\mathrm{e}}{\kappae} \chi_\mathrm{m}''\of{\vec{r},t}
+&\Rightarrow&
+\nu_\mathrm{r}\of{\vec{k},\omega} = \twopi^2 - \dfrac{\lambda_\mathrm{e}}{\kappae} \chi_\mathrm{m}''\of{\vec{k},\omega}
+\\[1em]
+\end{matrix}
+\]
+
+In the case of anisotropic media the response functions become tensors.\\[1em]
 Due to a long-standing debate on whether the \(\bfi\)-field or the \(\hfi\)-field
 is the most fundamental, possibly spurred by the fact that magnetic phenomena are often
 weak in matter, there is an unfortunate difference in which quantity is most commonly
@@ -165,3 +193,21 @@ to a preference for this field in the engineering community.
 In physical terms, however, the \(\bfi\)-field is clearly the most fundamental
 for several reasons, including the fact that it appears in the Lorentz force and
 that its source term is the total current, rather than just the free current.
+%
+%
+% \subsection{Maxwell’s equations in Fourier space}
+% %
+% As we have seen, working in Fourier space can greatly simplify dealing with
+% dispersive media.
+% It can therefore be convenient to write the Fourier transformed version of Maxwell’s
+% equations.
+% \begin{center}
+%   \begin{tabular}{lccl}
+%     \(\mathrm{M}_\mathrm{I}\) & \(\icmp \vec{k} \cdot \vdfi\of{\vec{k},\omega}\) & \(=\) & \(\dfrac{\alphaG}{\kappae} \rho_\mathrm{f}\of{\vec{k},\omega}\) \\[1em]
+%     \(\mathrm{M}_\mathrm{II}\) & \(\icmp \vec{k} \cdot \vbfi\of{\vec{k},\omega}\) & \(=\) & \(0\) \\[.8em]
+%     \(\mathrm{M}_\mathrm{III}\) & \(\icmp \vec{k} \times \vefi\of{\vec{k},\omega}\) & \(=\) & \(\displaystyle \frac{\icmp \omega}{\gammaF} \vbfi\of{\vec{k},\omega}\) \\[1em]
+%     \(\mathrm{M}_\mathrm{IV}\) & \(\icmp \vec{k} \times \vhfi\of{\vec{k},\omega}\) & \(=\) & \(\displaystyle \frac{\alphaA}{\kappam} \vec{j}_\mathrm{f}\of{\vec{k},\omega} - \frac{\kappae}{\kappam} \frac{\icmp \omega}{\gammaM} \vdfi\of{\vec{k},\omega}\) \\
+%   \end{tabular}
+% \end{center}
+% Another useful relation comes from the Fourier transform of the continuity equation.
+% \[\vec{k} \cdot \vec{j}\of{\vec{k},\omega} = \frac{\omega}{\kappac} \rho\of{\vec{k},\omega}\]
