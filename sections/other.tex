@@ -121,10 +121,10 @@ f\of{t} &= \mathcal{B} \int \of{\mathcal{A} \int f\of{\tau} e^{-\icmp a \omega \
 f\of{t} &= \mathcal{A}\mathcal{B} \iint f\of{\tau} e^{-\icmp a \omega \of{t - \tau}} \de\tau \de\omega
 \end{align*}
 We proceed by recognising the integral expression of Dirac’s delta.
-\[f\of{t} = \mathcal{A}\mathcal{B} \frac{\twopi}{\abs{a}} \int f\of{\tau} \delta\of{t - \tau} \de\tau = \mathcal{A}\mathcal{B} \frac{\twopi}{\abs{a}} f\of{t}\]
+\[f\of{t} = \mathcal{A}\mathcal{B} \frac{\twopi}{\Abs{a}} \int f\of{\tau} \delta\of{t - \tau} \de\tau = \mathcal{A}\mathcal{B} \frac{\twopi}{\Abs{a}} f\of{t}\]
 From here we obtain the following relation.
 \begin{equation}
-\mathcal{A}\mathcal{B} = \frac{\abs{a}}{\twopi}
+\mathcal{A}\mathcal{B} = \frac{\Abs{a}}{\twopi}
 \end{equation}
 In a similar vein we can extend the definition of Fourier transform to a function
 of multiple (more specifically \(n\)) variables.
@@ -170,7 +170,7 @@ f\of{\offf{\omega_m}} g\of{\offf{\omega_m}} \prod_{j=1}^n \de \omega_j
 \end{align*}
 By rearranging we obtain the final form of the theorem.
 \begin{equation}
-h\of{\omega} = \frac{1}{\mathcal{B}} \of{\frac{\mathcal{B}}{\mathcal{A}}}^{n} \int\!\!\!\dots\!\!\!\int f\of{\offf{\omega_m}} g\of{\offf{\omega_m}} \delta\parens[\Big]{\omega - \sum_{j=1}^n \omega_j} \prod_{j=1}^n \de \omega_j
+h\of{\omega} = \frac{1}{\mathcal{B}} \of{\frac{\mathcal{B}}{\mathcal{A}}}^{n} \int\!\!\!\dots\!\!\!\int f\of{\offf{\omega_m}} g\of{\offf{\omega_m}} \delta\Of[\Big]{\omega - \sum_{j=1}^n \omega_j} \prod_{j=1}^n \de \omega_j
 \end{equation}
 It is easy to see that for \(n=1\) we obtain the usual convolution theorem.
 \[h\of{\omega} = \frac{1}{\mathcal{B}} \frac{\mathcal{B}}{\mathcal{A}} \int f\of{\omega_1} g\of{\omega_1} \delta\of{\omega - \omega_1} \de \omega_1 = \frac{f\of{\omega}g\of{\omega}}{\mathcal{A}}\]

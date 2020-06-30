@@ -48,14 +48,14 @@
 \NewDocumentCommand{\betaG}{}{\ensuremath{\beta_\mathrm{G}}}
 \NewDocumentCommand{\betaA}{}{\ensuremath{\beta_\mathrm{A}}}
 
-\DeclarePairedDelimiter{\absv}{\lvert}{\rvert}
-\NewDocumentCommand{\abs}{m}{\absv*{#1}}
-\DeclarePairedDelimiter{\parens}{(}{)}
-\NewDocumentCommand{\of}{m}{\parens*{#1}}
-\DeclarePairedDelimiter{\brackets}{[}{]}
-\NewDocumentCommand{\off}{m}{\brackets*{#1}}
-\DeclarePairedDelimiter{\braces}{\{}{\}}
-\NewDocumentCommand{\offf}{m}{\braces*{#1}}
+%\DeclarePairedDelimiter{\absv}{\lvert}{\rvert}
+%\NewDocumentCommand{\abs}{m}{\absv*{#1}}
+\DeclarePairedDelimiter{\Of}{(}{)}
+\NewDocumentCommand{\of}{m}{\Of*{#1}}
+\DeclarePairedDelimiter{\Off}{[}{]}
+\NewDocumentCommand{\off}{m}{\Off*{#1}}
+\DeclarePairedDelimiter{\Offf}{\{}{\}}
+\NewDocumentCommand{\offf}{m}{\Offf*{#1}}
 
 \RenewDocumentCommand{\vec}{m}{{\symbf{#1}}}
 \NewDocumentCommand{\uvec}{m}{\symbf{u}_{#1}}
