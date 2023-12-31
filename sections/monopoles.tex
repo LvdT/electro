@@ -27,9 +27,11 @@ Naturally, we can define the corresponding densities.
 \qquad I_\mathrm{m} = \iint_\Sigma \vec{j}_\mathrm{m}\of{\vec{\xi},t} \cdot \vec{n} \de^2\xi\]
 The densities must satisfy a continuity equation, the proof of which is identical
 to the one given for the electric case, and shall not be repeated.
-\[\frac{1}{\kappac} \pderiv{\rho_\mathrm{m}}{t} + \dvg{\vec{j}_\mathrm{m}} = 0\]
+\begin{equation}\label{eq::continuity-magnetic}
+	\frac{1}{\kappac} \pderiv{\rho_\mathrm{m}}{t} + \dvg{\vec{j}_\mathrm{m}} = 0
+\end{equation}
 Due to the existence of a continuity equation, we also have the following relation
-with the velocity field, once again the proof is identical to the previous.
+with the velocity field, once again the proof is identical to that done previously.
 \begin{equation}
 \vec{j}_\mathrm{m}\of{\vec{r},t} = \frac{\vec{v}\of{\vec{r},t} \, \rho_\mathrm{m}\of{\vec{r},t}}{\kappac}
 \end{equation}
@@ -47,8 +49,25 @@ and \(\betaA\) for Gauss's law and Faraday--Maxwell's law, respectively.
     \(\mathrm{M}_\mathrm{IV}\) & \textbf{Ampère--Maxwell's law} & \(\crl{\vbfi}\) & \(=\) & \(\displaystyle \alphaA \, \vec{j}_\mathrm{e} + \frac{1}{\gammaM} \pderiv{\vefi}{t}\) \\
   \end{tabular}
 \end{center}
+We can then determine what conditions must apply to \(\beta_\mathrm{G}\) and \(\beta_\mathrm{A}\) in order
+for these to be consistent with the continuity equation we just obtained.
+We begin by taking the divergence of \(\mathrm{M}_\mathrm{III}\), recalling that
+the divergence of a curl must be zero.
+\begin{align*}
+  \dvg{\of{\crl{\vefi}}} &= - \betaA \dvg{\vec{j}_\mathrm{m}} - \frac{1}{\gammaF} \dvg{\pderiv{\vbfi}{t}} \\
+  0 &= - \betaA \dvg{\vec{j}_\mathrm{m}} - \frac{1}{\gammaF} \pderiv{}{t} \dvg{\vbfi} \\
+  0 &= - \betaA \dvg{\vec{j}_\mathrm{m}} - \frac{\betaG}{\gammaF} \pderiv{\rho_\mathrm{m}}{t}
+\end{align*}
+We obtain something that resembles a continuity equation.
+\[\frac{\betaG}{\betaA\gammaF} \pderiv{\rho_\mathrm{m}}{t} + \dvg{\vec{j}_\mathrm{m}} = 0\]
+Comparing it to equation \eqref{eq::continuity-magnetic} we obtain a relation between the constants.
+\[\frac{\betaA\gammaF}{\betaG} = \kappac\]
+Having previously determined that \(\gammaF = \kappaf\), we can rearrange this as follows.
+\[\betaA = \frac{\kappac}{\kappaf} \betaG\]
+Thus in any system where \(\kappac = \kappaf\) it is necessary that also \(\betaA = \betaG\).
 %
 %
+
 \subsection{Lorentz force}
 %
 We must now find the correct expression for the Lorentz force of a magnetically
@@ -87,7 +106,7 @@ we can reasonably expect the Lorentz force for a moving magnetically charge part
 \begin{equation*}
   \vec{F}\of{\vec{r},t} = q_\mathrm{m} \of{\vbfi\of{\vec{r},t} - \frac{\vec{v} \times \vefi\of{\vec{r},t}}{\gammaM}}
 \end{equation*}
-If a particle has both an electric and magnetic charge, then the Lorentz force must
+Naturally, if a particle has both an electric and magnetic charge, then the Lorentz force must
 include both contributions.
 \begin{equation}
   \vec{F} = q_\mathrm{e} \of{\vefi + \frac{\vec{v} \times \vbfi}{\gammaF}} + q_\mathrm{m} \of{\vbfi - \frac{\vec{v} \times \vefi}{\gammaM}}
