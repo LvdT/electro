@@ -61,7 +61,7 @@ the divergence of a curl must be zero.
 We obtain something that resembles a continuity equation.
 \[\frac{\betaG}{\betaA\gammaF} \pderiv{\rho_\mathrm{m}}{t} + \dvg{\vec{j}_\mathrm{m}} = 0\]
 Comparing it to equation \eqref{eq::continuity-magnetic} we obtain a relation between the constants.
-\[\frac{\betaA\gammaF}{\betaG} = \kappac\]
+\[\frac{\betaA\gammaF}{\betaG} = \kappac \qquad \betaA\gammaF = \kappac\betaG\]
 Recalling equation \eqref{eq::constant-relations} we can rewrite this in two ways.
 \[\betaA = \frac{\kappac}{\kappaf} \betaG \qquad
 \frac{\alphaA}{\alphaG}\frac{\betaA}{\betaG} = \of{\frac{c}{\kappac}}^2\]
@@ -100,23 +100,31 @@ Then we notice that the first integral vanishes, because \(\rho_\mathrm{e} \, \v
 \[\D{\Phi_\vefi}{t} = \gammaM \oint_{\partial\Sigma(t)} \of{ \vbfi - \frac{\vec{v} \times \vefi}{\gammaM}} \cdot \vec{t} \, \de\xi\]
 We have managed to find an expression similar to the Faraday--Neumann--Lenz law,
 but some care must be taken in naming the right hand side of this equation. We shall
-call this \textbf{magnetomotive force} \(\emf_\mathrm{m}\), but we remark that this term is already
-in use for a distinct concept in magnetic circuits.
+define the \textbf{magnetomotive force} \(\emf_\mathrm{m}\) as the amount of work per unit
+of magnetic charge, but we have to keep in mind that this term is already in use for
+a distinct concept in magnetic circuits.
+\[\emf_\mathrm{m}\of{t} = \frac{1}{q_\mathrm{m}} \oint_{\partial\Sigma\of{t}} \vec{F}\of{\xi,t} \cdot \vec{t}\of{\xi,t} \de\xi\]
+We then assume the following form for the equivalent law, with a difference in sign
+compared to the Faraday--Neumann--Lenz law for the electromotive force, this is in line with
+the difference in sign between the Faraday--Maxwell and the Ampère--Maxwell laws.
 \begin{equation}
-  \D{\Phi_\vefi}{t} = \gammaM \, \emf_\mathrm{m}
+  \emf_\mathrm{m} = k_\mathrm{M} \, \D{\Phi_\vefi}{t}
 \end{equation}
-We notice there is a difference in sign with the Faraday--Neumann--Lenz law
-for the electromotive force, this is in line with the difference in sign between the
-Faraday--Maxwell and the Ampère--Maxwell laws. By analogy with the electromotive force,
-we can reasonably expect the Lorentz force for a moving magnetically charge particle to have the following expression.
+While we might be tempted to just assume that we can obtain an expression for the Lorentz force
+by multiplying the integrand by \(q_\mathrm{m}\), we can’t be sure that this would actually have units of force.
+We need to add a scaling factor \(\lambda_\mathrm{f}\) to account for this.
 \begin{equation*}
-  \vec{F}\of{\vec{r},t} = q_\mathrm{m} \of{\vbfi\of{\vec{r},t} - \frac{\vec{v} \times \vefi\of{\vec{r},t}}{\gammaM}}
+  \vec{F}\of{\vec{r},t} = \frac{q_\mathrm{m}}{\lambda_\mathrm{f}} \of{\vbfi\of{\vec{r},t} - \frac{\vec{v} \times \vefi\of{\vec{r},t}}{\gammaM}}
 \end{equation*}
-Naturally, if a particle has both an electric and magnetic charge, then the Lorentz force must
-include both contributions.
+Using dimensional analysis we find the correct combination of constants that ensure the correct dimensions for the scaling factor.
+\[\lambda_\mathrm{f} = \frac{\kappaf}{\kappac} \frac{\alphaA}{\betaG}\]
+Naturally, if a particle had both an electric and magnetic charge, then the Lorentz force
+would have to include both contributions.
 \begin{equation}
-  \vec{F} = q_\mathrm{e} \of{\vefi + \frac{\vec{v} \times \vbfi}{\gammaF}} + q_\mathrm{m} \of{\vbfi - \frac{\vec{v} \times \vefi}{\gammaM}}
+  \vec{F} = q_\mathrm{e} \of{\vefi + \frac{\vec{v} \times \vbfi}{\gammaF}} + \frac{q_\mathrm{m}}{\lambda_\mathrm{f}} \of{\vbfi - \frac{\vec{v} \times \vefi}{\gammaM}}
 \end{equation}
+Finally, we also find an expression for the \(k_\mathrm{M}\) constant that appears in the Faraday--Neumann--Lenz law for the magnetomotive force.
+\[k_\mathrm{M} = \frac{1}{\gammaM \lambda_\mathrm{f}} = \frac{1}{\gammaM} \frac{\kappac}{\kappaf} \frac{\betaG}{\alphaA} = \frac{1}{\kappaf} \frac{\betaG}{\alphaG} = \frac{\betaG}{\alphaG} k_\mathrm{F}\]
 %
 %
 \subsection{Electromotive force}
